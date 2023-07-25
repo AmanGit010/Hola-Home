@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hola_home/Core/constants/colors.dart';
-import 'package:hola_home/feature/signup-login/signup_login.dart';
+import 'package:hola_home/feature/signup%20login%20screen/signup_login_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -14,12 +14,12 @@ class OnboardingScreen extends StatelessWidget {
           Expanded(
               child: Column(
             children: [
-              // Image.asset(
-              //   'assets/png/onboarding2.png',
-              //   fit: BoxFit.fitWidth,
-              //   height: 450,
-              //   width: 500,
-              // ),
+              Image.asset(
+                'assets/png/onboarding.png',
+                fit: BoxFit.fitWidth,
+                height: 450,
+                width: 500,
+              ),
               const SizedBox(
                 height: 25,
               ),

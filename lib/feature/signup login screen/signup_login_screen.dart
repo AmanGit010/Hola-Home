@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hola_home/Core/constants/colors.dart';
-import 'package:hola_home/feature/signup-login/signup.dart';
+import 'package:hola_home/feature/signup%20login%20screen/signup_screen.dart';
 
 class SignupLoginScreen extends StatelessWidget {
   const SignupLoginScreen({Key? key}) : super(key: key);

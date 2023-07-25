@@ -1,0 +1,8 @@
+To-do
+
+1. Create Statless widgets for images
+2. Remove height & width declared for images
+3. Remove unncessary expanded
+4. Remove bold font and use w700
+5. Use SVG package for importing SVGs into app
+6. 
