@@ -1,8 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:hola_home/Core/constants/colors.dart';
+import 'package:hola_home/core/constants/styles.dart';
 
-class Signup extends StatelessWidget {
-  const Signup({Key? key}) : super(key: key);
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({Key? key}) : super(key: key);
+
+  @override
+  State<SignupScreen> createState() => _SignupScreenState();
+}
+
+class _SignupScreenState extends State<SignupScreen> {
+  bool _obscureText = true;
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,17 +45,11 @@ class Signup extends StatelessWidget {
                         children: [
                           TextSpan(
                             text: "Create your\n",
-                            style: TextStyle(
-                                fontFamily: 'PoppinsBold',
-                                fontSize: 35,
-                                color: Colors.black),
+                            style: AppTextStyles.poppinsBlackBold35,
                           ),
                           TextSpan(
                             text: "Account",
-                            style: TextStyle(
-                                fontFamily: 'PoppinsBold',
-                                fontSize: 35,
-                                color: Colors.black),
+                            style: AppTextStyles.poppinsBlackBold35,
                           )
                         ],
                       ),
@@ -58,10 +66,7 @@ class Signup extends StatelessWidget {
                         fillColor: const Color(0xfff7f8fa),
                         filled: true,
                         label: const Text('Email'),
-                        labelStyle: const TextStyle(
-                            fontFamily: 'PoppinsReg',
-                            fontSize: 20,
-                            color: Colors.black),
+                        labelStyle: AppTextStyles.poppinsBlackBold20,
                         focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(13),
                             borderSide: const BorderSide(
@@ -82,16 +87,16 @@ class Signup extends StatelessWidget {
                       decoration: InputDecoration(
                         fillColor: const Color(0xfff7f8fa),
                         filled: true,
-                        focusColor: Colors.red,
-                        label: const Text('Password'),
-                        labelStyle: const TextStyle(
-                          fontFamily: 'PoppinsReg',
-                          fontSize: 20,
-                          color: Colors.black,
+                        suffixIcon: IconButton(
+                          icon: Icon(
+                            _obscureText
+                                ? Icons.visibility
+                                : Icons.visibility_off_outlined,
+                          ),
+                          onPressed: _togglePasswordVisibility,
                         ),
-                        // enabledBorder: OutlineInputBorder(
-                        //     borderRadius: BorderRadius.circular(13),
-                        // borderSide: BorderSide(color: Colors.red)),
+                        label: const Text('Password'),
+                        labelStyle: AppTextStyles.poppinsBlackBold20,
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(13),
                             borderSide: const BorderSide(color: Colors.grey)),
@@ -125,12 +130,9 @@ class Signup extends StatelessWidget {
                         ),
                         child: const Padding(
                           padding: EdgeInsets.all(10),
-                          child: Text(
-                            "Sign Up",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontFamily: 'PoppinsBold', fontSize: 20),
-                          ),
+                          child: Text("Sign Up",
+                              textAlign: TextAlign.center,
+                              style: AppTextStyles.poppinsBlackBold20),
                         ),
                       ),
                     ),
