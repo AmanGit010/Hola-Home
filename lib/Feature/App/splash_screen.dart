@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hola_home/Core/constants/colors.dart';
-import 'package:hola_home/Feature/home/home_page.dart';
+import 'package:hola_home/Feature/home/onboarding.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

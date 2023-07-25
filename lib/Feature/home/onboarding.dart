@@ -98,21 +98,29 @@ class HomePage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              Container(
-                alignment: Alignment.center,
-                width: 320,
-                height: 55,
-                decoration: BoxDecoration(
-                  border: Border.all(color: colors.yellow, width: 2.0),
-                  borderRadius: BorderRadius.circular(30),
-                  color: Color.fromARGB(255, 255, 235, 153),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: Text(
-                    "Skip",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontFamily: 'PoppinsBold', fontSize: 20),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SignupLogin()),
+                  );
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  width: 320,
+                  height: 55,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: colors.yellow, width: 2.0),
+                    borderRadius: BorderRadius.circular(30),
+                    color: Color.fromARGB(255, 255, 235, 153),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Text(
+                      "Skip",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontFamily: 'PoppinsBold', fontSize: 20),
+                    ),
                   ),
                 ),
               ),
