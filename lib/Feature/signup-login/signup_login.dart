@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:hola_home/Core/constants/colors.dart';
-import 'package:hola_home/Feature/signup-login/signup.dart';
+import 'package:hola_home/feature/signup-login/signup.dart';
 
-class SignupLogin extends StatelessWidget {
-  const SignupLogin({super.key});
+class SignupLoginScreen extends StatelessWidget {
+  const SignupLoginScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffffffff),
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: Column(
           children: [
@@ -29,7 +29,7 @@ class SignupLogin extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => SignupLogin()),
+                      MaterialPageRoute(builder: (context) => const Signup()),
                     );
                   },
                   child: Container(
@@ -38,9 +38,9 @@ class SignupLogin extends StatelessWidget {
                     height: 55,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
-                        color: colors.yellow),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
+                        color: AppColors.yellow),
+                    child: const Padding(
+                      padding: EdgeInsets.all(10),
                       child: Text(
                         "SignUp",
                         textAlign: TextAlign.center,
@@ -57,7 +57,8 @@ class SignupLogin extends StatelessWidget {
                   onTap: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => SignupLogin()),
+                      MaterialPageRoute(
+                          builder: (context) => const SignupLoginScreen()),
                     );
                   },
                   child: Container(
@@ -65,12 +66,12 @@ class SignupLogin extends StatelessWidget {
                     width: 150,
                     height: 55,
                     decoration: BoxDecoration(
-                      border: Border.all(color: colors.yellow, width: 2.0),
+                      border: Border.all(color: AppColors.yellow, width: 2.0),
                       borderRadius: BorderRadius.circular(30),
-                      color: Color.fromARGB(255, 255, 235, 153),
+                      color: AppColors.lightYellow,
                     ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
+                    child: const Padding(
+                      padding: EdgeInsets.all(10),
                       child: Text(
                         "Login",
                         textAlign: TextAlign.center,
@@ -87,12 +88,12 @@ class SignupLogin extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Signup()),
-                );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(builder: (context) => ),
+                // );
               },
-              child: Text(
+              child: const Text(
                 "Skip and Start Browsing",
                 style: TextStyle(
                     fontFamily: 'PoppinsReg',

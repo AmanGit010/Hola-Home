@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hola_home/Core/constants/colors.dart';
-import 'package:hola_home/Feature/home/onboarding.dart';
+import 'package:hola_home/feature/onboardingScreen/onboarding.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+  const SplashScreen({Key? key}) : super(key: key);
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -13,10 +13,10 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => HomePage()),
+        MaterialPageRoute(builder: (context) => const OnboardingScreen()),
       );
     });
   }
@@ -24,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: colors.yellow,
+      backgroundColor: AppColors.yellow,
       body: Center(
         child: Image.asset(
           'assets/png/hh.png',
