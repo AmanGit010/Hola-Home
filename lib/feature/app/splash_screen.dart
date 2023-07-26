@@ -23,18 +23,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: AppColors.yellow,
-      body: Center(child: _Image()),
-    );
-  }
-}
-
-class _Image extends StatelessWidget {
-  const _Image({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Image.asset('assets/png/splash.png');
+    return Scaffold(
+        backgroundColor: AppColors.yellow,
+        body: Center(
+          child: Image.asset('assets/png/splash.png'),
+        ));
   }
 }

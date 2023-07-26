@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hola_home/Core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
-import 'package:hola_home/feature/signup_login_screen/screens/signup_screen_continued.dart';
+import 'package:hola_home/feature/signup_login_screen/screens/login_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -57,7 +58,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 50),
                 Padding(
-                  padding: const EdgeInsets.only(left: 40, right: 40),
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
                   child: TextFormField(
                     keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.next,
@@ -78,7 +79,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 ),
                 const SizedBox(height: 25),
                 Padding(
-                  padding: const EdgeInsets.only(left: 40, right: 40),
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
                   child: TextFormField(
                     obscureText: _obscureText,
                     decoration: InputDecoration(
@@ -135,10 +136,105 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                 ),
-                const SignupScreenContinued(),
+                const _SignupScreenContinued(),
               ],
             ),
           ),
         ));
+  }
+}
+
+class _SignupScreenContinued extends StatelessWidget {
+  const _SignupScreenContinued({Key? key}) : super(key: key);
+
+  final String appleLogo = 'assets/svg/apple_logo.svg';
+  final String googleLogo = 'assets/svg/google_logo.svg';
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        const SizedBox(height: 40),
+        Text("or",
+            style: AppTextStyles.poppinsBlack20
+                .copyWith(color: Colors.black, fontSize: 23)),
+        const SizedBox(height: 20),
+        GestureDetector(
+          onTap: () {},
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Container(
+              padding: const EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                  border: Border.all(
+                      color: const Color.fromARGB(255, 206, 206, 206)),
+                  borderRadius: BorderRadius.circular(5)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(appleLogo),
+                  const SizedBox(width: 60),
+                  const Padding(
+                    padding: EdgeInsets.only(right: 75),
+                    child: Text("Continue with Apple",
+                        style: AppTextStyles.poppinsBlack20),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 20),
+        GestureDetector(
+          onTap: () {},
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Container(
+              padding: const EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                  border: Border.all(
+                      color: const Color.fromARGB(255, 210, 210, 210)),
+                  borderRadius: BorderRadius.circular(5)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SvgPicture.asset(googleLogo),
+                  const SizedBox(width: 60),
+                  const Padding(
+                    padding: EdgeInsets.only(right: 75),
+                    child: Text("Continue with Apple",
+                        style: AppTextStyles.poppinsBlack20),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 60),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 60),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text("Already have an account?  ",
+                  style: AppTextStyles.poppinsBlack20),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginScreen()));
+                },
+                child: Text(
+                  "Sign in",
+                  style: AppTextStyles.poppinsBlackBold20
+                      .copyWith(color: AppColors.yellow),
+                ),
+              ),
+              const SizedBox(height: 50),
+            ],
+          ),
+        )
+      ],
+    );
   }
 }
