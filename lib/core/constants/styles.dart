@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-const poppins = 'PoppinsReg';
+const poppins = 'Poppins';
 
 class AppTextStyles {
   //Bold

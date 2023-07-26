@@ -24,19 +24,12 @@ flutter:
   assets:
     - assets/svg/
     - assets/png/
-    # - assets/fonts
-    # - assets/png
-    # - assets/svg
 
   fonts:
-    - family: PoppinsReg
+    - family: Poppins
       fonts:
         - asset: assets/fonts/Poppins-Regular.ttf
           # style: italic
-    - family: PoppinsBold
-      fonts:
-        - asset: assets/fonts/Poppins-Bold.ttf
-  #         weight: 700
-  #
+
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
