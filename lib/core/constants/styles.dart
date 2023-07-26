@@ -25,6 +25,14 @@ class AppTextStyles {
       fontFamily: poppins,
       fontWeight: FontWeight.bold);
 
+  static const TextStyle poppins30 = TextStyle(
+    // fontWeight: FontWeight.bold,
+    color: Colors.black,
+    fontSize: 30,
+    fontFamily: poppins,
+    // fontWeight: FontWeight.bold
+  );
+
   static const TextStyle poppinsBlackBold35 = TextStyle(
       // fontWeight: FontWeight.bold,
       color: Colors.black,

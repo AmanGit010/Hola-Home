@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hola_home/Core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
+import 'package:hola_home/feature/signup_login_screen/screens/login_screen.dart';
 import 'package:hola_home/feature/signup_login_screen/screens/signup_screen.dart';
 
 class SignupLoginScreen extends StatelessWidget {
@@ -49,7 +50,7 @@ class SignupLoginScreen extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const SignupLoginScreen()),
+                            builder: (context) => const LoginScreen()),
                       );
                     },
                     child: Container(

@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hola_home/core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
-import 'package:hola_home/feature/signup_login_screen/screens/login_screen.dart';
+import 'package:hola_home/feature/signup_login_screen/screens/signup_screen.dart';
 
-class SignupScreenContinued extends StatelessWidget {
-  const SignupScreenContinued({Key? key}) : super(key: key);
+class LoginScreenContinued extends StatelessWidget {
+  const LoginScreenContinued({Key? key}) : super(key: key);
 
   final String appleLogo = 'assets/svg/apple_logo.svg';
   final String googleLogo = 'assets/svg/google_logo.svg';
@@ -13,7 +13,7 @@ class SignupScreenContinued extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const SizedBox(height: 40),
+        const SizedBox(height: 20),
         Text("or",
             style: AppTextStyles.poppinsBlack20
                 .copyWith(color: Colors.black, fontSize: 23)),
@@ -75,15 +75,15 @@ class SignupScreenContinued extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Text("Already have an account?  ",
+              const Text("Don't have an account?  ",
                   style: AppTextStyles.poppinsBlack20),
               GestureDetector(
                 onTap: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => LoginScreen()));
+                      MaterialPageRoute(builder: (context) => SignupScreen()));
                 },
                 child: Text(
-                  "Sign in",
+                  "Sign up",
                   style: AppTextStyles.poppinsBlackBold20
                       .copyWith(color: AppColors.yellow),
                 ),

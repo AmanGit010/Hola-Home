@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:hola_home/Core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
-import 'package:hola_home/feature/signup_login_screen/screens/signup_screen_continued.dart';
+import 'package:hola_home/feature/forgot_password_screen/forgot_password_screen.dart';
+import 'package:hola_home/feature/signup_login_screen/screens/login_screen_continued.dart';
 
-class SignupScreen extends StatefulWidget {
-  const SignupScreen({Key? key}) : super(key: key);
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  State<SignupScreen> createState() => _SignupScreenState();
+  State<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _SignupScreenState extends State<SignupScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   bool _obscureText = true;
 
   void _togglePasswordVisibility() {
@@ -44,7 +45,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     text: const TextSpan(
                       children: [
                         TextSpan(
-                          text: "Create your\n",
+                          text: "Login to your\n",
                           style: AppTextStyles.poppinsBlackBold35,
                         ),
                         TextSpan(
@@ -127,7 +128,7 @@ class _SignupScreenState extends State<SignupScreen> {
                         ),
                         child: const Padding(
                           padding: EdgeInsets.all(10),
-                          child: Text("Sign Up",
+                          child: Text("Sign in",
                               textAlign: TextAlign.center,
                               style: AppTextStyles.poppinsBlackBold20),
                         ),
@@ -135,7 +136,21 @@ class _SignupScreenState extends State<SignupScreen> {
                     ),
                   ),
                 ),
-                const SignupScreenContinued(),
+                const SizedBox(height: 25),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ForgotPasswordScreen()));
+                  },
+                  child: Text(
+                    "Forgot the password?",
+                    style: AppTextStyles.poppinsBlack20
+                        .copyWith(color: AppColors.yellow),
+                  ),
+                ),
+                const LoginScreenContinued(),
               ],
             ),
           ),
