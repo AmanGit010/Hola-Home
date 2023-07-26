@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hola_home/Core/constants/colors.dart';
-import 'package:hola_home/feature/onboardingScreen/onboarding.dart';
+import 'package:hola_home/feature/onboarding_screen/onboarding_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -23,14 +23,18 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: AppColors.yellow,
-      body: Center(
-        child: Image.asset(
-          'assets/png/hh.png',
-          scale: 3,
-        ),
-      ),
+      body: Center(child: _Image()),
     );
+  }
+}
+
+class _Image extends StatelessWidget {
+  const _Image({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Image.asset('assets/png/splash.png');
   }
 }
