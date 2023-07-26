@@ -14,66 +14,9 @@ class SignupLoginScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const Flexible(child: _Image()),
-            const Flexible(child: _SecImage()),
+            const _Image(),
             const SizedBox(height: 60),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 39),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SignupScreen()),
-                      );
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 55,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: AppColors.yellow),
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 46),
-                        child: Text("SignUp",
-                            textAlign: TextAlign.center,
-                            style: AppTextStyles.poppinsBlackBold20),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 40),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const LoginScreen()),
-                      );
-                    },
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 55,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: AppColors.yellow, width: 2.0),
-                        borderRadius: BorderRadius.circular(30),
-                        color: AppColors.lightYellow,
-                      ),
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 46),
-                        child: Text(
-                          "Login",
-                          textAlign: TextAlign.center,
-                          style: AppTextStyles.poppinsBlackBold20,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            const _SignupLoginButtons(),
             const SizedBox(height: 40),
             GestureDetector(
               onTap: () {
@@ -93,30 +36,84 @@ class SignupLoginScreen extends StatelessWidget {
 }
 
 class _Image extends StatelessWidget {
+  //name
   const _Image({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      'assets/png/signup-login.png',
-      // fit: BoxFit.cover,
-      // width: 450,
-      // height: 200,
+    return Column(
+      children: [
+        Image.asset(
+          'assets/png/signup-login.png',
+        ),
+        Image.asset(
+          'assets/png/black_hola_home.png',
+          fit: BoxFit.fitWidth,
+        ),
+      ],
     );
   }
 }
 
-class _SecImage extends StatelessWidget {
-  const _SecImage({Key? key}) : super(key: key);
+class _SignupLoginButtons extends StatelessWidget {
+  const _SignupLoginButtons({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      'assets/png/black_hola_home.png',
-      fit: BoxFit.fitWidth,
-      // scale: 4,
-      // width: 300,
-      // height: 100,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 39),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const SignupScreen()),
+              );
+            },
+            child: Container(
+              alignment: Alignment.center,
+              height: 55,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(30),
+                  color: AppColors.yellow),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 46),
+                child: Text("SignUp",
+                    textAlign: TextAlign.center,
+                    style: AppTextStyles.poppinsBlackBold20),
+              ),
+            ),
+          ),
+          const SizedBox(width: 40),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const LoginScreen()),
+              );
+            },
+            child: Container(
+              alignment: Alignment.center,
+              height: 55,
+              decoration: BoxDecoration(
+                border: Border.all(color: AppColors.yellow, width: 2.0),
+                borderRadius: BorderRadius.circular(30),
+                color: AppColors.lightYellow,
+              ),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 46),
+                child: Text(
+                  "Login",
+                  textAlign: TextAlign.center,
+                  style: AppTextStyles.poppinsBlackBold20,
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
