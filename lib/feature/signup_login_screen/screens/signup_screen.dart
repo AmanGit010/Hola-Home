@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hola_home/Core/constants/colors.dart';
+import 'package:hola_home/core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
 import 'package:hola_home/feature/signup_login_screen/screens/login_screen.dart';
 
