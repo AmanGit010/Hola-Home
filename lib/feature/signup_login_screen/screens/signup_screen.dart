@@ -30,7 +30,7 @@ class _SignupScreenState extends State<SignupScreen> {
               },
               icon: const Icon(
                 Icons.arrow_back,
-                color: Colors.black,
+                color: AppColors.black,
               )),
         ),
         body: SafeArea(
@@ -63,7 +63,7 @@ class _SignupScreenState extends State<SignupScreen> {
                     keyboardType: TextInputType.emailAddress,
                     textInputAction: TextInputAction.next,
                     decoration: InputDecoration(
-                      fillColor: const Color(0xfff7f8fa),
+                      fillColor: AppColors.fillColorTFF,
                       filled: true,
                       label: const Text('Email'),
                       labelStyle: AppTextStyles.poppinsBlackBold20,
@@ -73,7 +73,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               color: AppColors.yellow, width: 2)),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(13),
-                          borderSide: const BorderSide(color: Colors.grey)),
+                          borderSide: const BorderSide(color: AppColors.grey)),
                     ),
                   ),
                 ),
@@ -83,14 +83,14 @@ class _SignupScreenState extends State<SignupScreen> {
                   child: TextFormField(
                     obscureText: _obscureText,
                     decoration: InputDecoration(
-                      fillColor: const Color(0xfff7f8fa),
+                      fillColor: AppColors.fillColorTFF,
                       filled: true,
                       suffixIcon: IconButton(
                         icon: Icon(
                           _obscureText
                               ? Icons.visibility
                               : Icons.visibility_off_outlined,
-                          color: Colors.grey,
+                          color: AppColors.grey,
                         ),
                         onPressed: _togglePasswordVisibility,
                       ),
@@ -98,7 +98,7 @@ class _SignupScreenState extends State<SignupScreen> {
                       labelStyle: AppTextStyles.poppinsBlackBold20,
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(13),
-                          borderSide: const BorderSide(color: Colors.grey)),
+                          borderSide: const BorderSide(color: AppColors.grey)),
                       focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(13),
                           borderSide: const BorderSide(
@@ -156,7 +156,7 @@ class _SignupScreenContinued extends StatelessWidget {
         const SizedBox(height: 40),
         Text("or",
             style: AppTextStyles.poppinsBlack20
-                .copyWith(color: Colors.black, fontSize: 23)),
+                .copyWith(color: AppColors.black, fontSize: 23)),
         const SizedBox(height: 20),
         GestureDetector(
           onTap: () {},
@@ -165,8 +165,7 @@ class _SignupScreenContinued extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(15),
               decoration: BoxDecoration(
-                  border: Border.all(
-                      color: const Color.fromARGB(255, 206, 206, 206)),
+                  border: Border.all(color: AppColors.borderGrey),
                   borderRadius: BorderRadius.circular(5)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -191,8 +190,7 @@ class _SignupScreenContinued extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(15),
               decoration: BoxDecoration(
-                  border: Border.all(
-                      color: const Color.fromARGB(255, 210, 210, 210)),
+                  border: Border.all(color: AppColors.borderGrey),
                   borderRadius: BorderRadius.circular(5)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,

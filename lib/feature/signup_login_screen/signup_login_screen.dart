@@ -10,11 +10,11 @@ class SignupLoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.scaffoldWhite,
       body: SafeArea(
         child: Column(
           children: [
-            const _Image(),
+            const _Images(),
             const SizedBox(height: 60),
             const _SignupLoginButtons(),
             const SizedBox(height: 40),
@@ -35,9 +35,8 @@ class SignupLoginScreen extends StatelessWidget {
   }
 }
 
-class _Image extends StatelessWidget {
-  //name
-  const _Image({Key? key}) : super(key: key);
+class _Images extends StatelessWidget {
+  const _Images({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -14,7 +14,7 @@ class OnboardingScreen extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Flexible(child: _Image()),
+            Image.asset('assets/png/onboarding.png'),
             const SizedBox(height: 25),
             RichText(
               textAlign: TextAlign.center,
@@ -98,14 +98,5 @@ class OnboardingScreen extends StatelessWidget {
         ),
       ),
     ));
-  }
-}
-
-class _Image extends StatelessWidget {
-  const _Image({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Image.asset('assets/png/onboarding.png');
   }
 }
