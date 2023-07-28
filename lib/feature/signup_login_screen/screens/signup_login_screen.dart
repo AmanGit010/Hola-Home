@@ -67,31 +67,33 @@ class _SignupLoginButtons extends StatelessWidget {
           GestureDetector(
             onTap: () {
               Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const SignupScreen()),
-              );
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SignupScreen()));
             },
             child: Container(
               alignment: Alignment.center,
               height: 55,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: AppColors.yellow),
+                border: Border.all(color: AppColors.yellow, width: 2.0),
+                borderRadius: BorderRadius.circular(30),
+                color: AppColors.yellow,
+              ),
               child: const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 46),
-                child: Text("SignUp",
-                    textAlign: TextAlign.center,
-                    style: AppTextStyles.poppinsBlackBold20),
+                child: Text(
+                  "SignUp",
+                  textAlign: TextAlign.center,
+                  style: AppTextStyles.poppinsBlackBold20,
+                ),
               ),
             ),
           ),
-          const SizedBox(width: 40),
+          const SizedBox(width: 38),
           GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const LoginScreen()),
-              );
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const LoginScreen()));
             },
             child: Container(
               alignment: Alignment.center,

@@ -3,7 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hola_home/core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
 import 'package:hola_home/feature/forgot_password_screen/screens/forgot_password_screen.dart';
+import 'package:hola_home/feature/profile_screen/fill_your_profile.dart';
 import 'package:hola_home/feature/signup_login_screen/screens/signup_screen.dart';
+import 'package:hola_home/feature/signup_login_screen/common/text_form_field.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -13,14 +15,6 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  bool _obscureText = true;
-
-  void _togglePasswordVisibility() {
-    setState(() {
-      _obscureText = !_obscureText;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,64 +52,29 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 const SizedBox(height: 50),
-                Padding(
-                  padding: const EdgeInsets.only(left: 40, right: 40),
-                  child: TextFormField(
-                    keyboardType: TextInputType.emailAddress,
-                    textInputAction: TextInputAction.next,
-                    decoration: InputDecoration(
-                      fillColor: AppColors.fillColorTFF,
-                      filled: true,
-                      label: const Text('Email'),
-                      labelStyle: AppTextStyles.poppinsBlackBold20,
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(13),
-                          borderSide: const BorderSide(
-                              color: AppColors.yellow, width: 2)),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(13),
-                          borderSide: const BorderSide(color: AppColors.grey)),
-                    ),
-                  ),
-                ),
+                const Padding(
+                    padding: EdgeInsets.only(left: 40, right: 40),
+                    child: CustomTFF(
+                      label: 'Email',
+                      isPassword: false,
+                    )),
                 const SizedBox(height: 25),
-                Padding(
-                  padding: const EdgeInsets.only(left: 40, right: 40),
-                  child: TextFormField(
-                    obscureText: _obscureText,
-                    decoration: InputDecoration(
-                      fillColor: AppColors.fillColorTFF,
-                      filled: true,
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          _obscureText
-                              ? Icons.visibility
-                              : Icons.visibility_off_outlined,
-                          color: AppColors.grey,
-                        ),
-                        onPressed: _togglePasswordVisibility,
-                      ),
-                      label: const Text('Password'),
-                      labelStyle: AppTextStyles.poppinsBlackBold20,
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(13),
-                          borderSide: const BorderSide(color: AppColors.grey)),
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(13),
-                          borderSide: const BorderSide(
-                              color: AppColors.yellow, width: 2)),
-                    ),
-                  ),
-                ),
+                const Padding(
+                    padding: EdgeInsets.only(left: 40, right: 40),
+                    child: CustomTFF(
+                      label: 'Password',
+                      isPassword: true,
+                    )),
                 const SizedBox(height: 60),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 31),
                   child: GestureDetector(
                     onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => SignupLogin()),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const FillYourProfile()),
+                      );
                     },
                     child: Material(
                       elevation: 4,

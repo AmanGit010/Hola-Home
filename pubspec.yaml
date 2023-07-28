@@ -10,6 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
 
+  country_code_picker:
+    path: packages/country_code_picker
   cupertino_icons: ^1.0.2
   flutter_svg: ^2.0.7
   rating_summary:
@@ -31,6 +33,9 @@ flutter:
     - family: Poppins
       fonts:
         - asset: assets/fonts/Poppins-Regular.ttf
+    - family: Lato
+      fonts:
+        - asset: assets/fonts/Lato-Regular.ttf
           # style: italic
 
   # For details regarding fonts from package dependencies,
