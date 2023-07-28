@@ -13,6 +13,8 @@ class FillYourProfile extends StatefulWidget {
 }
 
 class _FillYourProfileState extends State<FillYourProfile> {
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,77 +41,114 @@ class _FillYourProfileState extends State<FillYourProfile> {
               const SizedBox(height: 46),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 31),
-                child: TextFormField(
-                  keyboardType: TextInputType.name,
-                  textInputAction: TextInputAction.next,
-                  decoration: InputDecoration(
-                    fillColor: AppColors.fillColorTFF,
-                    filled: true,
-                    labelText: 'Name',
-                    labelStyle: AppTextStyles.poppinsBlackBold20,
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(13),
-                        borderSide: const BorderSide(
-                            color: AppColors.yellow, width: 2)),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(13),
-                        borderSide: const BorderSide(color: AppColors.grey)),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        textInputAction: TextInputAction.next,
+                        decoration: InputDecoration(
+                          fillColor: AppColors.fillColorTFF,
+                          filled: true,
+                          labelText: 'Name',
+                          labelStyle: AppTextStyles.poppinsBlackBold20,
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(13),
+                              borderSide: const BorderSide(
+                                  color: AppColors.yellow, width: 2)),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(13),
+                              borderSide:
+                                  const BorderSide(color: AppColors.grey)),
+                        ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Name cannot be empty";
+                          }
+                          if (!RegExp(r'^[a-zA-Z\- ]+$').hasMatch(value)) {
+                            return "Please enter valid Name";
+                          }
+
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 25),
+                      TextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        textInputAction: TextInputAction.next,
+                        decoration: InputDecoration(
+                          fillColor: AppColors.fillColorTFF,
+                          filled: true,
+                          labelText: 'Email',
+                          labelStyle: AppTextStyles.poppinsBlackBold20,
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(13),
+                              borderSide: const BorderSide(
+                                  color: AppColors.yellow, width: 2)),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(13),
+                              borderSide:
+                                  const BorderSide(color: AppColors.grey)),
+                        ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Email address cannot be empty";
+                          }
+                          if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                              .hasMatch(value)) {
+                            return "Please enter valid Email Address";
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 25),
+                      TextFormField(
+                        keyboardType: TextInputType.emailAddress,
+                        textInputAction: TextInputAction.done,
+                        decoration: InputDecoration(
+                          fillColor: AppColors.fillColorTFF,
+                          filled: true,
+                          prefixIcon: const CountryCodePicker(),
+                          labelText: 'Phone Number',
+                          labelStyle: AppTextStyles.poppinsBlackBold20,
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(13),
+                              borderSide: const BorderSide(
+                                  color: AppColors.yellow, width: 2)),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(13),
+                              borderSide:
+                                  const BorderSide(color: AppColors.grey)),
+                        ),
+                        validator: (value) {
+                          RegExp regex = RegExp(r'^[\d()\-\s+]+$');
+                          if (value!.isEmpty) {
+                            return "Phone Number cannot be empty";
+                          }
+                          if (!regex.hasMatch(value)) {
+                            return ("Enter a valid Phone Number");
+                          }
+                          return null;
+                        },
+                      ),
+                    ],
                   ),
                 ),
               ),
-              const SizedBox(height: 26),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 31),
-                child: TextFormField(
-                  keyboardType: TextInputType.emailAddress,
-                  textInputAction: TextInputAction.next,
-                  decoration: InputDecoration(
-                    fillColor: AppColors.fillColorTFF,
-                    filled: true,
-                    labelText: 'Email',
-                    labelStyle: AppTextStyles.poppinsBlackBold20,
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(13),
-                        borderSide: const BorderSide(
-                            color: AppColors.yellow, width: 2)),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(13),
-                        borderSide: const BorderSide(color: AppColors.grey)),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 26),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 31),
-                child: TextFormField(
-                  keyboardType: TextInputType.emailAddress,
-                  textInputAction: TextInputAction.next,
-                  decoration: InputDecoration(
-                    fillColor: AppColors.fillColorTFF,
-                    filled: true,
-                    prefixIcon: const CountryCodePicker(),
-                    labelText: 'Mobile Number',
-                    labelStyle: AppTextStyles.poppinsBlackBold20,
-                    focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(13),
-                        borderSide: const BorderSide(
-                            color: AppColors.yellow, width: 2)),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(13),
-                        borderSide: const BorderSide(color: AppColors.grey)),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 310),
+              const SizedBox(height: 270),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 32),
                 child: GestureDetector(
                   onTap: () {
-                    Navigator.push(
+                    if (_formKey.currentState!.validate()) {
+                      _formKey.currentState?.save();
+                      Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                const LanguageSelectionScreen()));
+                                const LanguageSelectionScreen()),
+                      );
+                    }
                   },
                   child: Container(
                     alignment: Alignment.center,
@@ -130,6 +169,7 @@ class _FillYourProfileState extends State<FillYourProfile> {
                   ),
                 ),
               ),
+              const SizedBox(height: 40),
             ],
           ),
         ],

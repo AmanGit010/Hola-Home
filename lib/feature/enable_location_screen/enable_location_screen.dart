@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hola_home/core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
+import 'package:hola_home/feature/home_screen/screens/home_screen.dart';
 
 class EnableLocationScreen extends StatelessWidget {
   const EnableLocationScreen({Key? key}) : super(key: key);
@@ -19,9 +20,9 @@ class EnableLocationScreen extends StatelessWidget {
             foregroundImage: AssetImage('assets/png/pin.png'),
           ),
           const SizedBox(height: 20),
-          Text("Enable Location", style: AppTextStyles.latoBlackBold30),
+          const Text("Enable Location", style: AppTextStyles.latoBlackBold30),
           const SizedBox(height: 20),
-          Text(
+          const Text(
               "Please allow the location services \nwhile using the app for better \nexperience.",
               textAlign: TextAlign.center,
               style: AppTextStyles.latoBlack20),
@@ -33,7 +34,7 @@ class EnableLocationScreen extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const EnableLocationScreen()));
+                        builder: (context) => const HomeScreen()));
               },
               child: Material(
                 elevation: 5,

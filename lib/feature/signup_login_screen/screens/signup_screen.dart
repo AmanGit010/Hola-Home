@@ -5,8 +5,6 @@ import 'package:hola_home/core/constants/styles.dart';
 import 'package:hola_home/feature/profile_screen/fill_your_profile.dart';
 import 'package:hola_home/feature/signup_login_screen/screens/login_screen.dart';
 
-import '../common/text_form_field.dart';
-
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
 
@@ -15,6 +13,15 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  bool _obscureText = true;
+  final _formKey = GlobalKey<FormState>();
+
+  void _togglePasswordVisibility() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,30 +59,96 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                 ),
                 const SizedBox(height: 50),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 40),
-                  child: CustomTFF(
-                    label: 'Email',
-                    isPassword: false,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          textInputAction: TextInputAction.next,
+                          decoration: InputDecoration(
+                            fillColor: AppColors.fillColorTFF,
+                            filled: true,
+                            labelText: 'Email',
+                            labelStyle: AppTextStyles.poppinsBlackBold20,
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(13),
+                                borderSide: const BorderSide(
+                                    color: AppColors.yellow, width: 2)),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(13),
+                                borderSide:
+                                    const BorderSide(color: AppColors.grey)),
+                          ),
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Username cannot be empty";
+                            }
+                            if (!RegExp(
+                                    "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                                .hasMatch(value)) {
+                              return "Please enter valid email address";
+                            }
+
+                            return null;
+                          },
+                        ),
+                        const SizedBox(height: 25),
+                        TextFormField(
+                          obscureText: _obscureText,
+                          textInputAction: TextInputAction.done,
+                          decoration: InputDecoration(
+                            suffixIcon: IconButton(
+                                icon: Icon(
+                                  _obscureText
+                                      ? Icons.visibility
+                                      : Icons.visibility_off_outlined,
+                                  color: AppColors.grey,
+                                ),
+                                onPressed: _togglePasswordVisibility),
+                            fillColor: AppColors.fillColorTFF,
+                            filled: true,
+                            labelText: 'Password',
+                            labelStyle: AppTextStyles.poppinsBlackBold20,
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(13),
+                                borderSide: const BorderSide(
+                                    color: AppColors.yellow, width: 2)),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(13),
+                                borderSide:
+                                    const BorderSide(color: AppColors.grey)),
+                          ),
+                          validator: (value) {
+                            RegExp regex = RegExp(r'^.{5,}$');
+                            if (value!.isEmpty) {
+                              return "Password cannot be empty";
+                            }
+                            if (!regex.hasMatch(value)) {
+                              return ("Enter a valid password (min. 5 char)");
+                            }
+                            return null;
+                          },
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                const SizedBox(height: 25),
-                const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 40),
-                    child: CustomTFF(
-                      label: 'Password',
-                      isPassword: true,
-                    )),
                 const SizedBox(height: 60),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 31),
                   child: GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const FillYourProfile()),
-                      );
+                      if (_formKey.currentState!.validate()) {
+                        _formKey.currentState?.save();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const FillYourProfile()),
+                        );
+                      }
                     },
                     child: Material(
                       elevation: 4,
@@ -196,4 +269,10 @@ class _SignupScreenContinued extends StatelessWidget {
       ],
     );
   }
+}
+
+bool isEmailValid(String email) {
+  // You can use a regular expression or any other method to validate the email
+  // In this example, a simple pattern check is used
+  return RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$').hasMatch(email);
 }
