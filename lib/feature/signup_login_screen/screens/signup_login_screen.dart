@@ -12,22 +12,26 @@ class SignupLoginScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.scaffoldWhite,
       body: SafeArea(
-        child: Column(
+        child: ListView(
           children: [
-            const _Images(),
-            const SizedBox(height: 60),
-            const _SignupLoginButtons(),
-            const SizedBox(height: 40),
-            GestureDetector(
-              onTap: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => ),
-                // );
-              },
-              child: const Text("Skip and Start Browsing",
-                  style: AppTextStyles.poppinsBlackBold20),
-            )
+            Column(
+              children: [
+                const _Images(),
+                const SizedBox(height: 60),
+                const _SignupLoginButtons(),
+                const SizedBox(height: 40),
+                GestureDetector(
+                  onTap: () {
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(builder: (context) => ),
+                    // );
+                  },
+                  child: const Text("Skip and Start Browsing",
+                      style: AppTextStyles.poppinsBlackBold20),
+                )
+              ],
+            ),
           ],
         ),
       ),
