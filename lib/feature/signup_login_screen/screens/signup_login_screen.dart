@@ -10,11 +10,11 @@ class SignupLoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.scaffoldWhite,
       body: SafeArea(
         child: Column(
           children: [
-            const _Image(),
+            const _Images(),
             const SizedBox(height: 60),
             const _SignupLoginButtons(),
             const SizedBox(height: 40),
@@ -35,9 +35,8 @@ class SignupLoginScreen extends StatelessWidget {
   }
 }
 
-class _Image extends StatelessWidget {
-  //name
-  const _Image({Key? key}) : super(key: key);
+class _Images extends StatelessWidget {
+  const _Images({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -68,31 +67,33 @@ class _SignupLoginButtons extends StatelessWidget {
           GestureDetector(
             onTap: () {
               Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const SignupScreen()),
-              );
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SignupScreen()));
             },
             child: Container(
               alignment: Alignment.center,
               height: 55,
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30),
-                  color: AppColors.yellow),
+                border: Border.all(color: AppColors.yellow, width: 2.0),
+                borderRadius: BorderRadius.circular(30),
+                color: AppColors.yellow,
+              ),
               child: const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 46),
-                child: Text("SignUp",
-                    textAlign: TextAlign.center,
-                    style: AppTextStyles.poppinsBlackBold20),
+                child: Text(
+                  "SignUp",
+                  textAlign: TextAlign.center,
+                  style: AppTextStyles.poppinsBlackBold20,
+                ),
               ),
             ),
           ),
-          const SizedBox(width: 40),
+          const SizedBox(width: 38),
           GestureDetector(
             onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const LoginScreen()),
-              );
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const LoginScreen()));
             },
             child: Container(
               alignment: Alignment.center,

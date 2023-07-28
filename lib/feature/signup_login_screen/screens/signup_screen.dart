@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hola_home/core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
+import 'package:hola_home/feature/profile_screen/fill_your_profile.dart';
 import 'package:hola_home/feature/signup_login_screen/screens/login_screen.dart';
+
+import '../common/text_form_field.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -12,14 +15,6 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  bool _obscureText = true;
-
-  void _togglePasswordVisibility() {
-    setState(() {
-      _obscureText = !_obscureText;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +25,7 @@ class _SignupScreenState extends State<SignupScreen> {
               },
               icon: const Icon(
                 Icons.arrow_back,
-                color: Colors.black,
+                color: AppColors.black,
               )),
         ),
         body: SafeArea(
@@ -57,64 +52,30 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                 ),
                 const SizedBox(height: 50),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: TextFormField(
-                    keyboardType: TextInputType.emailAddress,
-                    textInputAction: TextInputAction.next,
-                    decoration: InputDecoration(
-                      fillColor: const Color(0xfff7f8fa),
-                      filled: true,
-                      label: const Text('Email'),
-                      labelStyle: AppTextStyles.poppinsBlackBold20,
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(13),
-                          borderSide: const BorderSide(
-                              color: AppColors.yellow, width: 2)),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(13),
-                          borderSide: const BorderSide(color: Colors.grey)),
-                    ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 40),
+                  child: CustomTFF(
+                    label: 'Email',
+                    isPassword: false,
                   ),
                 ),
                 const SizedBox(height: 25),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 40),
-                  child: TextFormField(
-                    obscureText: _obscureText,
-                    decoration: InputDecoration(
-                      fillColor: const Color(0xfff7f8fa),
-                      filled: true,
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          _obscureText
-                              ? Icons.visibility
-                              : Icons.visibility_off_outlined,
-                          color: Colors.grey,
-                        ),
-                        onPressed: _togglePasswordVisibility,
-                      ),
-                      label: const Text('Password'),
-                      labelStyle: AppTextStyles.poppinsBlackBold20,
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(13),
-                          borderSide: const BorderSide(color: Colors.grey)),
-                      focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(13),
-                          borderSide: const BorderSide(
-                              color: AppColors.yellow, width: 2)),
-                    ),
-                  ),
-                ),
+                const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 40),
+                    child: CustomTFF(
+                      label: 'Password',
+                      isPassword: true,
+                    )),
                 const SizedBox(height: 60),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 31),
                   child: GestureDetector(
                     onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(builder: (context) => SignupLogin()),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const FillYourProfile()),
+                      );
                     },
                     child: Material(
                       elevation: 4,
@@ -156,7 +117,7 @@ class _SignupScreenContinued extends StatelessWidget {
         const SizedBox(height: 40),
         Text("or",
             style: AppTextStyles.poppinsBlack20
-                .copyWith(color: Colors.black, fontSize: 23)),
+                .copyWith(color: AppColors.black, fontSize: 23)),
         const SizedBox(height: 20),
         GestureDetector(
           onTap: () {},
@@ -165,8 +126,7 @@ class _SignupScreenContinued extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(15),
               decoration: BoxDecoration(
-                  border: Border.all(
-                      color: const Color.fromARGB(255, 206, 206, 206)),
+                  border: Border.all(color: AppColors.borderGrey),
                   borderRadius: BorderRadius.circular(5)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -191,8 +151,7 @@ class _SignupScreenContinued extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(15),
               decoration: BoxDecoration(
-                  border: Border.all(
-                      color: const Color.fromARGB(255, 210, 210, 210)),
+                  border: Border.all(color: AppColors.borderGrey),
                   borderRadius: BorderRadius.circular(5)),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
