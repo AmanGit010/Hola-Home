@@ -64,59 +64,66 @@ class _SignupLoginButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 39),
+      padding: const EdgeInsets.only(left: 39, right: 32),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          GestureDetector(
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const SignupScreen()));
-            },
-            child: Container(
-              alignment: Alignment.center,
-              height: 55,
-              decoration: BoxDecoration(
-                border: Border.all(color: AppColors.yellow, width: 2.0),
-                borderRadius: BorderRadius.circular(30),
-                color: AppColors.yellow,
-              ),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 46),
-                child: Text(
-                  "SignUp",
-                  textAlign: TextAlign.center,
-                  style: AppTextStyles.poppinsBlackBold20,
+          Expanded(
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SignupScreen()));
+              },
+              child: Container(
+                alignment: Alignment.center,
+                height: 55,
+                decoration: BoxDecoration(
+                  border: Border.all(color: AppColors.yellow, width: 2.0),
+                  borderRadius: BorderRadius.circular(30),
+                  color: AppColors.yellow,
+                ),
+                child: Center(
+                  child: Text(
+                    "SignUp",
+                    textAlign: TextAlign.center,
+                    style:
+                        AppTextStyles.poppinsBlackBold20.copyWith(fontSize: 16),
+                  ),
                 ),
               ),
             ),
           ),
-          const SizedBox(width: 38),
-          GestureDetector(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const LoginScreen()));
-            },
-            child: Container(
-              alignment: Alignment.center,
-              height: 55,
-              decoration: BoxDecoration(
-                border: Border.all(color: AppColors.yellow, width: 2.0),
-                borderRadius: BorderRadius.circular(30),
-                color: AppColors.lightYellow,
-              ),
-              child: const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 46),
-                child: Text(
-                  "Login",
-                  textAlign: TextAlign.center,
-                  style: AppTextStyles.poppinsBlackBold20,
+          const SizedBox(width: 45),
+          Expanded(
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const LoginScreen()));
+              },
+              child: Container(
+                alignment: Alignment.center,
+                height: 55,
+                decoration: BoxDecoration(
+                  border: Border.all(color: AppColors.yellow, width: 2.0),
+                  borderRadius: BorderRadius.circular(30),
+                  color: AppColors.lightYellow,
+                ),
+                child: Center(
+                  child: Text(
+                    "Login",
+                    textAlign: TextAlign.center,
+                    style:
+                        AppTextStyles.poppinsBlackBold20.copyWith(fontSize: 16),
+                  ),
                 ),
               ),
             ),
           ),
+          const SizedBox(height: 40),
         ],
       ),
     );

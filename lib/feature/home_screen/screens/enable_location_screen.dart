@@ -31,7 +31,7 @@ class EnableLocationScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 75),
             child: GestureDetector(
               onTap: () {
-                Navigator.push(
+                Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                         builder: (context) => const HomeScreen()));

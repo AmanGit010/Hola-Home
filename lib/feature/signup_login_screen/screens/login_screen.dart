@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hola_home/core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
-import 'package:hola_home/feature/forgot_password_screen/screens/forgot_password_screen.dart';
-import 'package:hola_home/feature/profile_screen/fill_your_profile.dart';
+import 'package:hola_home/feature/signup_login_screen/screens/forgot_password_screen.dart';
+import 'package:hola_home/feature/profile_screen/profile_screen.dart';
 import 'package:hola_home/feature/signup_login_screen/screens/signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -16,6 +16,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   bool _obscureText = true;
   final _formKey = GlobalKey<FormState>();
+  final RegExp _regexEmail = RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]");
+  final RegExp _regexPass = RegExp(r'^.{5,}$');
 
   void _togglePasswordVisibility() {
     setState(() {
@@ -87,12 +89,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             if (value!.isEmpty) {
                               return "Username cannot be empty";
                             }
-                            if (!RegExp(
-                                    "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
-                                .hasMatch(value)) {
+                            if (!_regexEmail.hasMatch(value)) {
                               return "Please enter valid email address";
                             }
-
                             return null;
                           },
                         ),
@@ -123,11 +122,10 @@ class _LoginScreenState extends State<LoginScreen> {
                                     const BorderSide(color: AppColors.grey)),
                           ),
                           validator: (value) {
-                            RegExp regex = RegExp(r'^.{5,}$');
                             if (value!.isEmpty) {
                               return "Password cannot be empty";
                             }
-                            if (!regex.hasMatch(value)) {
+                            if (!_regexPass.hasMatch(value)) {
                               return ("Enter a valid password (min. 5 char)");
                             }
                             return null;
@@ -143,11 +141,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: GestureDetector(
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
-                        _formKey.currentState?.save();
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const FillYourProfile()),
+                          MaterialPageRoute(builder: (context) => QnAScreen()),
                         );
                       }
                     },
@@ -247,8 +243,8 @@ class _LoginScreenContinued extends StatelessWidget {
                   SvgPicture.asset(googleLogo),
                   const SizedBox(width: 60),
                   const Padding(
-                    padding: EdgeInsets.only(right: 75),
-                    child: Text("Continue with Apple",
+                    padding: EdgeInsets.only(right: 62),
+                    child: Text("Continue with Google",
                         style: AppTextStyles.poppinsBlack20),
                   ),
                 ],
