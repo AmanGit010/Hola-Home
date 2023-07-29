@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hola_home/core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
-import 'package:hola_home/feature/enable_location_screen/enable_location_screen.dart';
+import 'package:hola_home/feature/home_screen/screens/enable_location_screen.dart';
 
 class LanguageSelectionScreen extends StatefulWidget {
   const LanguageSelectionScreen({Key? key}) : super(key: key);
@@ -47,7 +47,8 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Image.asset('assets/png/english.png'),
+                          Image.asset(
+                              'assets/png/flags_for_language/english.png'),
                           const SizedBox(width: 20),
                           const Text(
                             "English",
@@ -84,7 +85,8 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Image.asset('assets/png/english.png'),
+                          Image.asset(
+                              'assets/png/flags_for_language/english.png'),
                           const SizedBox(width: 20),
                           const Text(
                             "Chinese",
@@ -121,7 +123,8 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Image.asset('assets/png/english.png'),
+                          Image.asset(
+                              'assets/png/flags_for_language/english.png'),
                           const SizedBox(width: 20),
                           const Text(
                             "German",
@@ -158,7 +161,8 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Image.asset('assets/png/english.png'),
+                          Image.asset(
+                              'assets/png/flags_for_language/english.png'),
                           const SizedBox(width: 20),
                           const Text(
                             "Spanish",
@@ -191,20 +195,25 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                               builder: (context) =>
                                   const EnableLocationScreen()));
                     },
-                    child: Container(
-                      alignment: Alignment.center,
-                      height: 55,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: AppColors.yellow, width: 2.0),
-                        borderRadius: BorderRadius.circular(30),
-                        color: AppColors.yellow,
-                      ),
-                      child: const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 46),
-                        child: Text(
-                          'Continue',
-                          textAlign: TextAlign.center,
-                          style: AppTextStyles.poppinsBlackBold20,
+                    child: Material(
+                      elevation: 4,
+                      borderRadius: BorderRadius.circular(30),
+                      child: Container(
+                        alignment: Alignment.center,
+                        height: 55,
+                        decoration: BoxDecoration(
+                          border:
+                              Border.all(color: AppColors.yellow, width: 2.0),
+                          borderRadius: BorderRadius.circular(30),
+                          color: AppColors.yellow,
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 46),
+                          child: Text(
+                            'Continue',
+                            textAlign: TextAlign.center,
+                            style: AppTextStyles.poppinsBlackBold20,
+                          ),
                         ),
                       ),
                     ),

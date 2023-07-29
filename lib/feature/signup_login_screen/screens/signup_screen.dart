@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hola_home/core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
-import 'package:hola_home/feature/profile_screen/fill_your_profile.dart';
+import 'package:hola_home/feature/profile_screen/profile_screen.dart';
 import 'package:hola_home/feature/signup_login_screen/screens/login_screen.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -15,6 +15,8 @@ class SignupScreen extends StatefulWidget {
 class _SignupScreenState extends State<SignupScreen> {
   bool _obscureText = true;
   final _formKey = GlobalKey<FormState>();
+  final RegExp _regexEmail = RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]");
+  final RegExp _regexPass = RegExp(r'^.{5,}$');
 
   void _togglePasswordVisibility() {
     setState(() {
@@ -26,6 +28,7 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+          elevation: 0,
           leading: IconButton(
               onPressed: () {
                 Navigator.pop(context);
@@ -38,26 +41,22 @@ class _SignupScreenState extends State<SignupScreen> {
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 125, top: 30),
-                  child: RichText(
-                    textAlign: TextAlign.start,
-                    text: const TextSpan(
-                      children: [
-                        TextSpan(
-                          text: "Create your\n",
-                          style: AppTextStyles.poppinsBlackBold35,
-                        ),
-                        TextSpan(
-                          text: "Account",
-                          style: AppTextStyles.poppinsBlackBold35,
-                        )
-                      ],
-                    ),
-                  ),
-                ),
+                // IconButton(
+                //     onPressed: () {
+                //       Navigator.pop(context);
+                //     },
+                //     icon: const Icon(
+                //       Icons.arrow_back,
+                //       color: AppColors.black,
+                //     )),
+                const Padding(
+                    padding: EdgeInsets.only(left: 31),
+                    child: Text(
+                      "Create your \nAccount",
+                      style: AppTextStyles.poppinsBlackBold35,
+                    )),
                 const SizedBox(height: 50),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 40),
@@ -86,9 +85,7 @@ class _SignupScreenState extends State<SignupScreen> {
                             if (value!.isEmpty) {
                               return "Username cannot be empty";
                             }
-                            if (!RegExp(
-                                    "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
-                                .hasMatch(value)) {
+                            if (!_regexEmail.hasMatch(value)) {
                               return "Please enter valid email address";
                             }
 
@@ -122,11 +119,10 @@ class _SignupScreenState extends State<SignupScreen> {
                                     const BorderSide(color: AppColors.grey)),
                           ),
                           validator: (value) {
-                            RegExp regex = RegExp(r'^.{5,}$');
                             if (value!.isEmpty) {
                               return "Password cannot be empty";
                             }
-                            if (!regex.hasMatch(value)) {
+                            if (!_regexPass.hasMatch(value)) {
                               return ("Enter a valid password (min. 5 char)");
                             }
                             return null;
@@ -142,11 +138,9 @@ class _SignupScreenState extends State<SignupScreen> {
                   child: GestureDetector(
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
-                        _formKey.currentState?.save();
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const FillYourProfile()),
+                          MaterialPageRoute(builder: (context) => QnAScreen()),
                         );
                       }
                     },
@@ -232,8 +226,8 @@ class _SignupScreenContinued extends StatelessWidget {
                   SvgPicture.asset(googleLogo),
                   const SizedBox(width: 60),
                   const Padding(
-                    padding: EdgeInsets.only(right: 75),
-                    child: Text("Continue with Apple",
+                    padding: EdgeInsets.only(right: 62),
+                    child: Text("Continue with Google",
                         style: AppTextStyles.poppinsBlack20),
                   ),
                 ],

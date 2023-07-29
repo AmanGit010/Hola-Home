@@ -14,6 +14,7 @@ dependencies:
     path: packages/country_code_picker
   cupertino_icons: ^1.0.2
   flutter_svg: ^2.0.7
+  fluttertoast: ^8.2.2
   rating_summary:
     path: packages/rating_summary
 
@@ -28,6 +29,7 @@ flutter:
   assets:
     - assets/svg/
     - assets/png/
+    - assets/png/flags_for_language/
 
   fonts:
     - family: Poppins

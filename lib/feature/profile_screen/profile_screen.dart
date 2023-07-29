@@ -1,19 +1,71 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hola_home/core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
 import 'package:hola_home/feature/language_selection_screen/language_selection_screen.dart';
 
-class FillYourProfile extends StatefulWidget {
-  const FillYourProfile({Key? key}) : super(key: key);
+class QnAScreen extends StatefulWidget {
+  QnAScreen({Key? key}) : super(key: key);
 
   @override
-  State<FillYourProfile> createState() => _FillYourProfileState();
+  State<QnAScreen> createState() => _QnAScreenState();
 }
 
-class _FillYourProfileState extends State<FillYourProfile> {
+class _QnAScreenState extends State<QnAScreen> {
   final _formKey = GlobalKey<FormState>();
+  final RegExp _regexEmail = RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]");
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+
+  // String _checkEmailInput() {
+  //   if (_emailController.text.isEmpty) {
+  //     Fluttertoast.showToast(
+  //       msg: "Please enter your email address.",
+  //       toastLength: Toast.LENGTH_SHORT,
+  //       gravity: ToastGravity.BOTTOM,
+  //     );
+  //   } else {
+  //     // Enable the button to move to the next screen
+  //     setState(() {
+  //       _isButtonDisabled = false;
+  //     });
+
+  //     // You can perform any other validation on the email here
+  //     // For example, check if the email is in a valid format.
+  //   }
+  //   return "no";
+  // }
+
+  String? _validateName(String? value) {
+    if (value == null || value.isEmpty) {
+      Fluttertoast.showToast(
+          msg: 'Enter your Name', backgroundColor: Colors.red);
+    }
+    // if (value == !_regexEmail.hasMatch(value!)) {
+    //   Fluttertoast.showToast(msg: 'Please enter a valid Email address');
+    // }
+    return '';
+  }
+
+  String? _validateEmail(String? value) {
+    if (value == null || value.isEmpty) {
+      Fluttertoast.showToast(
+          msg: 'Enter your Email', backgroundColor: Colors.red);
+    }
+    return '';
+  }
+
+  String? _validatePhone(String? value) {
+    if (value == null || value.isEmpty) {
+      Fluttertoast.showToast(
+          msg: 'Enter your Phone number', backgroundColor: Colors.red);
+    }
+    return '';
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +99,7 @@ class _FillYourProfileState extends State<FillYourProfile> {
                     children: [
                       TextFormField(
                         textInputAction: TextInputAction.next,
+                        controller: _nameController,
                         decoration: InputDecoration(
                           fillColor: AppColors.fillColorTFF,
                           filled: true,
@@ -61,20 +114,12 @@ class _FillYourProfileState extends State<FillYourProfile> {
                               borderSide:
                                   const BorderSide(color: AppColors.grey)),
                         ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Name cannot be empty";
-                          }
-                          if (!RegExp(r'^[a-zA-Z\- ]+$').hasMatch(value)) {
-                            return "Please enter valid Name";
-                          }
-
-                          return null;
-                        },
+                        validator: _validateName,
                       ),
                       const SizedBox(height: 25),
                       TextFormField(
                         keyboardType: TextInputType.emailAddress,
+                        controller: _emailController,
                         textInputAction: TextInputAction.next,
                         decoration: InputDecoration(
                           fillColor: AppColors.fillColorTFF,
@@ -90,20 +135,12 @@ class _FillYourProfileState extends State<FillYourProfile> {
                               borderSide:
                                   const BorderSide(color: AppColors.grey)),
                         ),
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Email address cannot be empty";
-                          }
-                          if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
-                              .hasMatch(value)) {
-                            return "Please enter valid Email Address";
-                          }
-                          return null;
-                        },
+                        validator: _validateEmail,
                       ),
                       const SizedBox(height: 25),
                       TextFormField(
                         keyboardType: TextInputType.emailAddress,
+                        controller: _phoneController,
                         textInputAction: TextInputAction.done,
                         decoration: InputDecoration(
                           fillColor: AppColors.fillColorTFF,
@@ -120,16 +157,7 @@ class _FillYourProfileState extends State<FillYourProfile> {
                               borderSide:
                                   const BorderSide(color: AppColors.grey)),
                         ),
-                        validator: (value) {
-                          RegExp regex = RegExp(r'^[\d()\-\s+]+$');
-                          if (value!.isEmpty) {
-                            return "Phone Number cannot be empty";
-                          }
-                          if (!regex.hasMatch(value)) {
-                            return ("Enter a valid Phone Number");
-                          }
-                          return null;
-                        },
+                        validator: _validatePhone,
                       ),
                     ],
                   ),
@@ -141,29 +169,44 @@ class _FillYourProfileState extends State<FillYourProfile> {
                 child: GestureDetector(
                   onTap: () {
                     if (_formKey.currentState!.validate()) {
-                      _formKey.currentState?.save();
                       Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const LanguageSelectionScreen()),
-                      );
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => LanguageSelectionScreen()));
                     }
                   },
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: 55,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: AppColors.yellow, width: 2.0),
-                      borderRadius: BorderRadius.circular(30),
-                      color: AppColors.yellow,
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 46),
-                      child: Text(
-                        'Create Profile',
-                        textAlign: TextAlign.center,
-                        style: AppTextStyles.poppinsBlackBold20,
+
+                  // onTap: () {
+                  //   if (_formKey.currentState!.validate()) {
+                  //     Navigator.push(
+                  //       context,
+                  //       MaterialPageRoute(
+                  //           builder: (context) =>
+                  //               const LanguageSelectionScreen()),
+                  //     );
+                  //   } else {
+                  //     Fluttertoast.showToast(
+                  //         msg: 'Please fill in all required fields.');
+                  //   }
+                  // },
+                  child: Material(
+                    elevation: 4,
+                    borderRadius: BorderRadius.circular(30),
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 55,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: AppColors.yellow, width: 2.0),
+                        borderRadius: BorderRadius.circular(30),
+                        color: AppColors.yellow,
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 46),
+                        child: Text(
+                          'Create Profile',
+                          textAlign: TextAlign.center,
+                          style: AppTextStyles.poppinsBlackBold20,
+                        ),
                       ),
                     ),
                   ),
