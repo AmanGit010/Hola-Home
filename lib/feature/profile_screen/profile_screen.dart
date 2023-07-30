@@ -7,7 +7,7 @@ import 'package:hola_home/core/constants/styles.dart';
 import 'package:hola_home/feature/language_selection_screen/language_selection_screen.dart';
 
 class QnAScreen extends StatefulWidget {
-  QnAScreen({Key? key}) : super(key: key);
+  const QnAScreen({Key? key}) : super(key: key);
 
   @override
   State<QnAScreen> createState() => _QnAScreenState();
@@ -20,52 +20,6 @@ class _QnAScreenState extends State<QnAScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
-
-  // String _checkEmailInput() {
-  //   if (_emailController.text.isEmpty) {
-  //     Fluttertoast.showToast(
-  //       msg: "Please enter your email address.",
-  //       toastLength: Toast.LENGTH_SHORT,
-  //       gravity: ToastGravity.BOTTOM,
-  //     );
-  //   } else {
-  //     // Enable the button to move to the next screen
-  //     setState(() {
-  //       _isButtonDisabled = false;
-  //     });
-
-  //     // You can perform any other validation on the email here
-  //     // For example, check if the email is in a valid format.
-  //   }
-  //   return "no";
-  // }
-
-  String? _validateName(String? value) {
-    if (value == null || value.isEmpty) {
-      Fluttertoast.showToast(
-          msg: 'Enter your Name', backgroundColor: Colors.red);
-    }
-    // if (value == !_regexEmail.hasMatch(value!)) {
-    //   Fluttertoast.showToast(msg: 'Please enter a valid Email address');
-    // }
-    return '';
-  }
-
-  String? _validateEmail(String? value) {
-    if (value == null || value.isEmpty) {
-      Fluttertoast.showToast(
-          msg: 'Enter your Email', backgroundColor: Colors.red);
-    }
-    return '';
-  }
-
-  String? _validatePhone(String? value) {
-    if (value == null || value.isEmpty) {
-      Fluttertoast.showToast(
-          msg: 'Enter your Phone number', backgroundColor: Colors.red);
-    }
-    return '';
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,24 +52,28 @@ class _QnAScreenState extends State<QnAScreen> {
                   child: Column(
                     children: [
                       TextFormField(
-                        textInputAction: TextInputAction.next,
-                        controller: _nameController,
-                        decoration: InputDecoration(
-                          fillColor: AppColors.fillColorTFF,
-                          filled: true,
-                          labelText: 'Name',
-                          labelStyle: AppTextStyles.poppinsBlackBold20,
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(13),
-                              borderSide: const BorderSide(
-                                  color: AppColors.yellow, width: 2)),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(13),
-                              borderSide:
-                                  const BorderSide(color: AppColors.grey)),
-                        ),
-                        validator: _validateName,
-                      ),
+                          textInputAction: TextInputAction.next,
+                          controller: _nameController,
+                          decoration: InputDecoration(
+                            fillColor: AppColors.fillColorTFF,
+                            filled: true,
+                            labelText: 'Name',
+                            labelStyle: AppTextStyles.poppinsBlackBold20,
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(13),
+                                borderSide: const BorderSide(
+                                    color: AppColors.yellow, width: 2)),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(13),
+                                borderSide:
+                                    const BorderSide(color: AppColors.grey)),
+                          ),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              Fluttertoast.showToast(msg: 'Enter your name');
+                            }
+                            return null;
+                          }),
                       const SizedBox(height: 25),
                       TextFormField(
                         keyboardType: TextInputType.emailAddress,
@@ -135,7 +93,17 @@ class _QnAScreenState extends State<QnAScreen> {
                               borderSide:
                                   const BorderSide(color: AppColors.grey)),
                         ),
-                        validator: _validateEmail,
+                        // validator: _validateEmail,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            Fluttertoast.showToast(msg: 'Enter your Email');
+                          }
+                          if (_regexEmail.hasMatch(value!)) {
+                            Fluttertoast.showToast(
+                                msg: "Please enter valid Email address");
+                          }
+                          return null;
+                        },
                       ),
                       const SizedBox(height: 25),
                       TextFormField(
@@ -145,7 +113,9 @@ class _QnAScreenState extends State<QnAScreen> {
                         decoration: InputDecoration(
                           fillColor: AppColors.fillColorTFF,
                           filled: true,
-                          prefixIcon: const CountryCodePicker(),
+                          prefixIcon: const CountryCodePicker(
+                            initialSelection: '+91',
+                          ),
                           labelText: 'Phone Number',
                           labelStyle: AppTextStyles.poppinsBlackBold20,
                           focusedBorder: OutlineInputBorder(
@@ -157,7 +127,17 @@ class _QnAScreenState extends State<QnAScreen> {
                               borderSide:
                                   const BorderSide(color: AppColors.grey)),
                         ),
-                        validator: _validatePhone,
+                        // validator: _validatePhone,
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            Fluttertoast.showToast(msg: 'Enter your Email');
+                          }
+                          if (RegExp("^[0-9]{10}\$").hasMatch(value!)) {
+                            Fluttertoast.showToast(
+                                msg: "Enter valid Phone number");
+                          }
+                          return null;
+                        },
                       ),
                     ],
                   ),
@@ -172,23 +152,10 @@ class _QnAScreenState extends State<QnAScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => LanguageSelectionScreen()));
+                              builder: (context) =>
+                                  const LanguageSelectionScreen()));
                     }
                   },
-
-                  // onTap: () {
-                  //   if (_formKey.currentState!.validate()) {
-                  //     Navigator.push(
-                  //       context,
-                  //       MaterialPageRoute(
-                  //           builder: (context) =>
-                  //               const LanguageSelectionScreen()),
-                  //     );
-                  //   } else {
-                  //     Fluttertoast.showToast(
-                  //         msg: 'Please fill in all required fields.');
-                  //   }
-                  // },
                   child: Material(
                     elevation: 4,
                     borderRadius: BorderRadius.circular(30),

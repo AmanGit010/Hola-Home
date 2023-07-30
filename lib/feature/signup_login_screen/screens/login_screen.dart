@@ -143,7 +143,8 @@ class _LoginScreenState extends State<LoginScreen> {
                       if (_formKey.currentState!.validate()) {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => QnAScreen()),
+                          MaterialPageRoute(
+                              builder: (context) => const QnAScreen()),
                         );
                       }
                     },
