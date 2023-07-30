@@ -46,7 +46,9 @@ class _HomeScreenState extends State<HomeScreen> {
               child: TextFormField(
                 textInputAction: TextInputAction.next,
                 decoration: InputDecoration(
-                  suffixIcon: SvgPicture.asset('assets/svg/search_icon.svg'),
+                  suffixIcon: UnconstrainedBox(
+                    child: SvgPicture.asset('assets/svg/search_icon.svg'),
+                  ),
                   labelText: 'Location',
                   labelStyle: AppTextStyles.poppinsBlack20
                       .copyWith(color: AppColors.grey),
@@ -76,7 +78,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            const SizedBox(height: 25),
+            const SizedBox(height: 5),
             const LVCarousel(),
             const SizedBox(height: 40),
             Padding(
@@ -94,14 +96,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
-            // const Column(children: [
-            //   Text("Ok working"),
-            //   Text("Ok working"),
-            //   Text("Ok working"),
-            //   Text("Ok working"),
-            //   Text("Ok working"),
-            //   Text("Ok working"),
-            // ]),
           ],
         ),
       ),
@@ -184,9 +178,9 @@ class LVCarousel extends StatefulWidget {
 class _LVCarouselState extends State<LVCarousel> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       // color: Colors.red,
-      height: MediaQuery.of(context).size.height * 0.5,
+      height: MediaQuery.of(context).size.height * 0.46,
       child: ListView.builder(
           shrinkWrap: true,
           scrollDirection: Axis.horizontal,
@@ -195,91 +189,72 @@ class _LVCarouselState extends State<LVCarousel> {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               child: Container(
-                  width: 300,
-                  decoration: BoxDecoration(
-                    // color: Colors.amber,
-                    boxShadow: [
-                      BoxShadow(
-                          offset: const Offset(4, 4),
-                          blurRadius: 16,
-                          color: const Color(0xff1212120f).withOpacity(0.06))
-                    ],
-                    color: AppColors.white,
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(20)),
-                          child: Image.asset('assets/png/property2.png')),
-                      Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 15),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              const Text(
-                                "The Astin Villa Hotel",
-                                style: AppTextStyles.poppinsBlackBold20,
-                              ),
-                              const SizedBox(height: 10),
-                              Text(
-                                "Alice Springs NT 0220, Australia",
-                                style: AppTextStyles.latoBlack20
-                                    .copyWith(color: AppColors.grey),
-                              ),
-                              const SizedBox(height: 10),
-                              Row(
-                                children: [
-                                  const Text(
-                                    "\$ 3,700",
-                                    style: AppTextStyles.poppinsBlackBold20,
-                                  ),
-                                  Text(
-                                    " / night",
-                                    style: AppTextStyles.poppinsBlack20
-                                        .copyWith(color: AppColors.grey),
-                                  )
-                                ],
-                              ),
-                              const SizedBox(height: 5),
-                              const Row(
-                                children: [
-                                  Icon(Icons.star, color: AppColors.yellow),
-                                  SizedBox(width: 5),
-                                  Text(
-                                    " 5.0",
-                                    style: AppTextStyles.poppinsBlackBold20,
-                                  )
-                                ],
-                              )
-                            ],
-                          ))
-                    ],
-                  )
-                  // Padding(
-                  //   padding:
-                  //       const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-                  //   child: Column(
-                  //     crossAxisAlignment: CrossAxisAlignment.start,
-                  //     children: [
-                  //       const SizedBox(height: 20),
-                  //       Image.asset("assets/png/property1.png"),
-                  //       const Text("The Astin Villa Hotel",
-                  //           style: AppTextStyles.poppinsBlack20),
-                  //       Text(
-                  //         "Alice Springs NT 0220, Australia",
-                  //         style: AppTextStyles.poppinsBlack20
-                  //             .copyWith(color: AppColors.grey),
-                  //       ),
-                  //       const Row(children: [Text("\$3,700 "), Text("/ night")]),
-                  //     ],
-                  //   ),
-                  // ),
-                  ),
+                width: 300,
+                decoration: BoxDecoration(
+                  // color: Colors.amber,
+                  boxShadow: [
+                    BoxShadow(
+                        offset: const Offset(4, 4),
+                        blurRadius: 16,
+                        color: const Color(0xff1212120f).withOpacity(0.06))
+                  ],
+                  color: AppColors.white,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20)),
+                        child: Image.asset('assets/png/property2.png')),
+                    Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 15, vertical: 15),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "The Astin Villa Hotel",
+                              style: AppTextStyles.poppinsBlackBold20,
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              "Alice Springs NT 0220, Australia",
+                              style: AppTextStyles.latoBlack20
+                                  .copyWith(color: AppColors.grey),
+                            ),
+                            const SizedBox(height: 10),
+                            Row(
+                              children: [
+                                const Text(
+                                  "\$ 3,700",
+                                  style: AppTextStyles.poppinsBlackBold20,
+                                ),
+                                Text(
+                                  " / night",
+                                  style: AppTextStyles.poppinsBlack20
+                                      .copyWith(color: AppColors.grey),
+                                )
+                              ],
+                            ),
+                            const SizedBox(height: 5),
+                            const Row(
+                              children: [
+                                Icon(Icons.star, color: AppColors.yellow),
+                                SizedBox(width: 5),
+                                Text(
+                                  " 5.0",
+                                  style: AppTextStyles.poppinsBlackBold20,
+                                )
+                              ],
+                            )
+                          ],
+                        ))
+                  ],
+                ),
+              ),
             );
           }),
     );

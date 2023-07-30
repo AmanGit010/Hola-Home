@@ -12,8 +12,8 @@ class EnableLocationScreen extends StatelessWidget {
       backgroundColor: AppColors.scaffoldWhite,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const SizedBox(height: 200),
           const CircleAvatar(
             radius: 50,
             backgroundColor: AppColors.white,

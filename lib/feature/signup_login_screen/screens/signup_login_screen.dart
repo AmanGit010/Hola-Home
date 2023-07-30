@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hola_home/core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
+import 'package:hola_home/feature/home_screen/screens/home_screen.dart';
 import 'package:hola_home/feature/signup_login_screen/screens/login_screen.dart';
 import 'package:hola_home/feature/signup_login_screen/screens/signup_screen.dart';
 
@@ -22,10 +23,11 @@ class SignupLoginScreen extends StatelessWidget {
                 const SizedBox(height: 40),
                 GestureDetector(
                   onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => ),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomeScreen()),
+                    );
                   },
                   child: const Text("Skip and Start Browsing",
                       style: AppTextStyles.poppinsBlackBold20),
