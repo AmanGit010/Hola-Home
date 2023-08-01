@@ -1,9 +1,11 @@
 // ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hola_home/core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
+import 'package:hola_home/feature/home_screen/screens/nearby_properties.dart';
+import 'package:hola_home/feature/home_screen/screens/popular_properties.dart';
+import 'package:hola_home/feature/map_screen/map_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -27,9 +29,13 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Image.asset('assets/png/home_screen_logo.png'),
-              const Text(
-                "Map",
-                style: AppTextStyles.poppinsBlack20,
+              GestureDetector(
+                onTap: () => Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => const MapScreen())),
+                child: const Text(
+                  "Map",
+                  style: AppTextStyles.poppinsBlack20,
+                ),
               )
             ],
           ),
@@ -70,16 +76,22 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   const Text("Nearby Properties",
                       style: AppTextStyles.poppinsBlackBold20),
-                  Text(
-                    "See all",
-                    style: AppTextStyles.poppinsBlack10
-                        .copyWith(color: AppColors.grey, fontSize: 17),
+                  GestureDetector(
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const NearbyProperties())),
+                    child: Text(
+                      "See all",
+                      style: AppTextStyles.poppinsBlackBold10
+                          .copyWith(color: AppColors.grey, fontSize: 17),
+                    ),
                   )
                 ],
               ),
             ),
             const SizedBox(height: 5),
-            const LVCarousel(),
+            const _NearbyProp(),
             const SizedBox(height: 40),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -88,14 +100,22 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   const Text("Popular Properties",
                       style: AppTextStyles.poppinsBlackBold20),
-                  Text(
-                    "See all",
-                    style: AppTextStyles.poppinsBlack10
-                        .copyWith(color: AppColors.grey, fontSize: 17),
+                  GestureDetector(
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const PopularProp())),
+                    child: Text(
+                      "See all",
+                      style: AppTextStyles.poppinsBlackBold10
+                          .copyWith(color: AppColors.grey, fontSize: 17),
+                    ),
                   )
                 ],
               ),
             ),
+            const SizedBox(height: 20),
+            const _PopularProp(),
           ],
         ),
       ),
@@ -168,14 +188,14 @@ class _NavBarState extends State<NavBar> {
   }
 }
 
-class LVCarousel extends StatefulWidget {
-  const LVCarousel({Key? key}) : super(key: key);
+class _NearbyProp extends StatefulWidget {
+  const _NearbyProp({Key? key}) : super(key: key);
 
   @override
-  State<LVCarousel> createState() => _LVCarouselState();
+  State<_NearbyProp> createState() => __NearbyPropState();
 }
 
-class _LVCarouselState extends State<LVCarousel> {
+class __NearbyPropState extends State<_NearbyProp> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -196,7 +216,7 @@ class _LVCarouselState extends State<LVCarousel> {
                     BoxShadow(
                         offset: const Offset(4, 4),
                         blurRadius: 16,
-                        color: const Color(0xff1212120f).withOpacity(0.06))
+                        color: const Color(0x1212120f).withOpacity(0.06))
                   ],
                   color: AppColors.white,
                   borderRadius: BorderRadius.circular(20),
@@ -252,6 +272,95 @@ class _LVCarouselState extends State<LVCarousel> {
                             )
                           ],
                         ))
+                  ],
+                ),
+              ),
+            );
+          }),
+    );
+  }
+}
+
+class _PopularProp extends StatelessWidget {
+  const _PopularProp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      // color: Colors.red,
+      height: MediaQuery.of(context).size.height * 0.5,
+      child: ListView.builder(
+          shrinkWrap: true,
+          // scrollDirection: Axis.vertical,
+          itemCount: 5,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+              child: Container(
+                decoration: BoxDecoration(
+                  // color: Colors.amber,
+                  boxShadow: [
+                    BoxShadow(
+                        offset: const Offset(4, 4),
+                        blurRadius: 16,
+                        color: const Color(0xff1212120f).withOpacity(0.06))
+                  ],
+                  // color: AppColors.yellow,
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 12, horizontal: 12),
+                      child: ClipRRect(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(5)),
+                          child:
+                              Image.asset('assets/png/popular_property.png')),
+                    ),
+                    const SizedBox(width: 5),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            const Text("Amara Hills",
+                                style: AppTextStyles.poppinsBlackBold20),
+                            const SizedBox(width: 30),
+                            Text(
+                              "\$ 1,650 / night",
+                              style: AppTextStyles.poppinsBlackBold10
+                                  .copyWith(fontSize: 15),
+                            ),
+                          ],
+                        ),
+                        Text(
+                          "Wilora NT 0872, Australia",
+                          style: AppTextStyles.poppinsBlack20
+                              .copyWith(color: AppColors.grey, fontSize: 15),
+                        ),
+                        const SizedBox(height: 10),
+                        Row(
+                          children: [
+                            const Icon(Icons.star, color: AppColors.yellow),
+                            const Icon(Icons.star, color: AppColors.yellow),
+                            const Icon(Icons.star, color: AppColors.yellow),
+                            const Icon(Icons.star, color: AppColors.yellow),
+                            const Icon(Icons.star, color: AppColors.yellow),
+                            const SizedBox(width: 5),
+                            Text(
+                              "5.0",
+                              style: AppTextStyles.poppinsBlackBold10
+                                  .copyWith(fontSize: 15),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
                   ],
                 ),
               ),
