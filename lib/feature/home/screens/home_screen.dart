@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hola_home/core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
-import 'package:hola_home/feature/home_screen/screens/nearby_properties.dart';
-import 'package:hola_home/feature/home_screen/screens/popular_properties.dart';
-import 'package:hola_home/feature/map_screen/map_screen.dart';
+import 'package:hola_home/feature/home/screens/nearby_properties.dart';
+import 'package:hola_home/feature/home/screens/popular_properties.dart';
+import 'package:hola_home/feature/home/screens/search_page.dart';
+import 'package:hola_home/feature/home/screens/map_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -52,8 +53,12 @@ class _HomeScreenState extends State<HomeScreen> {
               child: TextFormField(
                 textInputAction: TextInputAction.next,
                 decoration: InputDecoration(
-                  suffixIcon: UnconstrainedBox(
-                    child: SvgPicture.asset('assets/svg/search_icon.svg'),
+                  suffixIcon: GestureDetector(
+                    onTap: () => Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => SearchPage())),
+                    child: UnconstrainedBox(
+                      child: SvgPicture.asset('assets/svg/search_icon.svg'),
+                    ),
                   ),
                   labelText: 'Location',
                   labelStyle: AppTextStyles.poppinsBlack20
@@ -163,7 +168,7 @@ class _NavBarState extends State<NavBar> {
           ),
           BottomNavigationBarItem(
             icon: SvgPicture.asset(
-              'assets/svg/bookmark_icon.svg',
+              'assets/svg/bookmark_navbar_icon.svg',
               color: _currentIndex == 1 ? AppColors.yellow : AppColors.grey,
             ),
             label: "Bookmark",
@@ -224,11 +229,30 @@ class __NearbyPropState extends State<_NearbyProp> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ClipRRect(
-                        borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            topRight: Radius.circular(20)),
-                        child: Image.asset('assets/png/property2.png')),
+                    Stack(alignment: Alignment.topRight, children: [
+                      ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20)),
+                          child: Image.asset('assets/png/property2.png')),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 20, top: 15),
+                        child: GestureDetector(
+                          // onTap: () => ,
+                          child: Container(
+                              decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(5)),
+                                color: Colors.white,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: SvgPicture.asset(
+                                    'assets/svg/bookmark_icon.svg'),
+                              )),
+                        ),
+                      )
+                    ]),
                     Padding(
                         padding: const EdgeInsets.symmetric(
                             horizontal: 15, vertical: 15),
@@ -303,7 +327,7 @@ class _PopularProp extends StatelessWidget {
                     BoxShadow(
                         offset: const Offset(4, 4),
                         blurRadius: 16,
-                        color: const Color(0xff1212120f).withOpacity(0.06))
+                        color: const Color(0x1212120f).withOpacity(0.06))
                   ],
                   // color: AppColors.yellow,
                   color: Colors.white,

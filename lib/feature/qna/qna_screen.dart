@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hola_home/core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
-import 'package:hola_home/feature/language_selection_screen/language_selection_screen.dart';
+import 'package:hola_home/feature/language_selection/language_selection_screen.dart';
 
 class QnAScreen extends StatefulWidget {
   const QnAScreen({Key? key}) : super(key: key);

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hola_home/core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
 
-class PopularProp extends StatelessWidget {
-  const PopularProp({Key? key}) : super(key: key);
+class NearbyProperties extends StatelessWidget {
+  const NearbyProperties({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -76,14 +77,31 @@ class _PropContainer extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            ClipRRect(
-                borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    topRight: Radius.circular(20)),
-                child: Image.asset(
-                  'assets/png/popular_property_all.png',
-                  // fit: BoxFit.,
-                )),
+            Stack(alignment: Alignment.topRight, children: [
+              ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20)),
+                  child: Image.asset(
+                    'assets/png/nearby_prop.png',
+                    // fit: BoxFit.,
+                  )),
+              Padding(
+                padding: const EdgeInsets.only(right: 20, top: 15),
+                child: GestureDetector(
+                  // onTap: () => ,
+                  child: Container(
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(5)),
+                        color: Colors.white,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: SvgPicture.asset('assets/svg/bookmark_icon.svg'),
+                      )),
+                ),
+              )
+            ]),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               child: Column(
@@ -113,7 +131,7 @@ class _PropContainer extends StatelessWidget {
                   ),
                   const SizedBox(height: 5),
                   const Text(
-                    "The Villa by Bay",
+                    "The Sphora Villa",
                     style: AppTextStyles.poppinsBlackBold20,
                   ),
                   const SizedBox(height: 5),
