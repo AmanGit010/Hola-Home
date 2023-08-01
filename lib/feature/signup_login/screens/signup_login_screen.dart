@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hola_home/core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
-import 'package:hola_home/feature/home/screens/home_screen.dart';
+import 'package:hola_home/feature/home/screens/enable_location_screen.dart';
 import 'package:hola_home/feature/signup_login/screens/login_screen.dart';
 import 'package:hola_home/feature/signup_login/screens/signup_screen.dart';
 
@@ -26,7 +26,7 @@ class SignupLoginScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const HomeScreen()),
+                          builder: (context) => const EnableLocationScreen()),
                     );
                   },
                   child: const Text("Skip and Start Browsing",
