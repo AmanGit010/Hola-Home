@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hola_home/core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
-import 'package:hola_home/feature/home_screen/screens/enable_location_screen.dart';
+import 'package:hola_home/feature/home/screens/enable_location_screen.dart';
 
 class LanguageSelectionScreen extends StatefulWidget {
   const LanguageSelectionScreen({Key? key}) : super(key: key);

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hola_home/core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
-import 'package:hola_home/feature/home_screen/screens/home_screen.dart';
+import 'package:hola_home/feature/home/screens/home_screen.dart';
 
 class EnableLocationScreen extends StatelessWidget {
   const EnableLocationScreen({Key? key}) : super(key: key);
