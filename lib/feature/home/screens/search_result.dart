@@ -11,7 +11,7 @@ class SearchResult extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back,
             color: Colors.black,
           ),
@@ -35,7 +35,7 @@ class SearchResult extends StatelessWidget {
       ),
       body: SafeArea(
         child: ListView(
-          children: [
+          children: const [
             Column(
               children: [Text("Search result")],
             )

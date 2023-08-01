@@ -54,8 +54,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 textInputAction: TextInputAction.next,
                 decoration: InputDecoration(
                   suffixIcon: GestureDetector(
-                    onTap: () => Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => SearchPage())),
+                    onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SearchPage())),
                     child: UnconstrainedBox(
                       child: SvgPicture.asset('assets/svg/search_icon.svg'),
                     ),
