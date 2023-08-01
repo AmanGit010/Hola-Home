@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hola_home/core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
-import 'package:hola_home/feature/home/screens/search_result.dart';
+import 'package:hola_home/feature/home/screens/property_desc.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -29,42 +29,27 @@ class SearchPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const SizedBox(height: 10),
-                Row(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 21),
-                      child: SizedBox(
-                        width: 295,
-                        child: TextFormField(
-                          textInputAction: TextInputAction.done,
-                          decoration: InputDecoration(
-                            prefixIcon: const Icon(
-                              Icons.search_rounded,
-                              color: AppColors.grey,
-                            ),
-                            labelText: 'Where to?',
-                            labelStyle: AppTextStyles.poppinsBlack20
-                                .copyWith(color: AppColors.grey),
-                            focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(13),
-                                borderSide: const BorderSide(
-                                    color: AppColors.yellow, width: 2)),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(13),
-                                borderSide:
-                                    const BorderSide(color: AppColors.grey)),
-                          ),
-                        ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 21),
+                  child: TextFormField(
+                    textInputAction: TextInputAction.done,
+                    decoration: InputDecoration(
+                      prefixIcon: const Icon(
+                        Icons.search_rounded,
+                        color: AppColors.grey,
                       ),
+                      labelText: 'Where to?',
+                      labelStyle: AppTextStyles.poppinsBlack20
+                          .copyWith(color: AppColors.grey),
+                      focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(13),
+                          borderSide: const BorderSide(
+                              color: AppColors.yellow, width: 2)),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(13),
+                          borderSide: const BorderSide(color: AppColors.grey)),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 10, right: 22),
-                      child: Text(
-                        "Cancel",
-                        style: AppTextStyles.poppinsBlack20,
-                      ),
-                    )
-                  ],
+                  ),
                 ),
                 const SizedBox(height: 10),
                 const Divider(),
@@ -107,7 +92,7 @@ class SearchPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const SearchResult()),
+                            builder: (context) => const PropertyDesc()),
                       );
                     },
                     child: Material(

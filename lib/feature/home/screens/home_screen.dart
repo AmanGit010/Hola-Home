@@ -5,6 +5,7 @@ import 'package:hola_home/core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
 import 'package:hola_home/feature/home/screens/nearby_properties.dart';
 import 'package:hola_home/feature/home/screens/popular_properties.dart';
+import 'package:hola_home/feature/home/screens/property_desc.dart';
 import 'package:hola_home/feature/home/screens/search_page.dart';
 import 'package:hola_home/feature/home/screens/map_screen.dart';
 
@@ -48,34 +49,33 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             const SizedBox(height: 30),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 22),
-              child: TextFormField(
-                textInputAction: TextInputAction.next,
-                decoration: InputDecoration(
-                  suffixIcon: GestureDetector(
-                    onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const SearchPage())),
-                    child: UnconstrainedBox(
-                      child: SvgPicture.asset('assets/svg/search_icon.svg'),
+            GestureDetector(
+              onTap: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const SearchPage())),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 22),
+                child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(13),
+                      border: Border.all(color: AppColors.grey)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(15),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Location",
+                          style: AppTextStyles.poppinsBlack20
+                              .copyWith(color: AppColors.grey),
+                        ),
+                        SvgPicture.asset('assets/svg/search_icon.svg')
+                      ],
                     ),
                   ),
-                  labelText: 'Location',
-                  labelStyle: AppTextStyles.poppinsBlack20
-                      .copyWith(color: AppColors.grey),
-                  focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(13),
-                      borderSide:
-                          const BorderSide(color: AppColors.yellow, width: 2)),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(13),
-                      borderSide: const BorderSide(color: AppColors.grey)),
                 ),
               ),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 30),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
@@ -213,92 +213,99 @@ class __NearbyPropState extends State<_NearbyProp> {
           scrollDirection: Axis.horizontal,
           itemCount: 5,
           itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
-              child: Container(
-                width: 300,
-                decoration: BoxDecoration(
-                  // color: Colors.amber,
-                  boxShadow: [
-                    BoxShadow(
-                        offset: const Offset(4, 4),
-                        blurRadius: 16,
-                        color: const Color(0x1212120f).withOpacity(0.06))
-                  ],
-                  color: AppColors.white,
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Stack(alignment: Alignment.topRight, children: [
-                      ClipRRect(
-                          borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(20)),
-                          child: Image.asset('assets/png/property2.png')),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 20, top: 15),
-                        child: GestureDetector(
-                          // onTap: () => ,
-                          child: Container(
-                              decoration: const BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(5)),
-                                color: Colors.white,
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8),
-                                child: SvgPicture.asset(
-                                    'assets/svg/bookmark_icon.svg'),
-                              )),
-                        ),
-                      )
-                    ]),
-                    Padding(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 15, vertical: 15),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "The Astin Villa Hotel",
-                              style: AppTextStyles.poppinsBlackBold20,
-                            ),
-                            const SizedBox(height: 10),
-                            Text(
-                              "Alice Springs NT 0220, Australia",
-                              style: AppTextStyles.latoBlack20
-                                  .copyWith(color: AppColors.grey),
-                            ),
-                            const SizedBox(height: 10),
-                            Row(
-                              children: [
-                                const Text(
-                                  "\$ 3,700",
-                                  style: AppTextStyles.poppinsBlackBold20,
+            return GestureDetector(
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const PropertyDesc())),
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
+                child: Container(
+                  width: 300,
+                  decoration: BoxDecoration(
+                    // color: Colors.amber,
+                    boxShadow: [
+                      BoxShadow(
+                          offset: const Offset(4, 4),
+                          blurRadius: 16,
+                          color: const Color(0x1212120f).withOpacity(0.06))
+                    ],
+                    color: AppColors.white,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Stack(alignment: Alignment.topRight, children: [
+                        ClipRRect(
+                            borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(20),
+                                topRight: Radius.circular(20)),
+                            child: Image.asset('assets/png/property.png')),
+                        Padding(
+                          padding: const EdgeInsets.only(right: 20, top: 15),
+                          child: GestureDetector(
+                            // onTap: () => ,
+                            child: Container(
+                                decoration: const BoxDecoration(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(5)),
+                                  color: Colors.white,
                                 ),
-                                Text(
-                                  " / night",
-                                  style: AppTextStyles.poppinsBlack20
-                                      .copyWith(color: AppColors.grey),
-                                )
-                              ],
-                            ),
-                            const SizedBox(height: 5),
-                            const Row(
-                              children: [
-                                Icon(Icons.star, color: AppColors.yellow),
-                                SizedBox(width: 5),
-                                Text(
-                                  " 5.0",
-                                  style: AppTextStyles.poppinsBlackBold20,
-                                )
-                              ],
-                            )
-                          ],
-                        ))
-                  ],
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8),
+                                  child: SvgPicture.asset(
+                                      'assets/svg/bookmark_icon.svg'),
+                                )),
+                          ),
+                        )
+                      ]),
+                      Padding(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 15),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const Text(
+                                "The Astin Villa Hotel",
+                                style: AppTextStyles.poppinsBlackBold20,
+                              ),
+                              const SizedBox(height: 10),
+                              Text(
+                                "Alice Springs NT 0220, Australia",
+                                style: AppTextStyles.latoBlack20
+                                    .copyWith(color: AppColors.grey),
+                              ),
+                              const SizedBox(height: 10),
+                              Row(
+                                children: [
+                                  const Text(
+                                    "\$ 3,700",
+                                    style: AppTextStyles.poppinsBlackBold20,
+                                  ),
+                                  Text(
+                                    " / night",
+                                    style: AppTextStyles.poppinsBlack20
+                                        .copyWith(color: AppColors.grey),
+                                  )
+                                ],
+                              ),
+                              const SizedBox(height: 5),
+                              const Row(
+                                children: [
+                                  Icon(Icons.star, color: AppColors.yellow),
+                                  SizedBox(width: 5),
+                                  Text(
+                                    " 5.0",
+                                    style: AppTextStyles.poppinsBlackBold20,
+                                  )
+                                ],
+                              )
+                            ],
+                          ))
+                    ],
+                  ),
                 ),
               ),
             );
@@ -314,7 +321,7 @@ class _PopularProp extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       // color: Colors.red,
-      height: MediaQuery.of(context).size.height * 0.5,
+      height: MediaQuery.of(context).size.height * 0.7,
       child: ListView.builder(
           shrinkWrap: true,
           // scrollDirection: Axis.vertical,
