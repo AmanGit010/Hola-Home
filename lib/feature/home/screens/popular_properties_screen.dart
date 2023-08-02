@@ -3,8 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hola_home/core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
 
-class NearbyProperties extends StatelessWidget {
-  const NearbyProperties({Key? key}) : super(key: key);
+class PopularPropertiesScreen extends StatelessWidget {
+  const PopularPropertiesScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -83,7 +83,7 @@ class _PropContainer extends StatelessWidget {
                       topLeft: Radius.circular(20),
                       topRight: Radius.circular(20)),
                   child: Image.asset(
-                    'assets/png/nearby_prop.png',
+                    'assets/png/popular_property_all.png',
                     // fit: BoxFit.,
                   )),
               Padding(
@@ -131,7 +131,7 @@ class _PropContainer extends StatelessWidget {
                   ),
                   const SizedBox(height: 5),
                   const Text(
-                    "The Sphora Villa",
+                    "The Villa by Bay",
                     style: AppTextStyles.poppinsBlackBold20,
                   ),
                   const SizedBox(height: 5),

@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hola_home/core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
-import 'package:hola_home/feature/home/screens/nearby_properties.dart';
-import 'package:hola_home/feature/home/screens/popular_properties.dart';
-import 'package:hola_home/feature/home/screens/property_desc.dart';
-import 'package:hola_home/feature/home/screens/search_page.dart';
+import 'package:hola_home/feature/home/screens/nearby_properties_screen.dart';
+import 'package:hola_home/feature/home/screens/property_desc_screen.dart';
+import 'package:hola_home/feature/home/screens/search_page_screen.dart';
 import 'package:hola_home/feature/home/screens/map_screen.dart';
+
+import 'popular_properties_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -87,7 +88,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const NearbyProperties())),
+                            builder: (context) =>
+                                const NearbyPropertiesScreen())),
                     child: Text(
                       "See all",
                       style: AppTextStyles.poppinsBlackBold10
@@ -111,7 +113,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const PopularProp())),
+                            builder: (context) =>
+                                const PopularPropertiesScreen())),
                     child: Text(
                       "See all",
                       style: AppTextStyles.poppinsBlackBold10

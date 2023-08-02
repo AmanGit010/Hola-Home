@@ -1,7 +1,10 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hola_home/core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
+import 'package:hola_home/feature/home/screens/reviews_screen.dart';
+import 'package:hola_home/feature/home/widgets/reviews_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class PropertyDesc extends StatelessWidget {
@@ -11,7 +14,8 @@ class PropertyDesc extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBody: true,
-      bottomNavigationBar: const _BottomNavBar(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: const _BottomNavBar(),
       body: SafeArea(
         child: ListView(
           children: [
@@ -372,11 +376,10 @@ class _Description extends StatelessWidget {
               const SizedBox(width: 110),
               GestureDetector(
                 onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(
-                  //       builder: (context) => const QnAScreen()),
-                  // );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const _BKF()),
+                  );
                 },
                 child: Material(
                   elevation: 4,
@@ -415,7 +418,7 @@ class _Amenities extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 20, right: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -554,7 +557,8 @@ class _Reviews extends StatelessWidget {
             children: [
               const Text("Reviews", style: AppTextStyles.poppinsBlackBold20),
               const SizedBox(width: 10),
-              Row(
+              Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
                 children: [
                   const Icon(Icons.star, color: AppColors.yellow),
                   Text(" 5.0",
@@ -568,7 +572,10 @@ class _Reviews extends StatelessWidget {
                       .copyWith(color: AppColors.grey, fontSize: 15)),
               const SizedBox(width: 100),
               GestureDetector(
-                // onTap: () => ,
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ReviewsScreen())),
                 child: Text("See All",
                     style: AppTextStyles.poppinsBlack20
                         .copyWith(color: AppColors.yellow)),
@@ -576,109 +583,14 @@ class _Reviews extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 20),
-          SizedBox(
-            // color: Colors.red,
-            height: MediaQuery.of(context).size.height * 0.7,
-            child: ListView.builder(
-                shrinkWrap: true,
-                // scrollDirection: Axis.vertical,
-                itemCount: 4,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        // color: Colors.amber,
-                        boxShadow: [
-                          BoxShadow(
-                              offset: const Offset(4, 4),
-                              blurRadius: 16,
-                              color: const Color(0x1212120f).withOpacity(0.09))
-                        ],
-                        // color: AppColors.yellow,
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 10, right: 10),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                const Padding(
-                                  padding: EdgeInsets.symmetric(
-                                      vertical: 15, horizontal: 15),
-                                  child: ClipRRect(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                      child: CircleAvatar(
-                                        radius: 27,
-                                        foregroundImage: AssetImage(
-                                            'assets/png/profile_pic.png'),
-                                      )),
-                                ),
-                                const SizedBox(width: 5),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    RichText(
-                                      text: TextSpan(children: [
-                                        TextSpan(
-                                            text: 'Ivande Othawa\n',
-                                            style: AppTextStyles
-                                                .poppinsBlackBold10
-                                                .copyWith(fontSize: 15)),
-                                        TextSpan(
-                                            text: 'Jan 20, 2025',
-                                            style: AppTextStyles.poppinsBlack10
-                                                .copyWith(
-                                                    fontSize: 15,
-                                                    color: AppColors.grey))
-                                      ]),
-                                    ),
-                                    const SizedBox(width: 30),
-                                  ],
-                                ),
-                                const SizedBox(width: 65),
-                                Container(
-                                    decoration: BoxDecoration(
-                                        color: AppColors.yellow,
-                                        borderRadius:
-                                            BorderRadius.circular(15)),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8),
-                                      child: Row(
-                                        children: [
-                                          const Icon(Icons.star,
-                                              color: Colors.black),
-                                          Text(
-                                            " 5.0",
-                                            style: AppTextStyles.poppinsBlack10
-                                                .copyWith(fontSize: 15),
-                                          )
-                                        ],
-                                      ),
-                                    ))
-                              ],
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(left: 15, right: 15),
-                              child: Text(
-                                "Very nice and comfortable hotel, thank you for accompanying my vacation!",
-                                style: AppTextStyles.poppinsBlack10
-                                    .copyWith(fontSize: 15),
-                              ),
-                            ),
-                            const SizedBox(height: 20),
-                          ],
-                        ),
-                      ),
-                    ),
-                  );
-                }),
-          ),
+          ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              // scrollDirection: Axis.vertical,
+              itemCount: 4,
+              itemBuilder: (context, index) {
+                return const ReviewsWidget();
+              }),
           const SizedBox(height: 10),
           const Divider(),
           const SizedBox(height: 20),
@@ -698,7 +610,7 @@ class _Location extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Location", style: AppTextStyles.poppinsBlackBold20),
+          const Text("Location", style: AppTextStyles.poppinsBlackBold20),
           const SizedBox(height: 10),
           FractionallySizedBox(
             widthFactor: 1,
@@ -707,8 +619,8 @@ class _Location extends StatelessWidget {
               decoration: BoxDecoration(
                   color: AppColors.lightYellow,
                   borderRadius: BorderRadius.circular(10)),
-              child: Padding(
-                padding: const EdgeInsets.all(50),
+              child: const Padding(
+                padding: EdgeInsets.all(50),
                 child: Text(
                   "Google Maps comes here",
                   textAlign: TextAlign.center,
@@ -716,9 +628,118 @@ class _Location extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 50),
+          const SizedBox(height: 130),
         ],
       ),
     );
+  }
+}
+
+class _BKF extends StatelessWidget {
+  const _BKF({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(children: [
+      const Scaffold(
+        backgroundColor: Colors.transparent,
+        body: PropertyDesc(),
+      ),
+      BackdropFilter(
+        filter:
+            ImageFilter.blur(sigmaX: 3, sigmaY: 3), // Adjust the blur intensity
+        child: AnimatedOpacity(
+          opacity:
+              1.0, // Set the initial opacity to 0.0 and animate it to 1.0 when showing
+          duration: const Duration(milliseconds: 300),
+          child: Container(
+              color: Colors.grey
+                  .withOpacity(0.3), // Adjust the container color and opacity
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Stack(
+                            alignment: Alignment.topRight,
+                            children: [
+                              IconButton(
+                                  onPressed: () => Navigator.pop(context),
+                                  icon: const Icon(Icons.cancel_outlined))
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              const CircleAvatar(
+                                radius: 30,
+                                foregroundImage:
+                                    AssetImage('assets/png/profile_pic.png'),
+                              ),
+                              const SizedBox(width: 15),
+                              Column(
+                                children: [
+                                  RichText(
+                                    text: TextSpan(
+                                      children: [
+                                        TextSpan(
+                                            text: 'Name: ',
+                                            style: AppTextStyles
+                                                .poppinsBlackBold10
+                                                .copyWith(fontSize: 15)),
+                                        TextSpan(
+                                            text: 'Charles\n',
+                                            style: AppTextStyles.poppinsBlack10
+                                                .copyWith(fontSize: 15)),
+                                        TextSpan(
+                                            text: 'Mobile Number: ',
+                                            style: AppTextStyles
+                                                .poppinsBlackBold10
+                                                .copyWith(fontSize: 15)),
+                                        TextSpan(
+                                            text: '+91 89xxxxxx90\n',
+                                            style: AppTextStyles.poppinsBlack10
+                                                .copyWith(fontSize: 15)),
+                                        TextSpan(
+                                            text: 'Email: ',
+                                            style: AppTextStyles
+                                                .poppinsBlackBold10
+                                                .copyWith(fontSize: 15)),
+                                        TextSpan(
+                                            text: 'charlesma@gmail.com',
+                                            style: AppTextStyles.poppinsBlack10
+                                                .copyWith(fontSize: 15)),
+                                      ],
+                                    ),
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              )),
+        ),
+      ),
+    ]);
+  }
+}
+
+class MyWidget extends StatelessWidget {
+  const MyWidget({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog();
   }
 }
