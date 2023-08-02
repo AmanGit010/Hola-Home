@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hola_home/core/constants/colors.dart';
 import 'package:hola_home/core/constants/styles.dart';
-import 'package:hola_home/feature/home/screens/property_desc.dart';
+import 'package:hola_home/feature/home/screens/search_result.dart';
 
 class SearchPage extends StatelessWidget {
   const SearchPage({Key? key}) : super(key: key);
@@ -92,7 +92,7 @@ class SearchPage extends StatelessWidget {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const PropertyDesc()),
+                            builder: (context) => const SearchResult()),
                       );
                     },
                     child: Material(
