@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hola_home/core/constants/colors.dart';
-import 'package:hola_home/core/constants/styles.dart';
-import 'package:hola_home/feature/home/screens/enable_location_screen.dart';
-import 'package:hola_home/feature/signup_login/screens/login_screen.dart';
-import 'package:hola_home/feature/signup_login/screens/signup_screen.dart';
+import '../../../core/constants/colors.dart';
+import '../../../core/constants/styles.dart';
+import '../../home/screens/enable_location_screen.dart';
+import 'login_screen.dart';
+import 'signup_screen.dart';
 
 class SignupLoginScreen extends StatelessWidget {
   const SignupLoginScreen({Key? key}) : super(key: key);
@@ -82,7 +82,7 @@ class _SignupLoginButtons extends StatelessWidget {
                 alignment: Alignment.center,
                 height: 55,
                 decoration: BoxDecoration(
-                  border: Border.all(color: AppColors.yellow, width: 2.0),
+                  border: Border.all(color: AppColors.yellow, width: 2),
                   borderRadius: BorderRadius.circular(30),
                   color: AppColors.yellow,
                 ),
@@ -110,7 +110,7 @@ class _SignupLoginButtons extends StatelessWidget {
                 alignment: Alignment.center,
                 height: 55,
                 decoration: BoxDecoration(
-                  border: Border.all(color: AppColors.yellow, width: 2.0),
+                  border: Border.all(color: AppColors.yellow, width: 2),
                   borderRadius: BorderRadius.circular(30),
                   color: AppColors.lightYellow,
                 ),

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hola_home/core/constants/colors.dart';
-import 'package:hola_home/core/constants/styles.dart';
+import '../../../core/constants/colors.dart';
+import '../../../core/constants/styles.dart';
 
 class NearbyPropertiesScreen extends StatelessWidget {
   const NearbyPropertiesScreen({Key? key}) : super(key: key);
@@ -75,7 +75,6 @@ class _PropContainer extends StatelessWidget {
           borderRadius: BorderRadius.circular(20),
         ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Stack(alignment: Alignment.topRight, children: [
               ClipRRect(
@@ -144,7 +143,7 @@ class _PropContainer extends StatelessWidget {
                   Row(
                     children: [
                       const Text(
-                        "\$ 3,700",
+                        r"$ 3,700",
                         style: AppTextStyles.poppinsBlackBold20,
                       ),
                       Text(

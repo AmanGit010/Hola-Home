@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hola_home/core/constants/colors.dart';
-import 'package:hola_home/core/constants/styles.dart';
-import 'package:hola_home/feature/home/screens/enable_location_screen.dart';
+import '../../core/constants/colors.dart';
+import '../../core/constants/styles.dart';
+import '../home/screens/enable_location_screen.dart';
 
 class LanguageSelectionScreen extends StatefulWidget {
   const LanguageSelectionScreen({Key? key}) : super(key: key);
@@ -45,7 +45,6 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                           border: Border.all(color: AppColors.yellow),
                           borderRadius: BorderRadius.circular(10)),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Image.asset(
                               'assets/png/flags_for_language/english.png'),
@@ -58,7 +57,7 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                           Checkbox(
                             value: _isChecked,
                             activeColor: AppColors.yellow,
-                            shape: const CircleBorder(eccentricity: 1.0),
+                            shape: const CircleBorder(eccentricity: 1),
                             onChanged: (newValue) {
                               setState(() {
                                 _isChecked = newValue!;
@@ -83,7 +82,6 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                           border: Border.all(color: AppColors.yellow),
                           borderRadius: BorderRadius.circular(10)),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Image.asset(
                               'assets/png/flags_for_language/english.png'),
@@ -96,7 +94,7 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                           Checkbox(
                             value: _isChecked,
                             activeColor: AppColors.yellow,
-                            shape: const CircleBorder(eccentricity: 1.0),
+                            shape: const CircleBorder(eccentricity: 1),
                             onChanged: (newValue) {
                               setState(() {
                                 _isChecked = newValue!;
@@ -121,7 +119,6 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                           border: Border.all(color: AppColors.yellow),
                           borderRadius: BorderRadius.circular(10)),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Image.asset(
                               'assets/png/flags_for_language/english.png'),
@@ -134,7 +131,7 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                           Checkbox(
                             value: _isChecked,
                             activeColor: AppColors.yellow,
-                            shape: const CircleBorder(eccentricity: 1.0),
+                            shape: const CircleBorder(eccentricity: 1),
                             onChanged: (newValue) {
                               setState(() {
                                 _isChecked = newValue!;
@@ -159,7 +156,6 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                           border: Border.all(color: AppColors.yellow),
                           borderRadius: BorderRadius.circular(10)),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Image.asset(
                               'assets/png/flags_for_language/english.png'),
@@ -172,7 +168,7 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                           Checkbox(
                             value: _isChecked,
                             activeColor: AppColors.yellow,
-                            shape: const CircleBorder(eccentricity: 1.0),
+                            shape: const CircleBorder(eccentricity: 1),
                             onChanged: (newValue) {
                               setState(() {
                                 _isChecked = newValue!;
@@ -202,8 +198,7 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                         alignment: Alignment.center,
                         height: 55,
                         decoration: BoxDecoration(
-                          border:
-                              Border.all(color: AppColors.yellow, width: 2.0),
+                          border: Border.all(color: AppColors.yellow, width: 2),
                           borderRadius: BorderRadius.circular(30),
                           color: AppColors.yellow,
                         ),

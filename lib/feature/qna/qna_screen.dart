@@ -2,9 +2,9 @@ import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:hola_home/core/constants/colors.dart';
-import 'package:hola_home/core/constants/styles.dart';
-import 'package:hola_home/feature/language_selection/language_selection_screen.dart';
+import '../../core/constants/colors.dart';
+import '../../core/constants/styles.dart';
+import '../language_selection/language_selection_screen.dart';
 
 class QnAScreen extends StatefulWidget {
   const QnAScreen({Key? key}) : super(key: key);
@@ -132,7 +132,7 @@ class _QnAScreenState extends State<QnAScreen> {
                           if (value == null || value.isEmpty) {
                             Fluttertoast.showToast(msg: 'Enter your Email');
                           }
-                          if (RegExp("^[0-9]{10}\$").hasMatch(value!)) {
+                          if (RegExp(r"^[0-9]{10}$").hasMatch(value!)) {
                             Fluttertoast.showToast(
                                 msg: "Enter valid Phone number");
                           }
@@ -163,7 +163,7 @@ class _QnAScreenState extends State<QnAScreen> {
                       alignment: Alignment.center,
                       height: 55,
                       decoration: BoxDecoration(
-                        border: Border.all(color: AppColors.yellow, width: 2.0),
+                        border: Border.all(color: AppColors.yellow, width: 2),
                         borderRadius: BorderRadius.circular(30),
                         color: AppColors.yellow,
                       ),
@@ -217,7 +217,7 @@ class _ProfilePicState extends State<ProfilePic> {
               onTap: () {
                 showCupertinoModalPopup(
                   context: context,
-                  builder: (BuildContext context) {
+                  builder: (context) {
                     return CupertinoActionSheet(
                       title: const Text('Select Profile Picture'),
                       actions: [

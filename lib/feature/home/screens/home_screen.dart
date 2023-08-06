@@ -1,14 +1,14 @@
 // ignore_for_file: deprecated_member_use
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hola_home/core/constants/colors.dart';
-import 'package:hola_home/core/constants/styles.dart';
-import 'package:hola_home/feature/home/screens/nearby_properties_screen.dart';
-import 'package:hola_home/feature/home/screens/property_desc_screen.dart';
-import 'package:hola_home/feature/home/screens/search_page_screen.dart';
-import 'package:hola_home/feature/home/screens/map_screen.dart';
 
+import '../../../core/constants/colors.dart';
+import '../../../core/constants/styles.dart';
+import 'map_screen.dart';
+import 'nearby_properties_screen.dart';
 import 'popular_properties_screen.dart';
+import 'property_desc_screen.dart';
+import 'search_page_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -153,7 +153,7 @@ class _NavBarState extends State<NavBar> {
         backgroundColor: AppColors.scaffoldWhite,
         elevation: 5,
         currentIndex: _currentIndex,
-        onTap: (int index) {
+        onTap: (index) {
           setState(() {
             _currentIndex = index;
           });
@@ -284,7 +284,7 @@ class __NearbyPropState extends State<_NearbyProp> {
                               Row(
                                 children: [
                                   const Text(
-                                    "\$ 3,700",
+                                    r"$ 3,700",
                                     style: AppTextStyles.poppinsBlackBold20,
                                   ),
                                   Text(
@@ -326,9 +326,10 @@ class _PopularProp extends StatelessWidget {
       // color: Colors.red,
       height: MediaQuery.of(context).size.height * 0.7,
       child: ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           // scrollDirection: Axis.vertical,
-          itemCount: 5,
+          itemCount: 4,
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
@@ -346,7 +347,6 @@ class _PopularProp extends StatelessWidget {
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
                       padding: const EdgeInsets.symmetric(
@@ -368,7 +368,7 @@ class _PopularProp extends StatelessWidget {
                                 style: AppTextStyles.poppinsBlackBold20),
                             const SizedBox(width: 30),
                             Text(
-                              "\$ 1,650 / night",
+                              r"$ 1,650 / night",
                               style: AppTextStyles.poppinsBlackBold10
                                   .copyWith(fontSize: 15),
                             ),

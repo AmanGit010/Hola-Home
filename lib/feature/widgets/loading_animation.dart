@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:hola_home/core/constants/colors.dart';
+import '../../core/constants/colors.dart';
 
 class LoadingAnimation extends StatelessWidget {
   const LoadingAnimation({Key? key}) : super(key: key);
@@ -11,7 +11,7 @@ class LoadingAnimation extends StatelessWidget {
       children: [
         SpinKitCircle(
           color: AppColors.yellow,
-          size: 60.0,
+          size: 60,
         ),
       ],
     );

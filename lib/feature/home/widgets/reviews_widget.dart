@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:hola_home/core/constants/colors.dart';
-import 'package:hola_home/core/constants/styles.dart';
+import '../../../core/constants/colors.dart';
+import '../../../core/constants/styles.dart';
 
 class ReviewsWidget extends StatelessWidget {
   const ReviewsWidget({Key? key}) : super(key: key);
@@ -27,7 +27,6 @@ class ReviewsWidget extends StatelessWidget {
           child: Column(
             children: [
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   const Padding(
                     padding: EdgeInsets.symmetric(vertical: 15, horizontal: 15),

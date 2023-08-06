@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hola_home/core/constants/colors.dart';
-import 'package:hola_home/core/constants/styles.dart';
-import 'package:hola_home/feature/home/screens/property_desc_screen.dart';
+import '../../../core/constants/colors.dart';
+import '../../../core/constants/styles.dart';
+import 'no_result_screen.dart';
+import 'property_desc_screen.dart';
 
 class SearchResult extends StatelessWidget {
   const SearchResult({Key? key}) : super(key: key);
@@ -25,16 +26,22 @@ class SearchResult extends StatelessWidget {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 19),
-            child: Material(
-              elevation: 4,
-              borderRadius: BorderRadius.circular(10),
-              child: Container(
-                decoration: BoxDecoration(
-                    border: Border.all(color: AppColors.grey),
-                    borderRadius: BorderRadius.circular(10)),
-                child: Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: SvgPicture.asset('assets/svg/filter_icon.svg'),
+            child: GestureDetector(
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const NoResultScreen())),
+              child: Material(
+                elevation: 4,
+                borderRadius: BorderRadius.circular(10),
+                child: Container(
+                  decoration: BoxDecoration(
+                      border: Border.all(color: AppColors.grey),
+                      borderRadius: BorderRadius.circular(10)),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: SvgPicture.asset('assets/svg/filter_icon.svg'),
+                  ),
                 ),
               ),
             ),
@@ -57,7 +64,6 @@ class SearchResult extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 const _Result(),
-                // const SizedBox(height: 20),
               ],
             )
           ],
@@ -73,7 +79,7 @@ class _Result extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.95,
+      height: MediaQuery.of(context).size.height * 0.85,
       child: ListView.builder(
           itemCount: 10,
           itemBuilder: (context, index) {
@@ -100,7 +106,6 @@ class _Result extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Stack(alignment: Alignment.topRight, children: [
                             ClipRRect(
@@ -178,7 +183,7 @@ class _Result extends StatelessWidget {
                                 Row(
                                   children: [
                                     const Text(
-                                      "\$ 3,700",
+                                      r"$ 3,700",
                                       style: AppTextStyles.poppinsBlackBold20,
                                     ),
                                     Text(

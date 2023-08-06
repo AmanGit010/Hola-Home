@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hola_home/core/constants/styles.dart';
 import 'package:rating_summary/rating_summary.dart';
 
+import '../../../core/constants/styles.dart';
 import '../widgets/reviews_widget.dart';
 
 class ReviewsScreen extends StatelessWidget {
@@ -15,15 +15,14 @@ class ReviewsScreen extends StatelessWidget {
             style: AppTextStyles.poppinsBlackBold20.copyWith(fontSize: 25)),
         leading: IconButton(
             onPressed: () => Navigator.pop(context),
-            icon: Icon(Icons.arrow_back)),
+            icon: const Icon(Icons.arrow_back)),
       ),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 26, vertical: 5),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 26, vertical: 5),
               child: RatingSummary(
-                  showAverage: true,
                   average: 4.5,
                   counter: 5,
                   counterFiveStars: 5,
@@ -33,19 +32,20 @@ class ReviewsScreen extends StatelessWidget {
                   counterOneStars: 1),
             ),
             const SizedBox(height: 30),
-            Text("All Reviews", style: AppTextStyles.poppinsBlackBold30),
+            const Text("All Reviews", style: AppTextStyles.poppinsBlackBold30),
             const SizedBox(height: 20),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 21),
               child: SizedBox(
                 // color: Colors.red,
-                height: MediaQuery.of(context).size.height * 0.7,
+                height: MediaQuery.of(context).size.height * 0.9,
                 child: ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     // scrollDirection: Axis.vertical,
-                    itemCount: 5,
+                    itemCount: 7,
                     itemBuilder: (context, index) {
-                      return ReviewsWidget();
+                      return const ReviewsWidget();
                     }),
               ),
             ),
