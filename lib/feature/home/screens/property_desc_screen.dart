@@ -1,11 +1,13 @@
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hola_home/core/constants/colors.dart';
-import 'package:hola_home/core/constants/styles.dart';
-import 'package:hola_home/feature/home/screens/reviews_screen.dart';
-import 'package:hola_home/feature/home/widgets/reviews_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import '../../../core/constants/colors.dart';
+import '../../../core/constants/styles.dart';
+import '../widgets/reviews_widget.dart';
+import 'reviews_screen.dart';
 
 class PropertyDesc extends StatelessWidget {
   const PropertyDesc({Key? key}) : super(key: key);
@@ -33,64 +35,6 @@ class PropertyDesc extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class _BottomNavBar extends StatelessWidget {
-  const _BottomNavBar({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      height: 90,
-      decoration: const BoxDecoration(
-        color: AppColors.lightYellow,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          RichText(
-              text: TextSpan(children: [
-            const TextSpan(
-                text: "\$ 209 ", style: AppTextStyles.poppinsBlackBold20),
-            TextSpan(
-                text: "/ Night ",
-                style: AppTextStyles.poppinsBlackBold20
-                    .copyWith(color: AppColors.grey))
-          ])),
-          Padding(
-            padding: const EdgeInsets.only(left: 18),
-            child: GestureDetector(
-              onTap: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //       builder: (context) => const PropertyDesc()),
-                // );
-              },
-              child: Material(
-                elevation: 4,
-                borderRadius: BorderRadius.circular(10),
-                child: Container(
-                  alignment: Alignment.center,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color: AppColors.yellow,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 60),
-                    child: Text("Book now",
-                        textAlign: TextAlign.center,
-                        style: AppTextStyles.poppinsBlackBold20),
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }
@@ -225,7 +169,6 @@ class _Title extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(left: 20),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Icon(Icons.location_on, color: AppColors.yellow),
@@ -650,8 +593,9 @@ class _BKF extends StatelessWidget {
             ImageFilter.blur(sigmaX: 3, sigmaY: 3), // Adjust the blur intensity
         child: AnimatedOpacity(
           opacity:
-              1.0, // Set the initial opacity to 0.0 and animate it to 1.0 when showing
+              1, // Set the initial opacity to 0.0 and animate it to 1.0 when showing
           duration: const Duration(milliseconds: 300),
+          // ignore: use_colored_box
           child: Container(
               color: Colors.grey
                   .withOpacity(0.3), // Adjust the container color and opacity
@@ -735,11 +679,69 @@ class _BKF extends StatelessWidget {
   }
 }
 
+class _BottomNavBar extends StatelessWidget {
+  const _BottomNavBar({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 90,
+      decoration: const BoxDecoration(
+        color: AppColors.lightYellow,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          RichText(
+              text: TextSpan(children: [
+            const TextSpan(
+                text: r"$ 209 ", style: AppTextStyles.poppinsBlackBold20),
+            TextSpan(
+                text: "/ Night ",
+                style: AppTextStyles.poppinsBlackBold20
+                    .copyWith(color: AppColors.grey))
+          ])),
+          Padding(
+            padding: const EdgeInsets.only(left: 18),
+            child: GestureDetector(
+              onTap: () {
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //       builder: (context) => const PropertyDesc()),
+                // );
+              },
+              child: Material(
+                elevation: 4,
+                borderRadius: BorderRadius.circular(10),
+                child: Container(
+                  alignment: Alignment.center,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: AppColors.yellow,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 60),
+                    child: Text("Book now",
+                        textAlign: TextAlign.center,
+                        style: AppTextStyles.poppinsBlackBold20),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
 class MyWidget extends StatelessWidget {
   const MyWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Dialog();
+    return const Dialog();
   }
 }

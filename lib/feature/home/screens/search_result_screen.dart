@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hola_home/core/constants/colors.dart';
-import 'package:hola_home/core/constants/styles.dart';
-import 'package:hola_home/feature/home/screens/property_desc_screen.dart';
+import '../../../core/constants/colors.dart';
+import '../../../core/constants/styles.dart';
+import 'property_desc_screen.dart';
 
 class SearchResult extends StatelessWidget {
   const SearchResult({Key? key}) : super(key: key);
@@ -100,7 +100,6 @@ class _Result extends StatelessWidget {
                         borderRadius: BorderRadius.circular(20),
                       ),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Stack(alignment: Alignment.topRight, children: [
                             ClipRRect(
@@ -178,7 +177,7 @@ class _Result extends StatelessWidget {
                                 Row(
                                   children: [
                                     const Text(
-                                      "\$ 3,700",
+                                      r"$ 3,700",
                                       style: AppTextStyles.poppinsBlackBold20,
                                     ),
                                     Text(

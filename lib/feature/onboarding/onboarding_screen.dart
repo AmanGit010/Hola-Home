@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hola_home/core/constants/colors.dart';
-import 'package:hola_home/core/constants/styles.dart';
-import 'package:hola_home/feature/signup_login/screens/signup_login_screen.dart';
+import '../../core/constants/colors.dart';
+import '../../core/constants/styles.dart';
+import '../signup_login/screens/signup_login_screen.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -52,7 +52,7 @@ class OnboardingScreen extends StatelessWidget {
                       alignment: Alignment.center,
                       height: 55,
                       decoration: BoxDecoration(
-                        border: Border.all(color: AppColors.yellow, width: 2.0),
+                        border: Border.all(color: AppColors.yellow, width: 2),
                         borderRadius: BorderRadius.circular(30),
                         color: AppColors.yellow,
                       ),
@@ -78,7 +78,7 @@ class OnboardingScreen extends StatelessWidget {
                       alignment: Alignment.center,
                       height: 55,
                       decoration: BoxDecoration(
-                        border: Border.all(color: AppColors.yellow, width: 2.0),
+                        border: Border.all(color: AppColors.yellow, width: 2),
                         borderRadius: BorderRadius.circular(30),
                         color: AppColors.lightYellow,
                       ),

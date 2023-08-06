@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hola_home/core/constants/colors.dart';
-import 'package:hola_home/core/constants/styles.dart';
+import '../../../core/constants/colors.dart';
+import '../../../core/constants/styles.dart';
 // import 'package:hola_home/feature/signup_login_screen/forgot_password_screen/screens/otp_verification_screen.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
@@ -29,7 +29,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       body: SafeArea(
         child: ListView(
           children: [
-            Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
+            Column(children: [
               const SizedBox(height: 30),
               SvgPicture.asset('assets/svg/unlock.svg'),
               const SizedBox(height: 40),
@@ -58,13 +58,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         border: Border.all(color: AppColors.yellow),
                         borderRadius: BorderRadius.circular(5)),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         const SizedBox(width: 30),
                         const Icon(
                           Icons.messenger_rounded,
                           color: AppColors.yellow,
-                          size: 45.0,
+                          size: 45,
                         ),
                         const SizedBox(width: 50),
                         Text(
@@ -94,13 +93,12 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                         border: Border.all(color: AppColors.yellow),
                         borderRadius: BorderRadius.circular(5)),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         const SizedBox(width: 30),
                         const Icon(
                           Icons.mail,
                           color: AppColors.yellow,
-                          size: 45.0,
+                          size: 45,
                         ),
                         const SizedBox(width: 50),
                         Text(

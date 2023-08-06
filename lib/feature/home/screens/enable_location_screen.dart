@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:hola_home/core/constants/colors.dart';
-import 'package:hola_home/core/constants/styles.dart';
-import 'package:hola_home/feature/home/screens/home_screen.dart';
+import '../../../core/constants/colors.dart';
+import '../../../core/constants/styles.dart';
+import 'home_screen.dart';
 
 class EnableLocationScreen extends StatelessWidget {
   const EnableLocationScreen({Key? key}) : super(key: key);
@@ -11,7 +11,6 @@ class EnableLocationScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: AppColors.scaffoldWhite,
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const CircleAvatar(
@@ -43,7 +42,7 @@ class EnableLocationScreen extends StatelessWidget {
                   alignment: Alignment.center,
                   height: 55,
                   decoration: BoxDecoration(
-                    border: Border.all(color: AppColors.yellow, width: 2.0),
+                    border: Border.all(color: AppColors.yellow, width: 2),
                     borderRadius: BorderRadius.circular(30),
                     color: AppColors.yellow,
                   ),

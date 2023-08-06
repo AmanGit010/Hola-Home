@@ -1,9 +1,11 @@
+// ignore_for_file: avoid_field_initializers_in_const_classes
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hola_home/core/constants/colors.dart';
-import 'package:hola_home/core/constants/styles.dart';
-import 'package:hola_home/feature/qna/qna_screen.dart';
-import 'package:hola_home/feature/signup_login/screens/login_screen.dart';
+import '../../../core/constants/colors.dart';
+import '../../../core/constants/styles.dart';
+import '../../qna/qna_screen.dart';
+import 'login_screen.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
@@ -123,7 +125,7 @@ class _SignupScreenState extends State<SignupScreen> {
                               return "Password cannot be empty";
                             }
                             if (!_regexPass.hasMatch(value)) {
-                              return ("Enter a valid password (min. 5 char)");
+                              return "Enter a valid password (min. 5 char)";
                             }
                             return null;
                           },
