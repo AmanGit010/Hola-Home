@@ -326,9 +326,10 @@ class _PopularProp extends StatelessWidget {
       // color: Colors.red,
       height: MediaQuery.of(context).size.height * 0.7,
       child: ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
           // scrollDirection: Axis.vertical,
-          itemCount: 5,
+          itemCount: 4,
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),

@@ -35,24 +35,27 @@ class EnableLocationScreen extends StatelessWidget {
                     MaterialPageRoute(
                         builder: (context) => const HomeScreen()));
               },
-              child: Material(
-                elevation: 5,
-                borderRadius: BorderRadius.circular(30),
-                child: Container(
-                  alignment: Alignment.center,
-                  height: 55,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: AppColors.yellow, width: 2),
-                    borderRadius: BorderRadius.circular(30),
-                    color: AppColors.yellow,
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 36),
-                    child: Text(
-                      'Enable Location',
-                      textAlign: TextAlign.center,
-                      style: AppTextStyles.latoBlack20,
-                    ),
+              child: Container(
+                alignment: Alignment.center,
+                height: 55,
+                decoration: BoxDecoration(
+                  boxShadow: const [
+                    BoxShadow(
+                        offset: Offset(0, 1),
+                        // blurRadius: 5,
+                        // spreadRadius: 0,
+                        color: Color(0xff000040)),
+                  ],
+                  border: Border.all(color: AppColors.yellow, width: 2),
+                  borderRadius: BorderRadius.circular(30),
+                  color: AppColors.yellow,
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 36),
+                  child: Text(
+                    'Enable Location',
+                    textAlign: TextAlign.center,
+                    style: AppTextStyles.latoBlack20,
                   ),
                 ),
               ),

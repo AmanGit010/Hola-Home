@@ -38,11 +38,12 @@ class ReviewsScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 21),
               child: SizedBox(
                 // color: Colors.red,
-                height: MediaQuery.of(context).size.height * 0.7,
+                height: MediaQuery.of(context).size.height * 0.9,
                 child: ListView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
                     shrinkWrap: true,
                     // scrollDirection: Axis.vertical,
-                    itemCount: 5,
+                    itemCount: 7,
                     itemBuilder: (context, index) {
                       return const ReviewsWidget();
                     }),
