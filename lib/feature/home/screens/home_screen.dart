@@ -1,9 +1,10 @@
 // ignore_for_file: deprecated_member_use
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/styles.dart';
+import '../store/home_store.dart';
 import 'map_screen.dart';
 import 'nearby_properties_screen.dart';
 import 'popular_properties_screen.dart';
@@ -206,6 +207,7 @@ class _NearbyProp extends StatefulWidget {
 }
 
 class __NearbyPropState extends State<_NearbyProp> {
+  final HomeStore homeStore = HomeStore();
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -249,20 +251,29 @@ class __NearbyPropState extends State<_NearbyProp> {
                         Padding(
                           padding: const EdgeInsets.only(right: 20, top: 15),
                           child: GestureDetector(
-                            // onTap: () => ,
+                            onTap: () =>
+                                homeStore.setFilled(!homeStore.bookmarked),
                             child: Container(
-                                decoration: const BoxDecoration(
-                                  borderRadius:
-                                      BorderRadius.all(Radius.circular(5)),
-                                  color: Colors.white,
+                              decoration: const BoxDecoration(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(5)),
+                                color: Colors.white,
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: Observer(
+                                  builder: (context) {
+                                    return homeStore.bookmarked
+                                        ? SvgPicture.asset(
+                                            'assets/svg/bookmark_filled_icon.svg')
+                                        : SvgPicture.asset(
+                                            'assets/svg/bookmark_icon.svg');
+                                  },
                                 ),
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8),
-                                  child: SvgPicture.asset(
-                                      'assets/svg/bookmark_icon.svg'),
-                                )),
+                              ),
+                            ),
                           ),
-                        )
+                        ),
                       ]),
                       Padding(
                           padding: const EdgeInsets.symmetric(

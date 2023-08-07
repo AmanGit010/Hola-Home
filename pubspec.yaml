@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  calendar_date_picker2: ^0.5.2
   country_code_picker:
     path: packages/country_code_picker
   cupertino_icons: ^1.0.2
