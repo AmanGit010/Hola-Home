@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-
+import 'package:flutter_mobx/flutter_mobx.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/styles.dart';
+import '../store/home_store.dart';
 
-class Quantity extends StatefulWidget {
-  const Quantity({Key? key}) : super(key: key);
+class Quantity extends StatelessWidget {
+  Quantity({Key? key}) : super(key: key);
 
-  @override
-  State<Quantity> createState() => _QuantityState();
-}
-
-class _QuantityState extends State<Quantity> {
-  int value = 0;
+  // int value = 0;
+  final HomeStore homeStore = HomeStore();
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +16,12 @@ class _QuantityState extends State<Quantity> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         GestureDetector(
-          onTap: () => setState(() {
-            if (value > 0) {
-              value--;
-            }
-          }),
+          onTap: homeStore.decre,
           child: Container(
+            padding: const EdgeInsets.all(2),
             decoration: BoxDecoration(
-                color: AppColors.fillColorTFF,
-                borderRadius: BorderRadius.circular(5),
+                color: homeStore.containerColor,
+                borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: AppColors.grey)),
             child: const Icon(Icons.remove, color: AppColors.grey),
           ),
@@ -39,20 +33,20 @@ class _QuantityState extends State<Quantity> {
               color: AppColors.fillColorTFF,
               borderRadius: BorderRadius.circular(15),
               border: Border.all(color: AppColors.grey)),
-          child: Text(
-            "$value",
-            style: AppTextStyles.poppinsBlack20,
-          ),
+          child: Observer(
+              builder: (_) => Text(
+                    '${homeStore.value}',
+                    style: AppTextStyles.poppinsBlack20,
+                  )),
         ),
         const SizedBox(width: 10),
         GestureDetector(
-          onTap: () => setState(() {
-            value++;
-          }),
+          onTap: homeStore.incre,
           child: Container(
+            padding: const EdgeInsets.all(2),
             decoration: BoxDecoration(
-                color: AppColors.fillColorTFF,
-                borderRadius: BorderRadius.circular(5),
+                color: homeStore.containerColor,
+                borderRadius: BorderRadius.circular(10),
                 border: Border.all(color: AppColors.grey)),
             child: const Icon(Icons.add, color: AppColors.grey),
           ),

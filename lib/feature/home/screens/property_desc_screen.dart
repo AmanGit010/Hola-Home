@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/styles.dart';
+import '../store/home_store.dart';
 import '../widgets/box_tile.dart';
 import '../widgets/reviews_widget.dart';
-import 'booking_screen.dart';
+import 'property_booking/availability_screen.dart';
 import 'reviews_screen.dart';
 
 class PropertyDesc extends StatelessWidget {
@@ -48,92 +50,83 @@ class _ImageCarousel extends StatefulWidget {
 class _ImageCarouselState extends State<_ImageCarousel> {
   int _currentPage = 0;
 
+  final HomeStore homeStore = HomeStore();
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return Stack(
       children: [
-        Stack(
-          children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.29,
-              // width: ,
-              child: PageView.builder(
-                  itemCount: 4,
-                  onPageChanged: (index) {
-                    setState(() {
-                      _currentPage = index;
-                    });
-                  },
-                  itemBuilder: (context, index) {
-                    return Image.asset('assets/png/property_desc.png');
-                  }),
-            ),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.275,
-              width: MediaQuery.of(context).size.width * 1.0,
-              alignment: Alignment.bottomCenter,
-              child: PageIndicator(pageCount: 4, currentIndex: _currentPage),
-            ),
-            Wrap(
-              children: [
-                GestureDetector(
-                  onTap: () => Navigator.pop(context),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 17, top: 12),
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.29,
+          // width: ,
+          child: PageView.builder(
+              itemCount: 4,
+              onPageChanged: (index) {
+                setState(() {
+                  _currentPage = index;
+                });
+              },
+              itemBuilder: (context, index) {
+                return Image.asset('assets/png/property_desc.png');
+              }),
+        ),
+        Positioned(
+          bottom: 11,
+          left: 0,
+          right: 0,
+          child: PageIndicator(pageCount: 4, currentIndex: _currentPage),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(top: 12, left: 17, right: 17),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              GestureDetector(
+                onTap: () => Navigator.pop(context),
+                child: Container(
+                    decoration: BoxDecoration(
+                        color: Colors.white.withOpacity(0.85),
+                        borderRadius: BorderRadius.circular(30)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(13),
+                      child: SvgPicture.asset('assets/svg/arrow_back_icon.svg'),
+                    )),
+              ),
+              Wrap(
+                spacing: 10,
+                children: [
+                  GestureDetector(
+                    // onTap: () => ,
                     child: Container(
                         decoration: BoxDecoration(
                             color: Colors.white.withOpacity(0.85),
                             borderRadius: BorderRadius.circular(30)),
                         child: Padding(
                           padding: const EdgeInsets.all(13),
-                          child: SvgPicture.asset(
-                              'assets/svg/arrow_back_icon.svg'),
+                          child: SvgPicture.asset('assets/svg/share_icon.svg'),
                         )),
                   ),
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 280),
-              child: Wrap(
-                spacing: 10,
-                children: [
                   GestureDetector(
-                    onTap: () => Navigator.pop(context),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 12),
-                      child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.85),
-                              borderRadius: BorderRadius.circular(30)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(13),
-                            child:
-                                SvgPicture.asset('assets/svg/share_icon.svg'),
-                          )),
-                    ),
-                  ),
-                  GestureDetector(
-                    onTap: () => Navigator.pop(context),
-                    child: Padding(
-                      padding: const EdgeInsets.only(top: 12, right: 22),
-                      child: Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.85),
-                              borderRadius: BorderRadius.circular(30)),
-                          child: Padding(
-                            padding: const EdgeInsets.all(13),
-                            child: SvgPicture.asset(
-                                'assets/svg/bookmark_icon2.svg'),
-                          )),
-                    ),
+                    onTap: () => homeStore.setFilled(!homeStore.bookmarked),
+                    child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white.withOpacity(0.85),
+                            borderRadius: BorderRadius.circular(30)),
+                        child: Padding(
+                          padding: const EdgeInsets.all(13),
+                          child: Observer(builder: (context) {
+                            return homeStore.bookmarked
+                                ? SvgPicture.asset(
+                                    'assets/svg/bookmark_filled_icon.svg')
+                                : SvgPicture.asset(
+                                    'assets/svg/bookmark_icon.svg');
+                          }),
+                        )),
                   ),
                 ],
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-        const SizedBox(height: 20),
       ],
     );
   }
@@ -209,37 +202,9 @@ class _Details extends StatelessWidget {
           child: Wrap(
             spacing: 26,
             children: [
-              Column(
-                children: [
-                  BoxTile(
-                      image: SvgPicture.asset(
-                          'assets/svg/property_desc/villa_icon.svg')),
-                  Text("Villa",
-                      style:
-                          AppTextStyles.poppinsBlack10.copyWith(fontSize: 15))
-                ],
-              ),
-              // const SizedBox(width: 24),
-              Column(
-                children: [
-                  BoxTile(
-                      image: SvgPicture.asset(
-                          'assets/svg/property_desc/bedroom_icon.svg')),
-                  Text("4 Bedroom",
-                      style:
-                          AppTextStyles.poppinsBlack10.copyWith(fontSize: 15))
-                ],
-              ),
-              // const SizedBox(width: 24),
-              Column(
-                children: [
-                  BoxTile(
-                      image: SvgPicture.asset(
-                          'assets/svg/property_desc/bath_icon.svg')),
-                  Text("5 Baths",
-                      style:
-                          AppTextStyles.poppinsBlack10.copyWith(fontSize: 15))
-                ],
+              BoxTile(
+                image: 'assets/svg/property_desc/villa_icon.svg',
+                text: 'Villa',
               ),
             ],
           ),
@@ -295,7 +260,7 @@ class _Description extends StatelessWidget {
                   showDialog(
                       context: context,
                       builder: (context) {
-                        return const Diaalog();
+                        return const _ContactHostDialog();
                       });
                   // Navigator.push(
                   //   context,
@@ -350,58 +315,13 @@ class _Amenities extends StatelessWidget {
             child: Wrap(
               spacing: 24,
               children: [
-                Column(
-                  children: [
-                    BoxTile(
-                      image: SvgPicture.asset(
-                          'assets/svg/property_desc/parking_icon.svg'),
-                    ),
-                    Text("Parking",
-                        style:
-                            AppTextStyles.poppinsBlack10.copyWith(fontSize: 15))
-                  ],
+                BoxTile(
+                  image: 'assets/svg/property_desc/villa_icon.svg',
+                  text: 'Villa',
                 ),
-                // const SizedBox(width: 24),
-                Column(
-                  children: [
-                    BoxTile(
-                        image: SvgPicture.asset(
-                            'assets/svg/property_desc/wifi_icon.svg')),
-                    Text("Wifi",
-                        style:
-                            AppTextStyles.poppinsBlack10.copyWith(fontSize: 15))
-                  ],
-                ),
-                // const SizedBox(width: 24),
-                Column(
-                  children: [
-                    BoxTile(
-                        image: SvgPicture.asset(
-                            'assets/svg/property_desc/sunset_icon.svg')),
-                    Text("Beach",
-                        style:
-                            AppTextStyles.poppinsBlack10.copyWith(fontSize: 15))
-                  ],
-                ),
-                Column(
-                  children: [
-                    BoxTile(
-                        image: SvgPicture.asset(
-                            'assets/svg/property_desc/swimming_icon.svg')),
-                    Text("Pool",
-                        style:
-                            AppTextStyles.poppinsBlack10.copyWith(fontSize: 15))
-                  ],
-                ),
-                Column(
-                  children: [
-                    BoxTile(
-                        image: SvgPicture.asset(
-                            'assets/svg/property_desc/hot_bath_icon.svg')),
-                    Text("Hot Tub",
-                        style:
-                            AppTextStyles.poppinsBlack10.copyWith(fontSize: 15))
-                  ],
+                BoxTile(
+                  image: 'assets/svg/property_desc/villa_icon.svg',
+                  text: 'Villa',
                 ),
               ],
             ),
@@ -535,7 +455,7 @@ class _BottomNavBar extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => const BookingScreen()),
+                      builder: (context) => const AvailabilityScreen()),
                 );
               },
               child: Material(
@@ -590,82 +510,70 @@ class PageIndicator extends StatelessWidget {
   }
 }
 
-class Diaalog extends StatelessWidget {
-  const Diaalog({Key? key}) : super(key: key);
+class _ContactHostDialog extends StatelessWidget {
+  const _ContactHostDialog({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      child: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(15),
-            ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Align(
+            alignment: Alignment.topRight,
             child: Padding(
-              padding: const EdgeInsets.all(20),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Stack(
-                    alignment: Alignment.topRight,
-                    children: [
-                      IconButton(
-                          onPressed: () => Navigator.pop(context),
-                          icon: const Icon(Icons.cancel_outlined))
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      const CircleAvatar(
-                        radius: 30,
-                        foregroundImage:
-                            AssetImage('assets/png/profile_pic.png'),
-                      ),
-                      const SizedBox(width: 15),
-                      Column(
-                        children: [
-                          RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                    text: 'Name: ',
-                                    style: AppTextStyles.poppinsBlackBold10
-                                        .copyWith(fontSize: 15)),
-                                TextSpan(
-                                    text: 'Charles\n',
-                                    style: AppTextStyles.poppinsBlack10
-                                        .copyWith(fontSize: 15)),
-                                TextSpan(
-                                    text: 'Mobile Number: ',
-                                    style: AppTextStyles.poppinsBlackBold10
-                                        .copyWith(fontSize: 15)),
-                                TextSpan(
-                                    text: '+91 89xxxxxx90\n',
-                                    style: AppTextStyles.poppinsBlack10
-                                        .copyWith(fontSize: 15)),
-                                TextSpan(
-                                    text: 'Email: ',
-                                    style: AppTextStyles.poppinsBlackBold10
-                                        .copyWith(fontSize: 15)),
-                                TextSpan(
-                                    text: 'charlesma@gmail.com',
-                                    style: AppTextStyles.poppinsBlack10
-                                        .copyWith(fontSize: 15)),
-                              ],
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ],
-              ),
+              padding: const EdgeInsets.only(right: 16),
+              child: GestureDetector(
+                  onTap: () => Navigator.pop(context),
+                  child: Icon(Icons.highlight_remove_rounded)),
             ),
           ),
-        ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const CircleAvatar(
+                radius: 30,
+                foregroundImage: AssetImage('assets/png/profile_pic.png'),
+              ),
+              const SizedBox(width: 15),
+              Column(
+                children: [
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                            text: 'Name: ',
+                            style: AppTextStyles.poppinsBlackBold10
+                                .copyWith(fontSize: 15)),
+                        TextSpan(
+                            text: 'Charles\n',
+                            style: AppTextStyles.poppinsBlack10
+                                .copyWith(fontSize: 15)),
+                        TextSpan(
+                            text: 'Mobile Number: ',
+                            style: AppTextStyles.poppinsBlackBold10
+                                .copyWith(fontSize: 15)),
+                        TextSpan(
+                            text: '+91 89xxxxxx90\n',
+                            style: AppTextStyles.poppinsBlack10
+                                .copyWith(fontSize: 15)),
+                        TextSpan(
+                            text: 'Email: ',
+                            style: AppTextStyles.poppinsBlackBold10
+                                .copyWith(fontSize: 15)),
+                        TextSpan(
+                            text: 'charlesma@gmail.com',
+                            style: AppTextStyles.poppinsBlack10
+                                .copyWith(fontSize: 15)),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 30)
+                ],
+              )
+            ],
+          ),
+        ],
       ),
     );
     // AlertDialog(
