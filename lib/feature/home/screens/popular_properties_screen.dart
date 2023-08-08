@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/styles.dart';
+import '../store/home_store.dart';
 
 class PopularPropertiesScreen extends StatelessWidget {
   const PopularPropertiesScreen({Key? key}) : super(key: key);
@@ -37,16 +38,16 @@ class PopularPropertiesScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            const _PropContainer(),
-            const SizedBox(height: 20),
-            const _PropContainer(),
-            const SizedBox(height: 20),
-            const _PropContainer(),
-            const SizedBox(height: 20),
-            const _PropContainer(),
-            const SizedBox(height: 20),
-            const _PropContainer(),
-            const SizedBox(height: 40),
+            SizedBox(
+              // color: Colors.red,
+              height: MediaQuery.of(context).size.height * 0.85,
+              child: ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: 5,
+                  itemBuilder: (context, index) {
+                    return const _PropContainer();
+                  }),
+            ),
           ],
         ),
       ]),
@@ -59,6 +60,7 @@ class _PropContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final HomeStore homeStore = HomeStore();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Container(
@@ -88,18 +90,29 @@ class _PropContainer extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(right: 20, top: 15),
                 child: GestureDetector(
-                  // onTap: () => ,
+                  onTap: () => homeStore.setFilled(!homeStore.bookmarked),
                   child: Container(
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(5)),
-                        color: Colors.white,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                      color: Colors.white,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(5),
+                      child: Observer(
+                        builder: (context) {
+                          return homeStore.bookmarked
+                              ? const Icon(Icons.bookmark_rounded)
+                              //  SvgPicture.asset(
+                              //     'assets/svg/bookmark_filled_icon.svg')
+                              : const Icon(Icons.bookmark_border_rounded);
+                          //  SvgPicture.asset(
+                          //     'assets/svg/bookmark_icon.svg');
+                        },
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8),
-                        child: SvgPicture.asset('assets/svg/bookmark_icon.svg'),
-                      )),
+                    ),
+                  ),
                 ),
-              )
+              ),
             ]),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
