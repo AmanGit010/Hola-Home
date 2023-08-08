@@ -6,7 +6,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../../core/constants/colors.dart';
 import '../../../../core/constants/styles.dart';
-import '../../store/home_store.dart';
+import '../store/home_store.dart';
 import 'confirm_and_pay_screen.dart';
 
 class ReservationScreen extends StatefulWidget {
@@ -30,7 +30,7 @@ class _ReservationScreenState extends State<ReservationScreen> {
         actions: [
           GestureDetector(
             onTap: () => Navigator.pop(context),
-            child: Padding(
+            child: const Padding(
               padding: EdgeInsets.only(right: 20),
               child: Text("Cancel", style: AppTextStyles.poppinsBlack20),
             ),
@@ -232,7 +232,6 @@ class _Details extends StatelessWidget {
                       style: AppTextStyles.poppinsBlackBold20
                           .copyWith(color: AppColors.grey),
                     ),
-                    // SvgPicture.asset('assets/svg/calendar_icon.svg')
                     const Icon(Icons.calendar_month_outlined,
                         color: AppColors.grey),
                   ],
@@ -281,24 +280,26 @@ class _Details extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) => const ConfirmAndPayScreen())),
-              child: Material(
-                elevation: 4,
-                borderRadius: BorderRadius.circular(30),
-                child: Container(
-                  alignment: Alignment.center,
-                  height: 55,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: AppColors.yellow, width: 2),
-                    borderRadius: BorderRadius.circular(30),
-                    color: AppColors.yellow,
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 46),
-                    child: Text(
-                      'Continue',
-                      textAlign: TextAlign.center,
-                      style: AppTextStyles.poppinsBlackBold20,
-                    ),
+              child: Container(
+                alignment: Alignment.center,
+                height: 55,
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                        offset: const Offset(0, 4),
+                        blurRadius: 5,
+                        color: Colors.black.withOpacity(0.25))
+                  ],
+                  border: Border.all(color: AppColors.yellow, width: 2),
+                  borderRadius: BorderRadius.circular(30),
+                  color: AppColors.yellow,
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 46),
+                  child: Text(
+                    'Continue',
+                    textAlign: TextAlign.center,
+                    style: AppTextStyles.poppinsBlackBold20,
                   ),
                 ),
               ),

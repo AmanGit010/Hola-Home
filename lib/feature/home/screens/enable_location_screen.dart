@@ -39,12 +39,11 @@ class EnableLocationScreen extends StatelessWidget {
                 alignment: Alignment.center,
                 height: 55,
                 decoration: BoxDecoration(
-                  boxShadow: const [
+                  boxShadow: [
                     BoxShadow(
-                        offset: Offset(0, 1),
-                        // blurRadius: 5,
-                        // spreadRadius: 0,
-                        color: Color(0xff000040)),
+                        offset: const Offset(0, 4),
+                        blurRadius: 5,
+                        color: Colors.black.withOpacity(0.25)),
                   ],
                   border: Border.all(color: AppColors.yellow, width: 2),
                   borderRadius: BorderRadius.circular(30),

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/styles.dart';
+import '../store/home_store.dart';
 import 'no_result_screen.dart';
 import 'property_desc_screen.dart';
 
@@ -31,17 +33,20 @@ class SearchResult extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                       builder: (context) => const NoResultScreen())),
-              child: Material(
-                elevation: 4,
-                borderRadius: BorderRadius.circular(10),
-                child: Container(
-                  decoration: BoxDecoration(
-                      border: Border.all(color: AppColors.grey),
-                      borderRadius: BorderRadius.circular(10)),
-                  child: Padding(
-                    padding: const EdgeInsets.all(10),
-                    child: SvgPicture.asset('assets/svg/filter_icon.svg'),
-                  ),
+              child: Container(
+                decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                          offset: const Offset(0, 4),
+                          blurRadius: 5,
+                          color: Colors.black.withOpacity(0.25))
+                    ],
+                    color: Colors.white,
+                    border: Border.all(color: AppColors.grey),
+                    borderRadius: BorderRadius.circular(10)),
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: SvgPicture.asset('assets/svg/filter_icon.svg'),
                 ),
               ),
             ),
@@ -78,6 +83,7 @@ class _Result extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final HomeStore homeStore = HomeStore();
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.85,
       child: ListView.builder(
@@ -120,20 +126,32 @@ class _Result extends StatelessWidget {
                               padding:
                                   const EdgeInsets.only(right: 20, top: 15),
                               child: GestureDetector(
-                                // onTap: () => ,
+                                onTap: () =>
+                                    homeStore.setFilled(!homeStore.bookmarked),
                                 child: Container(
-                                    decoration: const BoxDecoration(
-                                      borderRadius:
-                                          BorderRadius.all(Radius.circular(5)),
-                                      color: Colors.white,
+                                  decoration: const BoxDecoration(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(5)),
+                                    color: Colors.white,
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(5),
+                                    child: Observer(
+                                      builder: (context) {
+                                        return homeStore.bookmarked
+                                            ? const Icon(Icons.bookmark_rounded)
+                                            //  SvgPicture.asset(
+                                            //     'assets/svg/bookmark_filled_icon.svg')
+                                            : const Icon(
+                                                Icons.bookmark_border_rounded);
+                                        //  SvgPicture.asset(
+                                        //     'assets/svg/bookmark_icon.svg');
+                                      },
                                     ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(8),
-                                      child: SvgPicture.asset(
-                                          'assets/svg/bookmark_icon.svg'),
-                                    )),
+                                  ),
+                                ),
                               ),
-                            )
+                            ),
                           ]),
                           Padding(
                             padding: const EdgeInsets.symmetric(

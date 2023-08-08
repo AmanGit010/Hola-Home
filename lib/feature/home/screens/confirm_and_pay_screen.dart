@@ -190,7 +190,7 @@ class ConfirmAndPayScreen extends StatelessWidget {
                   decoration: BoxDecoration(
                     boxShadow: [
                       BoxShadow(
-                          offset: Offset(0, 4),
+                          offset: const Offset(0, 4),
                           blurRadius: 5,
                           color: Colors.black.withOpacity(0.25))
                     ],
@@ -198,7 +198,7 @@ class ConfirmAndPayScreen extends StatelessWidget {
                     borderRadius: BorderRadius.circular(30),
                     color: AppColors.yellow,
                   ),
-                  child: Center(
+                  child: const Center(
                     child: Text(
                       'Confirm and Pay',
                       textAlign: TextAlign.center,

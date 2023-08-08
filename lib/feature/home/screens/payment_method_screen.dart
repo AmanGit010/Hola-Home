@@ -11,8 +11,6 @@ class PaymentMethodScreen extends StatefulWidget {
 }
 
 class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
-  int? _selectedValue;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -85,24 +83,26 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                     context,
                     MaterialPageRoute(
                         builder: (context) => const PaymentMethodScreen())),
-                child: Material(
-                  elevation: 4,
-                  borderRadius: BorderRadius.circular(30),
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: 55,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: AppColors.yellow, width: 2),
-                      borderRadius: BorderRadius.circular(30),
-                      color: AppColors.yellow,
-                    ),
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 46),
-                      child: Text(
-                        'Confirm and Pay',
-                        textAlign: TextAlign.center,
-                        style: AppTextStyles.poppinsBlackBold20,
-                      ),
+                child: Container(
+                  alignment: Alignment.center,
+                  height: 55,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                          offset: const Offset(0, 4),
+                          blurRadius: 5,
+                          color: Colors.black.withOpacity(0.25))
+                    ],
+                    border: Border.all(color: AppColors.yellow, width: 2),
+                    borderRadius: BorderRadius.circular(30),
+                    color: AppColors.yellow,
+                  ),
+                  child: const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 46),
+                    child: Text(
+                      'Confirm and Pay',
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.poppinsBlackBold20,
                     ),
                   ),
                 ),

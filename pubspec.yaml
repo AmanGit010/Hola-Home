@@ -35,7 +35,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/svg/
-    - assets/svg/property_desc/
+    - assets/svg/property_description/
     - assets/png/
     - assets/png/flags_for_language/
 
@@ -43,10 +43,14 @@ flutter:
     - family: Poppins
       fonts:
         - asset: assets/fonts/Poppins-Regular.ttf
+
     - family: Lato
       fonts:
         - asset: assets/fonts/Lato-Regular.ttf
           # style: italic
 
+    - family: HolaHome
+      fonts:
+        - asset: assets/hola_home_icons/HolaHome.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
