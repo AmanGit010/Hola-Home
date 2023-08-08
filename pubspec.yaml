@@ -38,6 +38,7 @@ flutter:
     - assets/svg/property_description/
     - assets/png/
     - assets/png/flags_for_language/
+    - assets/png/payment/
 
   fonts:
     - family: Poppins

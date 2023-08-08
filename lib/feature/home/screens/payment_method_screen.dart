@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/constants/colors.dart';
 import '../../../../core/constants/styles.dart';
+import 'payment_successful_screen.dart';
 
 class PaymentMethodScreen extends StatefulWidget {
   const PaymentMethodScreen({Key? key}) : super(key: key);
@@ -82,7 +83,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                 onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const PaymentMethodScreen())),
+                        builder: (context) => const PaymentSuccessfulScreen())),
                 child: Container(
                   alignment: Alignment.center,
                   height: 55,
@@ -100,7 +101,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                   child: const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 46),
                     child: Text(
-                      'Confirm and Pay',
+                      'Continue',
                       textAlign: TextAlign.center,
                       style: AppTextStyles.poppinsBlackBold20,
                     ),
