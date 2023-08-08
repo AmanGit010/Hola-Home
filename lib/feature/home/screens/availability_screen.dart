@@ -1,9 +1,8 @@
-import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/material.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../core/constants/styles.dart';
-import '../../store/home_store.dart';
-import '../../widgets/quantity.dart';
+import '../store/home_store.dart';
+import '../widgets/quantity.dart';
 import 'reservation_screen.dart';
 
 class AvailabilityScreen extends StatefulWidget {
@@ -80,7 +79,6 @@ class _AvailabilityScreenState extends State<AvailabilityScreen> {
                           style: AppTextStyles.poppinsBlackBold20
                               .copyWith(color: AppColors.grey),
                         ),
-                        // SvgPicture.asset('assets/svg/calendar_icon.svg')
                         const Icon(Icons.calendar_month_outlined,
                             color: AppColors.grey),
                       ],
@@ -108,7 +106,6 @@ class _AvailabilityScreenState extends State<AvailabilityScreen> {
                           style: AppTextStyles.poppinsBlackBold20
                               .copyWith(color: AppColors.grey),
                         ),
-                        // SvgPicture.asset('assets/svg/calendar_icon.svg')
                         const Icon(Icons.keyboard_arrow_down_rounded,
                             color: AppColors.grey),
                       ],
@@ -130,10 +127,7 @@ class _AvailabilityScreenState extends State<AvailabilityScreen> {
               const SizedBox(height: 15),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Quantity(),
-                  Quantity(),
-                ],
+                children: [Quantity(), Quantity()],
               ),
               const SizedBox(height: 330),
               Padding(

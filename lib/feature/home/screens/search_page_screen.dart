@@ -95,22 +95,24 @@ class SearchPage extends StatelessWidget {
                             builder: (context) => const SearchResult()),
                       );
                     },
-                    child: Material(
-                      elevation: 4,
-                      borderRadius: BorderRadius.circular(30),
-                      child: Container(
-                        alignment: Alignment.center,
-                        height: 55,
-                        decoration: BoxDecoration(
-                          color: AppColors.yellow,
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.all(10),
-                          child: Text("Search",
-                              textAlign: TextAlign.center,
-                              style: AppTextStyles.poppinsBlackBold20),
-                        ),
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 55,
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                              offset: Offset(0, 4),
+                              blurRadius: 5,
+                              color: Colors.black.withOpacity(0.25))
+                        ],
+                        color: AppColors.yellow,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Text("Search",
+                            textAlign: TextAlign.center,
+                            style: AppTextStyles.poppinsBlackBold20),
                       ),
                     ),
                   ),

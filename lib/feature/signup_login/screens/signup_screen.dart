@@ -147,22 +147,24 @@ class _SignupScreenState extends State<SignupScreen> {
                         );
                       }
                     },
-                    child: Material(
-                      elevation: 4,
-                      borderRadius: BorderRadius.circular(30),
-                      child: Container(
-                        alignment: Alignment.center,
-                        height: 55,
-                        decoration: BoxDecoration(
-                          color: AppColors.yellow,
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: const Padding(
-                          padding: EdgeInsets.all(10),
-                          child: Text("Sign Up",
-                              textAlign: TextAlign.center,
-                              style: AppTextStyles.poppinsBlackBold20),
-                        ),
+                    child: Container(
+                      alignment: Alignment.center,
+                      height: 55,
+                      decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                              offset: Offset(0, 4),
+                              blurRadius: 5,
+                              color: Colors.black.withOpacity(0.25))
+                        ],
+                        color: AppColors.yellow,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: const Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Text("Sign Up",
+                            textAlign: TextAlign.center,
+                            style: AppTextStyles.poppinsBlackBold20),
                       ),
                     ),
                   ),
@@ -178,8 +180,8 @@ class _SignupScreenState extends State<SignupScreen> {
 class _SignupScreenContinued extends StatelessWidget {
   const _SignupScreenContinued({Key? key}) : super(key: key);
 
-  final String appleLogo = 'assets/svg/apple_logo.svg';
-  final String googleLogo = 'assets/svg/google_logo.svg';
+  final String appleLogo = 'assets/svg/company_logo/apple_logo.svg';
+  final String googleLogo = 'assets/svg/company_logo/google_logo.svg';
   @override
   Widget build(BuildContext context) {
     return Column(

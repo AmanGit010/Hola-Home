@@ -4,6 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/styles.dart';
+import '../../../core/icons/hola_home_icons.dart';
 import '../store/home_store.dart';
 import 'map_screen.dart';
 import 'nearby_properties_screen.dart';
@@ -164,33 +165,37 @@ class _NavBarState extends State<NavBar> {
         unselectedItemColor: AppColors.grey,
         showUnselectedLabels: true,
         selectedIconTheme: const IconThemeData(color: AppColors.yellow),
-        items: [
+        items: const [
           BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/svg/home_icon.svg',
-              color: _currentIndex == 0 ? AppColors.yellow : AppColors.grey,
-            ),
+            icon: Icon(HolaHome.home),
+            // SvgPicture.asset(
+            //   'assets/svg/home_icon.svg',
+            //   color: _currentIndex == 0 ? AppColors.yellow : AppColors.grey,
+            // ),
             label: "Home",
           ),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/svg/bookmark_navbar_icon.svg',
-              color: _currentIndex == 1 ? AppColors.yellow : AppColors.grey,
-            ),
+            icon: Icon(HolaHome.bookmark),
+            // SvgPicture.asset(
+            //   'assets/svg/bookmark_navbar_icon.svg',
+            //   color: _currentIndex == 1 ? AppColors.yellow : AppColors.grey,
+            // ),
             label: "Bookmark",
           ),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/svg/bookings_icon.svg',
-              color: _currentIndex == 2 ? AppColors.yellow : AppColors.grey,
-            ),
+            icon: Icon(HolaHome.bookings),
+            // icon: SvgPicture.asset(
+            //   'assets/svg/bookings_icon.svg',
+            //   color: _currentIndex == 2 ? AppColors.yellow : AppColors.grey,
+            // ),
             label: "Bookings",
           ),
           BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/svg/profile_icon.svg',
-              color: _currentIndex == 3 ? AppColors.yellow : AppColors.grey,
-            ),
+            icon: Icon(HolaHome.profile),
+            // icon: SvgPicture.asset(
+            //   'assets/svg/profile_icon.svg',
+            //   color: _currentIndex == 3 ? AppColors.yellow : AppColors.grey,
+            // ),
             label: "Profile",
           ),
         ],
@@ -260,14 +265,17 @@ class __NearbyPropState extends State<_NearbyProp> {
                                 color: Colors.white,
                               ),
                               child: Padding(
-                                padding: const EdgeInsets.all(10),
+                                padding: const EdgeInsets.all(5),
                                 child: Observer(
                                   builder: (context) {
                                     return homeStore.bookmarked
-                                        ? SvgPicture.asset(
-                                            'assets/svg/bookmark_filled_icon.svg')
-                                        : SvgPicture.asset(
-                                            'assets/svg/bookmark_icon.svg');
+                                        ? const Icon(Icons.bookmark_rounded)
+                                        //  SvgPicture.asset(
+                                        //     'assets/svg/bookmark_filled_icon.svg')
+                                        : const Icon(
+                                            Icons.bookmark_border_rounded);
+                                    //  SvgPicture.asset(
+                                    //     'assets/svg/bookmark_icon.svg');
                                   },
                                 ),
                               ),

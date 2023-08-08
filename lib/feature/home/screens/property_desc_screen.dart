@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/styles.dart';
 import '../store/home_store.dart';
 import '../widgets/box_tile.dart';
 import '../widgets/reviews_widget.dart';
-import 'property_booking/availability_screen.dart';
+import 'availability_screen.dart';
 import 'reviews_screen.dart';
 
 class PropertyDesc extends StatelessWidget {
@@ -86,9 +85,9 @@ class _ImageCarouselState extends State<_ImageCarousel> {
                     decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.85),
                         borderRadius: BorderRadius.circular(30)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(13),
-                      child: SvgPicture.asset('assets/svg/arrow_back_icon.svg'),
+                    child: const Padding(
+                      padding: EdgeInsets.all(13),
+                      child: Icon(Icons.arrow_back),
                     )),
               ),
               Wrap(
@@ -100,9 +99,10 @@ class _ImageCarouselState extends State<_ImageCarousel> {
                         decoration: BoxDecoration(
                             color: Colors.white.withOpacity(0.85),
                             borderRadius: BorderRadius.circular(30)),
-                        child: Padding(
-                          padding: const EdgeInsets.all(13),
-                          child: SvgPicture.asset('assets/svg/share_icon.svg'),
+                        child: const Padding(
+                          padding: EdgeInsets.all(13),
+                          // child: SvgPicture.asset('assets/svg/share_icon.svg'),
+                          child: Icon(Icons.ios_share_rounded),
                         )),
                   ),
                   GestureDetector(
@@ -115,10 +115,8 @@ class _ImageCarouselState extends State<_ImageCarousel> {
                           padding: const EdgeInsets.all(13),
                           child: Observer(builder: (context) {
                             return homeStore.bookmarked
-                                ? SvgPicture.asset(
-                                    'assets/svg/bookmark_filled_icon.svg')
-                                : SvgPicture.asset(
-                                    'assets/svg/bookmark_icon.svg');
+                                ? const Icon(Icons.bookmark_rounded)
+                                : const Icon(Icons.bookmark_border_rounded);
                           }),
                         )),
                   ),
@@ -139,6 +137,7 @@ class _Title extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Column(
       children: [
+        SizedBox(height: 15),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -186,32 +185,35 @@ class _Details extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
+        Padding(
           padding: EdgeInsets.only(left: 22),
           child: Text(
             "Details",
             style: AppTextStyles.poppinsBlackBold20,
           ),
         ),
-        const SizedBox(height: 20),
+        SizedBox(height: 20),
         Padding(
-          padding: const EdgeInsets.only(left: 25),
+          padding: EdgeInsets.only(left: 25),
           child: Wrap(
             spacing: 26,
             children: [
               BoxTile(
-                image: 'assets/svg/property_desc/villa_icon.svg',
+                image: 'assets/svg/property_description/villa_icon.svg',
                 text: 'Villa',
               ),
+              BoxTile(
+                  image: 'assets/svg/property_description/bedroom_icon.svg',
+                  text: '4 Bedroom')
             ],
           ),
         ),
-        const SizedBox(height: 15),
-        const Divider(),
-        const SizedBox(height: 20),
+        SizedBox(height: 15),
+        Divider(),
+        SizedBox(height: 20),
       ],
     );
   }
@@ -267,23 +269,25 @@ class _Description extends StatelessWidget {
                   //   MaterialPageRoute(builder: (context) => const _BKF()),
                   // );
                 },
-                child: Material(
-                  elevation: 4,
-                  borderRadius: BorderRadius.circular(10),
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: 55,
-                    decoration: BoxDecoration(
-                      color: AppColors.yellow,
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Text("Contact Host",
-                          textAlign: TextAlign.center,
-                          style: AppTextStyles.poppinsBlack10
-                              .copyWith(fontSize: 15)),
-                    ),
+                child: Container(
+                  alignment: Alignment.center,
+                  height: 55,
+                  decoration: BoxDecoration(
+                    boxShadow: [
+                      BoxShadow(
+                          offset: Offset(0, 4),
+                          blurRadius: 5,
+                          color: Colors.black.withOpacity(0.25))
+                    ],
+                    color: AppColors.yellow,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Text("Contact Host",
+                        textAlign: TextAlign.center,
+                        style: AppTextStyles.poppinsBlack10
+                            .copyWith(fontSize: 15)),
                   ),
                 ),
               ),
@@ -303,32 +307,44 @@ class _Amenities extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text("Amenities", style: AppTextStyles.poppinsBlackBold20),
-          const SizedBox(height: 20),
+          Text("Amenities", style: AppTextStyles.poppinsBlackBold20),
+          SizedBox(height: 20),
           Padding(
-            padding: const EdgeInsets.only(left: 5),
+            padding: EdgeInsets.only(left: 5),
             child: Wrap(
               spacing: 24,
               children: [
                 BoxTile(
-                  image: 'assets/svg/property_desc/villa_icon.svg',
-                  text: 'Villa',
+                  image: 'assets/svg/property_description/parking_icon.svg',
+                  text: 'Parking',
                 ),
                 BoxTile(
-                  image: 'assets/svg/property_desc/villa_icon.svg',
-                  text: 'Villa',
+                  image: 'assets/svg/property_description/wifi_icon.svg',
+                  text: 'Wifi',
+                ),
+                BoxTile(
+                  image: 'assets/svg/property_description/sunset_icon.svg',
+                  text: 'Beach',
+                ),
+                BoxTile(
+                  image: 'assets/svg/property_description/swimming_icon.svg',
+                  text: 'Pool',
+                ),
+                BoxTile(
+                  image: 'assets/svg/property_description/hot_tub_icon.svg',
+                  text: 'Hot Tub',
                 ),
               ],
             ),
           ),
-          const SizedBox(height: 10),
-          const Divider(),
-          const SizedBox(height: 20),
+          SizedBox(height: 10),
+          Divider(),
+          SizedBox(height: 20),
         ],
       ),
     );
@@ -458,22 +474,24 @@ class _BottomNavBar extends StatelessWidget {
                       builder: (context) => const AvailabilityScreen()),
                 );
               },
-              child: Material(
-                elevation: 4,
-                borderRadius: BorderRadius.circular(10),
-                child: Container(
-                  alignment: Alignment.center,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color: AppColors.yellow,
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 60),
-                    child: Text("Book now",
-                        textAlign: TextAlign.center,
-                        style: AppTextStyles.poppinsBlackBold20),
-                  ),
+              child: Container(
+                alignment: Alignment.center,
+                height: 60,
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                        offset: Offset(0, 4),
+                        blurRadius: 5,
+                        color: Colors.black.withOpacity(0.25))
+                  ],
+                  color: AppColors.yellow,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 60),
+                  child: Text("Book now",
+                      textAlign: TextAlign.center,
+                      style: AppTextStyles.poppinsBlackBold20),
                 ),
               ),
             ),
@@ -525,7 +543,7 @@ class _ContactHostDialog extends StatelessWidget {
               padding: const EdgeInsets.only(right: 16),
               child: GestureDetector(
                   onTap: () => Navigator.pop(context),
-                  child: Icon(Icons.highlight_remove_rounded)),
+                  child: const Icon(Icons.highlight_remove_rounded)),
             ),
           ),
           Row(
