@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
 import '../../../core/constants/styles.dart';
+import '../../widgets/appbar_widget.dart';
 
 class BookingCompletionScreen extends StatelessWidget {
   const BookingCompletionScreen({Key? key}) : super(key: key);
@@ -9,12 +9,8 @@ class BookingCompletionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: GestureDetector(
-          onTap: () => Navigator.pop(context),
-          child: const Icon(Icons.arrow_back),
-        ),
-        title: const Text("Booking", style: AppTextStyles.poppinsBlackBold25),
+      appBar: const AppBarWidget(
+        title: 'Booking',
       ),
       body: Stack(
         alignment: Alignment.topCenter,
@@ -35,14 +31,14 @@ class BookingCompletionScreen extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: const BorderRadius.all(Radius.circular(10)),
                     child: Image.asset(
-                      'assets/png/property_desc.png',
+                      'assets/png/property/property_desc.png',
                     ),
                   ),
                 ),
               ],
             ),
           ),
-          Column(
+          const Column(
             children: [],
           )
         ],

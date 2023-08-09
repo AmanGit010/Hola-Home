@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/constants/colors.dart';
 import '../../../../core/constants/styles.dart';
+import '../../widgets/appbar_widget.dart';
 import 'payment_method_screen.dart';
 
 class ConfirmAndPayScreen extends StatelessWidget {
@@ -10,14 +11,8 @@ class ConfirmAndPayScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: const Icon(Icons.arrow_back),
-        ),
-        title: Text("Confirm and pay",
-            style: AppTextStyles.poppinsBlackBold20.copyWith(fontSize: 25)),
+      appBar: AppBarWidget(
+        title: 'Confirm and pay',
         actions: [
           GestureDetector(
             onTap: () => Navigator.pop(context),
@@ -37,7 +32,7 @@ class ConfirmAndPayScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
                 children: [
-                  Image.asset('assets/png/confirm_and_pay.png'),
+                  Image.asset('assets/png/property/confirm_and_pay.png'),
                   const SizedBox(width: 20),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

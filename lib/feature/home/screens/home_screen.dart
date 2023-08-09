@@ -261,7 +261,7 @@ class _NearbyPropContainer extends StatelessWidget {
                     borderRadius: const BorderRadius.only(
                         topLeft: Radius.circular(20),
                         topRight: Radius.circular(20)),
-                    child: Image.asset('assets/png/property.png')),
+                    child: Image.asset('assets/png/property/property.png')),
                 Padding(
                   padding: const EdgeInsets.only(right: 20, top: 15),
                   child: GestureDetector(
@@ -377,8 +377,8 @@ class _PopularProp extends StatelessWidget {
                       child: ClipRRect(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(5)),
-                          child:
-                              Image.asset('assets/png/popular_property.png')),
+                          child: Image.asset(
+                              'assets/png/property/popular_property.png')),
                     ),
                     const SizedBox(width: 5),
                     Column(

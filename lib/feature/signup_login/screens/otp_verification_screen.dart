@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../core/constants/styles.dart';
+import '../../widgets/appbar_widget.dart';
 
 class OtpVerificationScreen extends StatefulWidget {
   const OtpVerificationScreen({Key? key}) : super(key: key);
@@ -15,20 +16,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.arrow_back,
-              color: Colors.black,
-            )),
-        title: Text(
-          'Forgot password',
-          style: AppTextStyles.poppinsBlackBold20.copyWith(fontSize: 25),
-        ),
-      ),
+      appBar: const AppBarWidget(title: 'Forgot Password'),
       body: SafeArea(
         child: Column(
           children: [

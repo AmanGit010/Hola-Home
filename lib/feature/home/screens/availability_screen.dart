@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../../core/constants/colors.dart';
 import '../../../../core/constants/styles.dart';
+import '../../widgets/appbar_widget.dart';
 import '../store/home_store.dart';
 import '../widgets/quantity.dart';
 import 'reservation_screen.dart';
@@ -19,14 +20,8 @@ class _AvailabilityScreenState extends State<AvailabilityScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text("Availability",
-            style: AppTextStyles.poppinsBlackBold20.copyWith(fontSize: 25)),
+      appBar: const AppBarWidget(
+        title: 'Availability',
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -145,7 +140,7 @@ class _AvailabilityScreenState extends State<AvailabilityScreen> {
                     decoration: BoxDecoration(
                       boxShadow: [
                         BoxShadow(
-                            offset: Offset(0, 4),
+                            offset: const Offset(0, 4),
                             blurRadius: 5,
                             color: Colors.black.withOpacity(0.25))
                       ],

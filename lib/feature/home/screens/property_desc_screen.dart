@@ -65,7 +65,7 @@ class _ImageCarouselState extends State<_ImageCarousel> {
                 });
               },
               itemBuilder: (context, index) {
-                return Image.asset('assets/png/property_desc.png');
+                return Image.asset('assets/png/property/property_desc.png');
               }),
         ),
         Positioned(

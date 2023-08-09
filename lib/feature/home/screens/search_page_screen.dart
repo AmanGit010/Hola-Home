@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/styles.dart';
+import '../../widgets/appbar_widget.dart';
 import 'search_result_screen.dart';
 
 class SearchPage extends StatelessWidget {
@@ -10,18 +11,7 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-            onPressed: () => Navigator.pop(context),
-            icon: const Icon(
-              Icons.arrow_back,
-              color: AppColors.black,
-            )),
-        title: Text(
-          "Search",
-          style: AppTextStyles.poppinsBlackBold20.copyWith(fontSize: 25),
-        ),
-      ),
+      appBar: const AppBarWidget(title: 'Search'),
       body: SafeArea(
         child: ListView(
           children: [

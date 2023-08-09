@@ -5,6 +5,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import '../../core/constants/colors.dart';
 import '../../core/constants/styles.dart';
 import '../language_selection/language_selection_screen.dart';
+import '../widgets/appbar_widget.dart';
 
 class QnAScreen extends StatefulWidget {
   const QnAScreen({Key? key}) : super(key: key);
@@ -24,20 +25,7 @@ class _QnAScreenState extends State<QnAScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.arrow_back,
-              color: AppColors.black,
-            )),
-        title: Text(
-          "Fill Your Profile",
-          style: AppTextStyles.poppinsBlackBold20.copyWith(fontSize: 25),
-        ),
-      ),
+      appBar: const AppBarWidget(title: 'Fill Your Profile'),
       body: ListView(
         children: [
           Column(

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/styles.dart';
-import 'booking_completion_screen.dart';
+import '../../home/screens/booking_completion_screen.dart';
 import 'payment_error_screen.dart';
 
 class PaymentSuccessfulScreen extends StatelessWidget {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../core/constants/colors.dart';
-import '../../../core/constants/styles.dart';
+import '../../widgets/appbar_widget.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -12,22 +11,9 @@ class MapScreen extends StatefulWidget {
 class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Map",
-          style: AppTextStyles.poppinsBlackBold20.copyWith(fontSize: 25),
-        ),
-        leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: const Icon(
-              Icons.arrow_back,
-              color: AppColors.black,
-            )),
-      ),
-      body: const Column(
+    return const Scaffold(
+      appBar: AppBarWidget(title: 'Map'),
+      body: Column(
         children: [Text("Google maps comes here")],
       ),
     );
