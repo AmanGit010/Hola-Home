@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:rating_summary/rating_summary.dart';
 
 import '../../../core/constants/styles.dart';
+import '../../widgets/appbar_widget.dart';
 import '../widgets/reviews_widget.dart';
 
 class ReviewsScreen extends StatelessWidget {
@@ -10,13 +11,7 @@ class ReviewsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Reviews",
-            style: AppTextStyles.poppinsBlackBold20.copyWith(fontSize: 25)),
-        leading: IconButton(
-            onPressed: () => Navigator.pop(context),
-            icon: const Icon(Icons.arrow_back)),
-      ),
+      appBar: const AppBarWidget(title: 'Reviews'),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(children: [

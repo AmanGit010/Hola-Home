@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/styles.dart';
 import '../../qna/qna_screen.dart';
+import '../../widgets/appbar_widget.dart';
 import 'forgot_password_screen.dart';
 import 'signup_screen.dart';
 
@@ -31,16 +32,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const Icon(
-                Icons.arrow_back,
-                color: AppColors.black,
-              )),
-        ),
+        appBar: const AppBarWidget(title: ''),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(

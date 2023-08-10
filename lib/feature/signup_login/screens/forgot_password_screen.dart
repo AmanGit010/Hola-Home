@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/styles.dart';
+import '../../widgets/appbar_widget.dart';
+import 'otp_verification_screen.dart';
 // import 'package:hola_home/feature/signup_login_screen/forgot_password_screen/screens/otp_verification_screen.dart';
 
 class ForgotPasswordScreen extends StatefulWidget {
@@ -18,14 +20,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: const Text('Forgot password'),
-        titleTextStyle: AppTextStyles.poppinsBlackBold20.copyWith(fontSize: 25),
-      ),
+      appBar: const AppBarWidget(title: 'Forgot Password'),
       body: SafeArea(
         child: ListView(
           children: [
@@ -116,11 +111,11 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 30),
                 child: GestureDetector(
                   onTap: () {
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //       builder: (context) => const OtpVerificationScreen()),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const OtpVerificationScreen()),
+                    );
                   },
                   child: Container(
                     alignment: Alignment.center,

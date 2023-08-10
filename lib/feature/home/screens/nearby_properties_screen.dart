@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/styles.dart';
+import '../../widgets/appbar_widget.dart';
 import '../store/home_store.dart';
 
 class NearbyPropertiesScreen extends StatelessWidget {
@@ -11,20 +12,7 @@ class NearbyPropertiesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back,
-            color: AppColors.black,
-          ),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text(
-          "Nearby Properties",
-          style: AppTextStyles.poppinsBlackBold20.copyWith(fontSize: 25),
-        ),
-      ),
+      appBar: const AppBarWidget(title: 'Nearby Properties'),
       body: ListView(children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,7 +72,7 @@ class _PropContainer extends StatelessWidget {
                       topLeft: Radius.circular(20),
                       topRight: Radius.circular(20)),
                   child: Image.asset(
-                    'assets/png/nearby_prop.png',
+                    'assets/png/property/nearby_prop.png',
                     // fit: BoxFit.,
                   )),
               Padding(

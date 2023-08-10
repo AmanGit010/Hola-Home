@@ -6,8 +6,9 @@ import 'package:fluttertoast/fluttertoast.dart';
 
 import '../../../../core/constants/colors.dart';
 import '../../../../core/constants/styles.dart';
+import '../../payment/screens/confirm_and_pay_screen.dart';
+import '../../widgets/appbar_widget.dart';
 import '../store/home_store.dart';
-import 'confirm_and_pay_screen.dart';
 
 class ReservationScreen extends StatefulWidget {
   const ReservationScreen({Key? key}) : super(key: key);
@@ -20,13 +21,8 @@ class _ReservationScreenState extends State<ReservationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () => Navigator.pop(context),
-        ),
-        title: Text("Reservation Details",
-            style: AppTextStyles.poppinsBlackBold20.copyWith(fontSize: 25)),
+      appBar: AppBarWidget(
+        title: 'Reservation Details',
         actions: [
           GestureDetector(
             onTap: () => Navigator.pop(context),
@@ -37,6 +33,23 @@ class _ReservationScreenState extends State<ReservationScreen> {
           ),
         ],
       ),
+      // appBar: AppBar(
+      //   leading: IconButton(
+      //     icon: const Icon(Icons.arrow_back),
+      //     onPressed: () => Navigator.pop(context),
+      //   ),
+      //   title: Text("Reservation Details",
+      //       style: AppTextStyles.poppinsBlackBold20.copyWith(fontSize: 25)),
+      //   actions: [
+      //     GestureDetector(
+      //       onTap: () => Navigator.pop(context),
+      //       child: const Padding(
+      //         padding: EdgeInsets.only(right: 20),
+      //         child: Text("Cancel", style: AppTextStyles.poppinsBlack20),
+      //       ),
+      //     ),
+      //   ],
+      // ),
       body: const SingleChildScrollView(
         child: Column(
           children: [

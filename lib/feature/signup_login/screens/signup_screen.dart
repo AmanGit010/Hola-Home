@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/styles.dart';
 import '../../qna/qna_screen.dart';
+import '../../widgets/appbar_widget.dart';
 import 'login_screen.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -29,36 +30,29 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const Icon(
-                Icons.arrow_back,
-                color: AppColors.black,
-              )),
-        ),
+        appBar: const AppBarWidget(title: ''),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              // crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // IconButton(
-                //     onPressed: () {
-                //       Navigator.pop(context);
-                //     },
-                //     icon: const Icon(
-                //       Icons.arrow_back,
-                //       color: AppColors.black,
-                //     )),
-                const Padding(
-                    padding: EdgeInsets.only(left: 31),
-                    child: Text(
-                      "Create your \nAccount",
-                      style: AppTextStyles.poppinsBlackBold35,
-                    )),
+                Padding(
+                  padding: const EdgeInsets.only(right: 125, top: 30),
+                  child: RichText(
+                    text: const TextSpan(
+                      children: [
+                        TextSpan(
+                          text: "Create your\n",
+                          style: AppTextStyles.poppinsBlackBold35,
+                        ),
+                        TextSpan(
+                          text: "Account",
+                          style: AppTextStyles.poppinsBlackBold35,
+                        )
+                      ],
+                    ),
+                  ),
+                ),
                 const SizedBox(height: 50),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 40),

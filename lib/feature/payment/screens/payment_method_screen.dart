@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/constants/colors.dart';
 import '../../../../core/constants/styles.dart';
+import '../../widgets/appbar_widget.dart';
+import 'payment_successful_screen.dart';
 
 class PaymentMethodScreen extends StatefulWidget {
   const PaymentMethodScreen({Key? key}) : super(key: key);
@@ -14,22 +16,16 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          onPressed: () => Navigator.pop(context),
-          icon: const Icon(Icons.arrow_back),
-        ),
-        title: const Text("Confirm and pay",
-            style: AppTextStyles.poppinsBlackBold25),
+      appBar: AppBarWidget(
+        title: 'Confirm and Pay',
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20),
             child: GestureDetector(
               onTap: () => Navigator.pop(context),
-              child: const Text("Cancel", style: AppTextStyles.poppinsBlack15),
+              child: const Text("Cancel", style: AppTextStyles.poppinsBlack20),
             ),
-          )
+          ),
         ],
       ),
       body: SingleChildScrollView(
@@ -82,7 +78,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                 onTap: () => Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const PaymentMethodScreen())),
+                        builder: (context) => const PaymentSuccessfulScreen())),
                 child: Container(
                   alignment: Alignment.center,
                   height: 55,
@@ -100,7 +96,7 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                   child: const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 46),
                     child: Text(
-                      'Confirm and Pay',
+                      'Continue',
                       textAlign: TextAlign.center,
                       style: AppTextStyles.poppinsBlackBold20,
                     ),
