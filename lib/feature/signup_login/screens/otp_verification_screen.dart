@@ -12,7 +12,8 @@ class OtpVerificationScreen extends StatefulWidget {
 }
 
 class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
-  final String verificationImage = 'assets/svg/verification.svg';
+  final String verificationImage =
+      'assets/svg/forgot_password/verification.svg';
   @override
   Widget build(BuildContext context) {
     return Scaffold(

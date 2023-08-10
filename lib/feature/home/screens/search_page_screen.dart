@@ -55,7 +55,7 @@ class SearchPage extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 21),
                   child: Row(
                     children: [
-                      SvgPicture.asset('assets/svg/recent_search.svg'),
+                      SvgPicture.asset('assets/svg/search/recent_search.svg'),
                       const SizedBox(width: 15),
                       const Text("Auckland, New Zealand",
                           style: AppTextStyles.poppinsBlack20)
@@ -67,7 +67,7 @@ class SearchPage extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 21),
                   child: Row(
                     children: [
-                      SvgPicture.asset('assets/svg/recent_search.svg'),
+                      SvgPicture.asset('assets/svg/search/recent_search.svg'),
                       const SizedBox(width: 15),
                       const Text("Ontario, Canada",
                           style: AppTextStyles.poppinsBlack20)

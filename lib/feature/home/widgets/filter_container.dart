@@ -25,7 +25,7 @@ class FilterWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(10)),
         child: Padding(
           padding: const EdgeInsets.all(10),
-          child: SvgPicture.asset('assets/svg/filter_icon.svg'),
+          child: SvgPicture.asset('assets/svg/app/filter_icon.svg'),
         ),
       ),
     );

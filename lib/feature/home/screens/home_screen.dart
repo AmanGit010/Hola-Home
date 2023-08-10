@@ -33,7 +33,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.asset('assets/png/home_screen_logo.png'),
+              Image.asset('assets/png/app/home_screen_logo.png'),
               GestureDetector(
                 onTap: () => Navigator.push(context,
                     MaterialPageRoute(builder: (context) => const MapScreen())),
@@ -71,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           style: AppTextStyles.poppinsBlack20
                               .copyWith(color: AppColors.grey),
                         ),
-                        SvgPicture.asset('assets/svg/search_icon.svg')
+                        SvgPicture.asset('assets/svg/search/search_icon.svg')
                       ],
                     ),
                   ),

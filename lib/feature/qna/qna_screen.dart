@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../../core/constants/colors.dart';
 import '../../core/constants/styles.dart';
-import '../language_selection/language_selection_screen.dart';
+import '../language_selection/screens/language_selection_screen.dart';
 import '../widgets/appbar_widget.dart';
 
 class QnAScreen extends StatefulWidget {

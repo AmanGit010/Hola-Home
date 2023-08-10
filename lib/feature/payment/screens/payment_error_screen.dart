@@ -9,9 +9,8 @@ class PaymentErrorScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const SizedBox(height: 50),
+          Spacer(),
           Image.asset('assets/png/payment/payment_error.png'),
           const SizedBox(height: 30),
           const Text("Payment failed!",
@@ -22,16 +21,12 @@ class PaymentErrorScreen extends StatelessWidget {
               textAlign: TextAlign.center,
               style:
                   AppTextStyles.poppinsBlack20.copyWith(color: AppColors.grey)),
-          const SizedBox(height: 170),
+          Spacer(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: GestureDetector(
-              // onTap: () => Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //         builder: (context) => const PaymentSuccessfulScreen())),
+              onTap: () {},
               child: Container(
-                alignment: Alignment.center,
                 height: 55,
                 decoration: BoxDecoration(
                   boxShadow: [
@@ -44,8 +39,7 @@ class PaymentErrorScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                   color: AppColors.yellow,
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 46),
+                child: const Center(
                   child: Text(
                     'Retry',
                     textAlign: TextAlign.center,
@@ -61,7 +55,6 @@ class PaymentErrorScreen extends StatelessWidget {
             child: GestureDetector(
               onTap: () => Navigator.pop(context),
               child: Container(
-                alignment: Alignment.center,
                 height: 55,
                 decoration: BoxDecoration(
                   boxShadow: [
@@ -74,8 +67,7 @@ class PaymentErrorScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                   color: AppColors.lightYellow,
                 ),
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 46),
+                child: const Center(
                   child: Text(
                     'Cancel',
                     textAlign: TextAlign.center,
@@ -85,6 +77,7 @@ class PaymentErrorScreen extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(height: 53),
         ],
       ),
     );

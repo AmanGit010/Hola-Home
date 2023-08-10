@@ -56,7 +56,6 @@ class _ImageCarouselState extends State<_ImageCarousel> {
       children: [
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.29,
-          // width: ,
           child: PageView.builder(
               itemCount: 4,
               onPageChanged: (index) {
@@ -65,7 +64,10 @@ class _ImageCarouselState extends State<_ImageCarousel> {
                 });
               },
               itemBuilder: (context, index) {
-                return Image.asset('assets/png/property/property_desc.png');
+                return Image.asset(
+                  'assets/png/property/property_desc.png',
+                  fit: BoxFit.fitWidth,
+                );
               }),
         ),
         Positioned(
@@ -236,27 +238,33 @@ class _Description extends StatelessWidget {
               style: AppTextStyles.poppinsBlack10.copyWith(fontSize: 15)),
           const SizedBox(height: 20),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const CircleAvatar(
-                radius: 27,
-                foregroundImage: AssetImage('assets/png/profile_pic.png'),
+              Wrap(
+                crossAxisAlignment: WrapCrossAlignment.center,
+                spacing: 10,
+                children: [
+                  const CircleAvatar(
+                    radius: 27,
+                    foregroundImage:
+                        AssetImage('assets/png/app/profile_pic.png'),
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      children: [
+                        TextSpan(
+                            text: 'Private Host\n',
+                            style: AppTextStyles.poppinsBlack10
+                                .copyWith(fontSize: 15)),
+                        TextSpan(
+                            text: 'Charles',
+                            style: AppTextStyles.poppinsBlackBold10
+                                .copyWith(fontSize: 15)),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              const SizedBox(width: 10),
-              RichText(
-                text: TextSpan(
-                  children: [
-                    TextSpan(
-                        text: 'Private Host\n',
-                        style: AppTextStyles.poppinsBlack10
-                            .copyWith(fontSize: 15)),
-                    TextSpan(
-                        text: 'Charles',
-                        style: AppTextStyles.poppinsBlackBold10
-                            .copyWith(fontSize: 15)),
-                  ],
-                ),
-              ),
-              const SizedBox(width: 110),
               GestureDetector(
                 onTap: () {
                   showDialog(
@@ -377,7 +385,7 @@ class _Reviews extends StatelessWidget {
               Text("(22 Reviews)",
                   style: AppTextStyles.poppinsBlack20
                       .copyWith(color: AppColors.grey, fontSize: 15)),
-              const SizedBox(width: 100),
+              Spacer(),
               GestureDetector(
                 onTap: () => Navigator.push(
                     context,
@@ -534,64 +542,68 @@ class _ContactHostDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Align(
-            alignment: Alignment.topRight,
-            child: Padding(
-              padding: const EdgeInsets.only(right: 16),
-              child: GestureDetector(
-                  onTap: () => Navigator.pop(context),
-                  child: const Icon(Icons.highlight_remove_rounded)),
-            ),
-          ),
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const CircleAvatar(
-                radius: 30,
-                foregroundImage: AssetImage('assets/png/profile_pic.png'),
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Align(
+              alignment: Alignment.topRight,
+              child: Padding(
+                padding: const EdgeInsets.only(right: 16),
+                child: GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: const Icon(Icons.highlight_remove_rounded)),
               ),
-              const SizedBox(width: 15),
-              Column(
-                children: [
-                  RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                            text: 'Name: ',
-                            style: AppTextStyles.poppinsBlackBold10
-                                .copyWith(fontSize: 15)),
-                        TextSpan(
-                            text: 'Charles\n',
-                            style: AppTextStyles.poppinsBlack10
-                                .copyWith(fontSize: 15)),
-                        TextSpan(
-                            text: 'Mobile Number: ',
-                            style: AppTextStyles.poppinsBlackBold10
-                                .copyWith(fontSize: 15)),
-                        TextSpan(
-                            text: '+91 89xxxxxx90\n',
-                            style: AppTextStyles.poppinsBlack10
-                                .copyWith(fontSize: 15)),
-                        TextSpan(
-                            text: 'Email: ',
-                            style: AppTextStyles.poppinsBlackBold10
-                                .copyWith(fontSize: 15)),
-                        TextSpan(
-                            text: 'charlesma@gmail.com',
-                            style: AppTextStyles.poppinsBlack10
-                                .copyWith(fontSize: 15)),
-                      ],
+            ),
+            const SizedBox(height: 10),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const CircleAvatar(
+                  radius: 30,
+                  foregroundImage: AssetImage('assets/png/app/profile_pic.png'),
+                ),
+                const SizedBox(width: 15),
+                Column(
+                  children: [
+                    RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                              text: 'Name: ',
+                              style: AppTextStyles.poppinsBlackBold10
+                                  .copyWith(fontSize: 15)),
+                          TextSpan(
+                              text: 'Charles\n',
+                              style: AppTextStyles.poppinsBlack10
+                                  .copyWith(fontSize: 15)),
+                          TextSpan(
+                              text: 'Mobile Number: ',
+                              style: AppTextStyles.poppinsBlackBold10
+                                  .copyWith(fontSize: 15)),
+                          TextSpan(
+                              text: '+91 89xxxxxx90\n',
+                              style: AppTextStyles.poppinsBlack10
+                                  .copyWith(fontSize: 15)),
+                          TextSpan(
+                              text: 'Email: ',
+                              style: AppTextStyles.poppinsBlackBold10
+                                  .copyWith(fontSize: 15)),
+                          TextSpan(
+                              text: 'charlesma@gmail.com',
+                              style: AppTextStyles.poppinsBlack10
+                                  .copyWith(fontSize: 15)),
+                        ],
+                      ),
                     ),
-                  ),
-                  const SizedBox(height: 30)
-                ],
-              )
-            ],
-          ),
-        ],
+                    const SizedBox(height: 30)
+                  ],
+                )
+              ],
+            ),
+          ],
+        ),
       ),
     );
     // AlertDialog(

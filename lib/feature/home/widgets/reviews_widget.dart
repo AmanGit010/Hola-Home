@@ -35,7 +35,7 @@ class ReviewsWidget extends StatelessWidget {
                         child: CircleAvatar(
                           radius: 27,
                           foregroundImage:
-                              AssetImage('assets/png/profile_pic.png'),
+                              AssetImage('assets/png/app/profile_pic.png'),
                         )),
                   ),
                   const SizedBox(width: 5),

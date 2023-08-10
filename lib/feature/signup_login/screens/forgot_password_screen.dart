@@ -26,7 +26,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
           children: [
             Column(children: [
               const SizedBox(height: 30),
-              SvgPicture.asset('assets/svg/unlock.svg'),
+              SvgPicture.asset('assets/svg/forgot_password/unlock.svg'),
               const SizedBox(height: 40),
               const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 27),

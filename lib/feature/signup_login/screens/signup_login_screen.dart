@@ -49,10 +49,10 @@ class _Images extends StatelessWidget {
     return Column(
       children: [
         Image.asset(
-          'assets/png/signup-login.png',
+          'assets/png/signup_login/signup-login.png',
         ),
         Image.asset(
-          'assets/png/black_hola_home.png',
+          'assets/png/signup_login/black_hola_home.png',
           fit: BoxFit.fitWidth,
         ),
       ],

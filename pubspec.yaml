@@ -10,7 +10,6 @@ dependencies:
   flutter:
     sdk: flutter
 
-  calendar_date_picker2: ^0.5.2
   country_code_picker:
     path: packages/country_code_picker
   cupertino_icons: ^1.0.2
@@ -34,13 +33,21 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/svg/
-    - assets/svg/property_description/
-    - assets/svg/company_logo/
     - assets/png/
-    - assets/png/flags_for_language/
+    - assets/png/app/
+    - assets/png/flags/
+    - assets/png/no_result/
     - assets/png/payment/
     - assets/png/property/
+    - assets/png/signup_login/
+    - assets/png/splash/
+    - assets/svg/
+    - assets/svg/app/
+    - assets/svg/booking/
+    - assets/svg/company_logo/
+    - assets/svg/forgot_password/
+    - assets/svg/property_description/
+    - assets/svg/search/
 
   fonts:
     - family: Poppins

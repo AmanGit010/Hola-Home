@@ -16,7 +16,7 @@ class EnableLocationScreen extends StatelessWidget {
           const CircleAvatar(
             radius: 50,
             backgroundColor: AppColors.white,
-            foregroundImage: AssetImage('assets/png/pin.png'),
+            foregroundImage: AssetImage('assets/png/app/pin.png'),
           ),
           const SizedBox(height: 20),
           const Text("Enable Location", style: AppTextStyles.latoBlackBold30),

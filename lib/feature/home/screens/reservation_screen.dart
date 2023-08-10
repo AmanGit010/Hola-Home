@@ -1,4 +1,3 @@
-import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -33,23 +32,6 @@ class _ReservationScreenState extends State<ReservationScreen> {
           ),
         ],
       ),
-      // appBar: AppBar(
-      //   leading: IconButton(
-      //     icon: const Icon(Icons.arrow_back),
-      //     onPressed: () => Navigator.pop(context),
-      //   ),
-      //   title: Text("Reservation Details",
-      //       style: AppTextStyles.poppinsBlackBold20.copyWith(fontSize: 25)),
-      //   actions: [
-      //     GestureDetector(
-      //       onTap: () => Navigator.pop(context),
-      //       child: const Padding(
-      //         padding: EdgeInsets.only(right: 20),
-      //         child: Text("Cancel", style: AppTextStyles.poppinsBlack20),
-      //       ),
-      //     ),
-      //   ],
-      // ),
       body: const SingleChildScrollView(
         child: Column(
           children: [
@@ -70,9 +52,24 @@ class _Designation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final HomeStore homeStore = HomeStore();
+    // final designationTitles = ["Mr", "Mrs", "Ms"];
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
+        // for (final i in designationTitles)
+        //   GestureDetector(
+        //     onTap: () {
+        //       homeStore.selected = i;
+        //     },
+        //     child: Container(
+        //       padding: const EdgeInsets.symmetric(horizontal: 44, vertical: 5),
+        //       decoration: BoxDecoration(
+        //           borderRadius: BorderRadius.circular(20),
+        //           color: homeStore.selected ==i?AppColors.yellow:AppColors.lightYellow,
+        //           border: Border.all(color: AppColors.yellow)),
+        //       child:  Text("${i}.", style: AppTextStyles.poppinsBlack20),
+        //     ),
+        //   )
         Observer(builder: (_) {
           if (homeStore.selected == false) {
             // return DesignationTile(des: 'Mrs.');
@@ -90,12 +87,17 @@ class _Designation extends StatelessWidget {
             );
           } else {
             return GestureDetector(
-              onTap: () => homeStore.isSelected(!homeStore.selected),
+              onTap: () {
+                // homeStore.selected = i;
+              },
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 44, vertical: 5),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
+                    // color: homeStore.selected == i
+                    //     ? AppColors.yellow
+                    //     : AppColors.lightYellow,
                     color: AppColors.lightYellow,
                     border: Border.all(color: AppColors.yellow)),
                 child: const Text("Mr.", style: AppTextStyles.poppinsBlack20),
@@ -211,24 +213,29 @@ class _Details extends StatelessWidget {
           const SizedBox(height: 20),
           GestureDetector(
             onTap: () {
-              showCalendarDatePicker2Dialog(
-                dialogBackgroundColor: Colors.white,
-                context: context,
-                dialogSize: const Size(350, 400),
-                config: CalendarDatePicker2WithActionButtonsConfig(
-                    calendarType: CalendarDatePicker2Type.range,
-                    selectedDayHighlightColor: AppColors.yellow,
-                    selectedRangeHighlightColor: const Color(0xfff7f7f7),
-                    selectedDayTextStyle:
-                        AppTextStyles.poppinsBlack20.copyWith(fontSize: 15),
-                    disabledDayTextStyle:
-                        AppTextStyles.poppinsBlack20.copyWith(fontSize: 15),
-                    okButtonTextStyle:
-                        AppTextStyles.poppinsBlack10.copyWith(fontSize: 15),
-                    cancelButtonTextStyle:
-                        AppTextStyles.poppinsBlack10.copyWith(fontSize: 15)),
-                value: [DateTime.now()],
-              );
+              showDatePicker(
+                  context: context,
+                  initialDate: DateTime.now(),
+                  firstDate: DateTime(200),
+                  lastDate: DateTime(2026));
+              // showCalendarDatePicker2Dialog(
+              //   dialogBackgroundColor: Colors.white,
+              //   context: context,
+              //   dialogSize: const Size(350, 400),
+              //   config: CalendarDatePicker2WithActionButtonsConfig(
+              //       calendarType: CalendarDatePicker2Type.range,
+              //       selectedDayHighlightColor: AppColors.yellow,
+              //       selectedRangeHighlightColor: const Color(0xfff7f7f7),
+              //       selectedDayTextStyle:
+              //           AppTextStyles.poppinsBlack20.copyWith(fontSize: 15),
+              //       disabledDayTextStyle:
+              //           AppTextStyles.poppinsBlack20.copyWith(fontSize: 15),
+              //       okButtonTextStyle:
+              //           AppTextStyles.poppinsBlack10.copyWith(fontSize: 15),
+              //       cancelButtonTextStyle:
+              //           AppTextStyles.poppinsBlack10.copyWith(fontSize: 15)),
+              //   value: [DateTime.now()],
+              // );
             },
             child: Container(
               decoration: BoxDecoration(
