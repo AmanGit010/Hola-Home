@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:hola_home/feature/home/screens/property_desc_screen.dart';
+
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/styles.dart';
 import '../../widgets/appbar_widget.dart';
 import '../store/home_store.dart';
+import 'property_desc_screen.dart';
 
 class NearbyPropertiesScreen extends StatelessWidget {
   const NearbyPropertiesScreen({Key? key}) : super(key: key);

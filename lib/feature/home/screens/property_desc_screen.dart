@@ -385,7 +385,7 @@ class _Reviews extends StatelessWidget {
               Text("(22 Reviews)",
                   style: AppTextStyles.poppinsBlack20
                       .copyWith(color: AppColors.grey, fontSize: 15)),
-              Spacer(),
+              const Spacer(),
               GestureDetector(
                 onTap: () => Navigator.push(
                     context,
