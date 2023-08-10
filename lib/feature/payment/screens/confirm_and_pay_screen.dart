@@ -34,31 +34,33 @@ class ConfirmAndPayScreen extends StatelessWidget {
                 children: [
                   Image.asset('assets/png/property/confirm_and_pay.png'),
                   const SizedBox(width: 20),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Entire Villa",
-                        style: AppTextStyles.poppinsBlack20
-                            .copyWith(color: AppColors.grey),
-                      ),
-                      const SizedBox(height: 2),
-                      const Text("The Astin Villa Hotel",
-                          style: AppTextStyles.poppinsBlackBold20),
-                      const SizedBox(height: 2),
-                      Wrap(
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        children: [
-                          const Icon(Icons.star, color: AppColors.yellow),
-                          Text("5.0",
-                              style: AppTextStyles.poppinsBlack10
-                                  .copyWith(fontSize: 15)),
-                          Text("(22 reviews)",
-                              style: AppTextStyles.poppinsBlack10
-                                  .copyWith(fontSize: 15)),
-                        ],
-                      )
-                    ],
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Entire Villa",
+                          style: AppTextStyles.poppinsBlack20
+                              .copyWith(color: AppColors.grey),
+                        ),
+                        const SizedBox(height: 2),
+                        const Text("The Astin Villa Hotel",
+                            style: AppTextStyles.poppinsBlackBold20),
+                        const SizedBox(height: 2),
+                        Wrap(
+                          crossAxisAlignment: WrapCrossAlignment.center,
+                          children: [
+                            const Icon(Icons.star, color: AppColors.yellow),
+                            Text("5.0",
+                                style: AppTextStyles.poppinsBlack10
+                                    .copyWith(fontSize: 15)),
+                            Text("(22 reviews)",
+                                style: AppTextStyles.poppinsBlack10
+                                    .copyWith(fontSize: 15)),
+                          ],
+                        )
+                      ],
+                    ),
                   ),
                 ],
               ),

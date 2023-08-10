@@ -19,24 +19,22 @@ class BookingCompletionScreen extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 21),
             child: SvgPicture.asset('assets/svg/booking_skeleton.svg'),
           ),
-          Container(
-            child: Column(
-              children: [
-                const SizedBox(height: 70),
-                const Text("The Astin Villa Hotel",
-                    style: AppTextStyles.poppinsBlackBold20),
-                const SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 70),
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(10)),
-                    child: Image.asset(
-                      'assets/png/property/property_desc.png',
-                    ),
+          Column(
+            children: [
+              const SizedBox(height: 70),
+              const Text("The Astin Villa Hotel",
+                  style: AppTextStyles.poppinsBlackBold20),
+              const SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 70),
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  child: Image.asset(
+                    'assets/png/property/property_desc.png',
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
           const Column(
             children: [],

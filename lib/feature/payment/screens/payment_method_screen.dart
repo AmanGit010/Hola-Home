@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../core/constants/colors.dart';
 import '../../../../core/constants/styles.dart';
 import '../../widgets/appbar_widget.dart';
@@ -13,6 +12,9 @@ class PaymentMethodScreen extends StatefulWidget {
 }
 
 class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
+  final bool _isChecked = false;
+  // final LanguageStore _languageStore = LanguageStore();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,23 +52,21 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(color: AppColors.yellow)),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Image.asset('assets/png/DPO_PAY.png'),
-                    const Text("DPO PAY",
-                        style: AppTextStyles.poppinsBlackBold20),
-                    // Padding(
-                    //   padding: const EdgeInsets.all(8.0),
-                    //   child: RadioListTile(
-                    //     title: Text('Option 1'),
-                    //     value: 1,
-                    //     groupValue: _selectedValue,
-                    //     onChanged: (value) {
-                    //       setState(() {
-                    //         _selectedValue = value as int?;
-                    //       });
-                    //     },
-                    //   ),
-                    // ),
+                    Row(
+                      children: [
+                        Image.asset('assets/png/payment/DPO_PAY.png'),
+                        const SizedBox(width: 20),
+                        const Text("DPO PAY",
+                            style: AppTextStyles.poppinsBlackBold20),
+                      ],
+                    ),
+                    Checkbox(
+                      value: _isChecked,
+                      shape: const CircleBorder(eccentricity: 1),
+                      onChanged: (value) => null,
+                    ),
                   ],
                 ),
               ),
