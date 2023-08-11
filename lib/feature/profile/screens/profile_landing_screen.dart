@@ -14,7 +14,6 @@ class ProfileLandingScreen extends StatelessWidget {
       appBar: const AppBarWidget(
         title: 'Profile',
         center: true,
-        leading: Text(''),
       ),
       body: Column(
         children: [

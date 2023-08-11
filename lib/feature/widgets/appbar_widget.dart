@@ -18,6 +18,7 @@ class AppBarWidget extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      automaticallyImplyLeading: false,
       leading: leading,
       centerTitle: center,
       title: Text(title, style: AppTextStyles.poppinsBlackBold25),

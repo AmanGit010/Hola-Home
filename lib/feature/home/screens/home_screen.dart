@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: const NavBar(),
+      // bottomNavigationBar: const NavBar(),
       extendBody: true,
       body: SingleChildScrollView(
         child: Column(
@@ -143,7 +143,7 @@ class NavBar extends StatefulWidget {
 }
 
 class _NavBarState extends State<NavBar> {
-  int _currentIndex = 0;
+  final int _currentIndex = 0;
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
@@ -155,11 +155,6 @@ class _NavBarState extends State<NavBar> {
         backgroundColor: AppColors.scaffoldWhite,
         elevation: 5,
         currentIndex: _currentIndex,
-        onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
-        },
         type: BottomNavigationBarType.fixed,
         selectedItemColor: AppColors.yellow,
         unselectedItemColor: AppColors.grey,
@@ -168,34 +163,18 @@ class _NavBarState extends State<NavBar> {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(HolaHome.home),
-            // SvgPicture.asset(
-            //   'assets/svg/home_icon.svg',
-            //   color: _currentIndex == 0 ? AppColors.yellow : AppColors.grey,
-            // ),
             label: "Home",
           ),
           BottomNavigationBarItem(
             icon: Icon(HolaHome.bookmark),
-            // SvgPicture.asset(
-            //   'assets/svg/bookmark_navbar_icon.svg',
-            //   color: _currentIndex == 1 ? AppColors.yellow : AppColors.grey,
-            // ),
             label: "Bookmark",
           ),
           BottomNavigationBarItem(
             icon: Icon(HolaHome.bookings),
-            // icon: SvgPicture.asset(
-            //   'assets/svg/bookings_icon.svg',
-            //   color: _currentIndex == 2 ? AppColors.yellow : AppColors.grey,
-            // ),
             label: "Bookings",
           ),
           BottomNavigationBarItem(
             icon: Icon(HolaHome.profile),
-            // icon: SvgPicture.asset(
-            //   'assets/svg/profile_icon.svg',
-            //   color: _currentIndex == 3 ? AppColors.yellow : AppColors.grey,
-            // ),
             label: "Profile",
           ),
         ],

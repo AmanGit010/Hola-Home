@@ -21,7 +21,7 @@ class ProfileScreen extends StatelessWidget {
       body: Column(
         // mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Spacer(),
+          //use container for image
           const CircleAvatar(
             backgroundColor: AppColors.yellow,
             foregroundImage: AssetImage('assets/png/app/pic.png'),
@@ -53,6 +53,7 @@ class ProfileScreen extends StatelessWidget {
           GestureDetector(
             onTap: () {},
             child: _ActionTile(
+              // call: () async{},
               icon:
                   SvgPicture.asset('assets/svg/profile_icons/payout_icon.svg'),
               text: 'Payouts',
@@ -163,12 +164,15 @@ class ProfileScreen extends StatelessWidget {
 }
 
 class _ActionTile extends StatelessWidget {
-  const _ActionTile({required this.icon, required this.text, Key? key})
-      : super(key: key);
+  const _ActionTile({
+    required this.icon,
+    required this.text,
+    Key? key,
+  }) : super(key: key);
 
-  final SvgPicture icon;
+  final SvgPicture icon; //use String
   final String text;
-
+  // final VoidCallback call;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -190,6 +194,7 @@ class _ActionTile extends StatelessWidget {
   }
 }
 
+//move to widgets folder
 class _LandlordDialog extends StatelessWidget {
   const _LandlordDialog({Key? key}) : super(key: key);
 
@@ -228,7 +233,9 @@ class _LandlordDialog extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: GestureDetector(
-                onTap: () => Navigator.pop(context),
+                onTap: () {
+                  Navigator.pop(context);
+                },
                 child: Container(
                   height: 55,
                   decoration: BoxDecoration(
@@ -238,14 +245,12 @@ class _LandlordDialog extends StatelessWidget {
                           blurRadius: 5,
                           color: Colors.black.withOpacity(0.25))
                     ],
-                    border: Border.all(color: AppColors.yellow, width: 2),
                     borderRadius: BorderRadius.circular(30),
                     color: AppColors.yellow,
                   ),
                   child: Center(
                     child: Text(
                       'OK',
-                      textAlign: TextAlign.center,
                       style: AppTextStyles.poppinsBlackBold15
                           .copyWith(color: AppColors.lightBlack),
                     ),
