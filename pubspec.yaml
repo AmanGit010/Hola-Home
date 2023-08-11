@@ -35,18 +35,22 @@ flutter:
   assets:
     - assets/png/
     - assets/png/app/
+    - assets/png/contact_us/
     - assets/png/flags/
     - assets/png/no_result/
     - assets/png/payment/
     - assets/png/property/
+    - assets/png/profile/
     - assets/png/signup_login/
     - assets/png/splash/
     - assets/svg/
     - assets/svg/app/
     - assets/svg/booking/
     - assets/svg/company_logo/
+    - assets/svg/contact_us/
     - assets/svg/forgot_password/
     - assets/svg/property_description/
+    - assets/svg/profile_icons/
     - assets/svg/search/
 
   fonts:

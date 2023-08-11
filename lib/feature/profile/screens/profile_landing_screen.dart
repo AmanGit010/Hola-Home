@@ -1,29 +1,59 @@
 import 'package:flutter/material.dart';
+
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/styles.dart';
+import '../../widgets/appbar_widget.dart';
+import 'profile_screen.dart';
 
-class PaymentErrorScreen extends StatelessWidget {
-  const PaymentErrorScreen({Key? key}) : super(key: key);
+class ProfileLandingScreen extends StatelessWidget {
+  const ProfileLandingScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: const AppBarWidget(
+        title: 'Profile',
+        center: true,
+      ),
       body: Column(
         children: [
           const Spacer(),
-          Image.asset('assets/png/payment/payment_error.png'),
-          const SizedBox(height: 30),
-          const Text("Payment failed!",
-              style: AppTextStyles.poppinsBlackBold20),
-          const SizedBox(height: 15),
-          Text(
-              "The payment was unsuccessful due\nto abnormality. Please try again or\nuse other payment method",
-              textAlign: TextAlign.center,
-              style:
-                  AppTextStyles.poppinsBlack20.copyWith(color: AppColors.grey)),
+          Image.asset('assets/png/profile/landing.png'),
           const Spacer(),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 85),
+            child: GestureDetector(
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ProfileScreen())),
+              child: Container(
+                height: 55,
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                        offset: const Offset(0, 4),
+                        blurRadius: 5,
+                        color: Colors.black.withOpacity(0.25))
+                  ],
+                  border: Border.all(color: AppColors.yellow, width: 2),
+                  borderRadius: BorderRadius.circular(10),
+                  color: AppColors.yellow,
+                ),
+                child: Center(
+                  child: Text(
+                    'LOGIN',
+                    textAlign: TextAlign.center,
+                    style: AppTextStyles.poppinsBlackBold20
+                        .copyWith(color: AppColors.lightBlack),
+                  ),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 17),
+          Padding(
+            padding: const EdgeInsets.only(left: 85, right: 85, bottom: 90),
             child: GestureDetector(
               onTap: () {},
               child: Container(
@@ -36,48 +66,20 @@ class PaymentErrorScreen extends StatelessWidget {
                         color: Colors.black.withOpacity(0.25))
                   ],
                   border: Border.all(color: AppColors.yellow, width: 2),
-                  borderRadius: BorderRadius.circular(30),
+                  borderRadius: BorderRadius.circular(10),
                   color: AppColors.yellow,
                 ),
-                child: const Center(
+                child: Center(
                   child: Text(
-                    'Retry',
+                    'SIGN UP',
                     textAlign: TextAlign.center,
-                    style: AppTextStyles.poppinsBlackBold20,
+                    style: AppTextStyles.poppinsBlackBold20
+                        .copyWith(color: AppColors.lightBlack),
                   ),
                 ),
               ),
             ),
           ),
-          const SizedBox(height: 20),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: GestureDetector(
-              onTap: () => Navigator.pop(context),
-              child: Container(
-                height: 55,
-                decoration: BoxDecoration(
-                  boxShadow: [
-                    BoxShadow(
-                        offset: const Offset(0, 4),
-                        blurRadius: 5,
-                        color: Colors.black.withOpacity(0.25))
-                  ],
-                  border: Border.all(color: AppColors.yellow, width: 2),
-                  borderRadius: BorderRadius.circular(30),
-                  color: AppColors.lightYellow,
-                ),
-                child: const Center(
-                  child: Text(
-                    'Cancel',
-                    textAlign: TextAlign.center,
-                    style: AppTextStyles.poppinsBlackBold20,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(height: 53),
         ],
       ),
     );

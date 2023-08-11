@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/styles.dart';
+import '../../home/screens/booking_completion_screen.dart';
 
 class PaymentSuccessfulScreen extends StatelessWidget {
   const PaymentSuccessfulScreen({Key? key}) : super(key: key);
@@ -10,7 +11,7 @@ class PaymentSuccessfulScreen extends StatelessWidget {
     return Scaffold(
       body: Column(
         children: [
-          Spacer(),
+          const Spacer(),
           Image.asset('assets/png/payment/payment_successful.png'),
           const SizedBox(height: 30),
           const Text("Payment Successful!",
@@ -20,11 +21,14 @@ class PaymentSuccessfulScreen extends StatelessWidget {
               textAlign: TextAlign.center,
               style:
                   AppTextStyles.poppinsBlack20.copyWith(color: AppColors.grey)),
-          Spacer(),
+          const Spacer(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: GestureDetector(
-              onTap: () {},
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const BookingCompletionScreen())),
               child: Container(
                 height: 55,
                 decoration: BoxDecoration(

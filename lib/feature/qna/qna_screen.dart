@@ -1,5 +1,4 @@
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import '../../core/constants/colors.dart';
@@ -31,7 +30,7 @@ class _QnAScreenState extends State<QnAScreen> {
           Column(
             children: [
               const SizedBox(height: 30),
-              const ProfilePic(),
+              // const ProfilePic(),
               const SizedBox(height: 46),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 31),
@@ -178,74 +177,74 @@ class _QnAScreenState extends State<QnAScreen> {
   }
 }
 
-class ProfilePic extends StatefulWidget {
-  const ProfilePic({Key? key}) : super(key: key);
+// class ProfilePic extends StatefulWidget {
+//   const ProfilePic({Key? key}) : super(key: key);
 
-  @override
-  State<ProfilePic> createState() => _ProfilePicState();
-}
+//   @override
+//   State<ProfilePic> createState() => _ProfilePicState();
+// }
 
-class _ProfilePicState extends State<ProfilePic> {
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        const CircleAvatar(
-          radius: 50,
-        ),
-        Positioned(
-          bottom: 0,
-          right: 0,
-          child: Container(
-            padding: const EdgeInsets.all(4),
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color:
-                  AppColors.yellow, // Change the color as per your preference
-            ),
-            child: GestureDetector(
-              onTap: () {
-                showCupertinoModalPopup(
-                  context: context,
-                  builder: (context) {
-                    return CupertinoActionSheet(
-                      title: const Text('Select Profile Picture'),
-                      actions: [
-                        CupertinoActionSheetAction(
-                          onPressed: () {
-                            // Do something when the first option is pressed
-                            Navigator.pop(context); // Close the modal popup
-                          },
-                          child: const Text('Open Photos'),
-                        ),
-                        CupertinoActionSheetAction(
-                          onPressed: () {
-                            // Do something when the second option is pressed
-                            Navigator.pop(context); // Close the modal popup
-                          },
-                          child: const Text('Take Picture'),
-                        ),
-                      ],
-                      cancelButton: CupertinoActionSheetAction(
-                        onPressed: () {
-                          Navigator.pop(context); // Close the modal popup
-                        },
-                        child: const Text('Cancel'),
-                      ),
-                    );
-                  },
-                );
-              },
-              child: const Icon(
-                Icons.add,
-                color: AppColors.white, // Change the plus sign color if needed
-                size: 24,
-                // Adjust the size as per your requirement
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
+// class _ProfilePicState extends State<ProfilePic> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Stack(
+//       children: [
+//         const CircleAvatar(
+//           radius: 50,
+//         ),
+//         Positioned(
+//           bottom: 0,
+//           right: 0,
+//           child: Container(
+//             padding: const EdgeInsets.all(4),
+//             decoration: const BoxDecoration(
+//               shape: BoxShape.circle,
+//               color:
+//                   AppColors.yellow, // Change the color as per your preference
+//             ),
+//             child: GestureDetector(
+//               onTap: () {
+//                 showCupertinoModalPopup(
+//                   context: context,
+//                   builder: (context) {
+//                     return CupertinoActionSheet(
+//                       title: const Text('Select Profile Picture'),
+//                       actions: [
+//                         CupertinoActionSheetAction(
+//                           onPressed: () {
+//                             // Do something when the first option is pressed
+//                             Navigator.pop(context); // Close the modal popup
+//                           },
+//                           child: const Text('Open Photos'),
+//                         ),
+//                         CupertinoActionSheetAction(
+//                           onPressed: () {
+//                             // Do something when the second option is pressed
+//                             Navigator.pop(context); // Close the modal popup
+//                           },
+//                           child: const Text('Take Picture'),
+//                         ),
+//                       ],
+//                       cancelButton: CupertinoActionSheetAction(
+//                         onPressed: () {
+//                           Navigator.pop(context); // Close the modal popup
+//                         },
+//                         child: const Text('Cancel'),
+//                       ),
+//                     );
+//                   },
+//                 );
+//               },
+//               child: const Icon(
+//                 Icons.add,
+//                 color: AppColors.white, // Change the plus sign color if needed
+//                 size: 24,
+//                 // Adjust the size as per your requirement
+//               ),
+//             ),
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+// }
