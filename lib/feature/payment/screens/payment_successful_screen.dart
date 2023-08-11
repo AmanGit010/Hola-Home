@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/styles.dart';
+import '../../home/screens/booking_completion_screen.dart';
 
 class PaymentSuccessfulScreen extends StatelessWidget {
   const PaymentSuccessfulScreen({Key? key}) : super(key: key);
@@ -24,7 +25,10 @@ class PaymentSuccessfulScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: GestureDetector(
-              onTap: () {},
+              onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const BookingCompletionScreen())),
               child: Container(
                 height: 55,
                 decoration: BoxDecoration(

@@ -2,19 +2,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePic extends StatelessWidget {
-  const ProfilePic({required this.image, required this.icon, Key? key})
+  const ProfilePic(
+      {required this.image, required this.icon, required this.radius, Key? key})
       : super(key: key);
 
-  final Image image;
+  final AssetImage image;
   final Icon icon;
+  final double radius;
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         CircleAvatar(
-          backgroundImage: AssetImage('$image'),
-          radius: 50,
+          backgroundImage: image,
+          radius: radius,
         ),
         Positioned(
           bottom: 0,

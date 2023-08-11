@@ -35,6 +35,7 @@ flutter:
   assets:
     - assets/png/
     - assets/png/app/
+    - assets/png/contact_us/
     - assets/png/flags/
     - assets/png/no_result/
     - assets/png/payment/
@@ -46,6 +47,7 @@ flutter:
     - assets/svg/app/
     - assets/svg/booking/
     - assets/svg/company_logo/
+    - assets/svg/contact_us/
     - assets/svg/forgot_password/
     - assets/svg/property_description/
     - assets/svg/profile_icons/

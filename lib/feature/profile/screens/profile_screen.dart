@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/styles.dart';
+import '../../settings/screens/settings_screen.dart';
 import '../../widgets/appbar_widget.dart';
 import 'profile_information_screen.dart';
 
@@ -20,7 +21,7 @@ class ProfileScreen extends StatelessWidget {
       body: Column(
         // mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Spacer(),
+          const Spacer(),
           const CircleAvatar(
             backgroundColor: AppColors.yellow,
             foregroundImage: AssetImage('assets/png/app/pic.png'),
@@ -33,7 +34,7 @@ class ProfileScreen extends StatelessWidget {
             onTap: () => Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => ProfileInformationScreen())),
+                    builder: (context) => const ProfileInformationScreen())),
             child: _ActionTile(
               icon: SvgPicture.asset('assets/svg/profile_icons/user_icon.svg'),
               text: 'Personal Information',
@@ -68,7 +69,10 @@ class ProfileScreen extends StatelessWidget {
           ),
           const SizedBox(height: 35),
           GestureDetector(
-            onTap: () {},
+            onTap: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const SettingsScreen())),
             child: _ActionTile(
               icon: SvgPicture.asset(
                   'assets/svg/profile_icons/settings_icon.svg'),
@@ -124,8 +128,8 @@ class ProfileScreen extends StatelessWidget {
                       },
                       child: Container(
                         height: 55,
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 17, vertical: 16),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 17, vertical: 16),
                         decoration: BoxDecoration(
                           boxShadow: [
                             BoxShadow(
@@ -193,7 +197,7 @@ class _LandlordDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return Dialog(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15, vertical: 40),
+        padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 40),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -208,7 +212,7 @@ class _LandlordDialog extends StatelessWidget {
             const SizedBox(height: 15),
             RichText(
               textAlign: TextAlign.center,
-              text: TextSpan(
+              text: const TextSpan(
                 style: AppTextStyles.poppinsBlack15,
                 children: [
                   TextSpan(
@@ -222,7 +226,7 @@ class _LandlordDialog extends StatelessWidget {
             ),
             const SizedBox(height: 45),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: GestureDetector(
                 onTap: () => Navigator.pop(context),
                 child: Container(
