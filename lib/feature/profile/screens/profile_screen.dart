@@ -31,10 +31,12 @@ class ProfileScreen extends StatelessWidget {
           const Text("Emma Jane", style: AppTextStyles.poppinsBlackBold20),
           const SizedBox(height: 35),
           GestureDetector(
-            onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const ProfileInformationScreen())),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const ProfileInformationScreen()));
+            },
             child: _ActionTile(
               icon: SvgPicture.asset('assets/svg/profile_icons/user_icon.svg'),
               text: 'Personal Information',
@@ -70,10 +72,12 @@ class ProfileScreen extends StatelessWidget {
           ),
           const SizedBox(height: 35),
           GestureDetector(
-            onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const SettingsScreen())),
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SettingsScreen()));
+            },
             child: _ActionTile(
               icon: SvgPicture.asset(
                   'assets/svg/profile_icons/settings_icon.svg'),
@@ -138,7 +142,6 @@ class ProfileScreen extends StatelessWidget {
                                 blurRadius: 5,
                                 color: Colors.black.withOpacity(0.25))
                           ],
-                          border: Border.all(color: AppColors.yellow, width: 2),
                           borderRadius: BorderRadius.circular(10),
                           color: AppColors.yellow,
                         ),

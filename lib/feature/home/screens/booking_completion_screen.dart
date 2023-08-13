@@ -139,7 +139,6 @@ class BookingCompletionScreen extends StatelessWidget {
                         blurRadius: 5,
                         color: Colors.black.withOpacity(0.25))
                   ],
-                  border: Border.all(color: AppColors.yellow, width: 2),
                   borderRadius: BorderRadius.circular(30),
                   color: AppColors.yellow,
                 ),

@@ -82,7 +82,9 @@ class _ImageCarouselState extends State<_ImageCarousel> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               GestureDetector(
-                onTap: () => Navigator.pop(context),
+                onTap: () {
+                  Navigator.pop(context);
+                },
                 child: Container(
                     decoration: BoxDecoration(
                         color: Colors.white.withOpacity(0.85),
@@ -103,12 +105,13 @@ class _ImageCarouselState extends State<_ImageCarousel> {
                             borderRadius: BorderRadius.circular(30)),
                         child: const Padding(
                           padding: EdgeInsets.all(13),
-                          // child: SvgPicture.asset('assets/svg/share_icon.svg'),
                           child: Icon(Icons.ios_share_rounded),
                         )),
                   ),
                   GestureDetector(
-                    onTap: () => homeStore.setFilled(!homeStore.bookmarked),
+                    onTap: () {
+                      homeStore.setFilled(!homeStore.bookmarked);
+                    },
                     child: Container(
                         decoration: BoxDecoration(
                             color: Colors.white.withOpacity(0.85),
@@ -272,10 +275,6 @@ class _Description extends StatelessWidget {
                       builder: (context) {
                         return const _ContactHostDialog();
                       });
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute(builder: (context) => const _BKF()),
-                  // );
                 },
                 child: Container(
                   alignment: Alignment.center,
@@ -387,10 +386,12 @@ class _Reviews extends StatelessWidget {
                       .copyWith(color: AppColors.grey, fontSize: 15)),
               const Spacer(),
               GestureDetector(
-                onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ReviewsScreen())),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ReviewsScreen()));
+                },
                 child: Text("See All",
                     style: AppTextStyles.poppinsBlack20
                         .copyWith(color: AppColors.yellow)),
@@ -401,7 +402,6 @@ class _Reviews extends StatelessWidget {
           ListView.builder(
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
-              // scrollDirection: Axis.vertical,
               itemCount: 4,
               itemBuilder: (context, index) {
                 return const ReviewsWidget();
@@ -429,7 +429,6 @@ class _Location extends StatelessWidget {
           const SizedBox(height: 10),
           FractionallySizedBox(
             widthFactor: 1,
-            // heightFactor: 1,
             child: Container(
               decoration: BoxDecoration(
                   color: AppColors.lightYellow,
@@ -606,17 +605,5 @@ class _ContactHostDialog extends StatelessWidget {
         ),
       ),
     );
-    // AlertDialog(
-    //   title: Text("Dialog"),
-    //   content: Text('This is the content of my dialog.'),
-    //   actions: <Widget>[
-    //     TextButton(
-    //       onPressed: () {
-    //         Navigator.of(context).pop(); // Close the dialog
-    //       },
-    //       child: Text('OK'),
-    //     ),
-    //   ],
-    // );
   }
 }

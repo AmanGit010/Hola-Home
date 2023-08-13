@@ -13,9 +13,15 @@ class SearchResult extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWidget(
+      appBar: AppBarWidget(
         title: 'Search Result',
-        actions: [
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(Icons.arrow_back),
+        ),
+        actions: const [
           Padding(
             padding: EdgeInsets.only(right: 19),
             child: FilterWidget(),
@@ -61,8 +67,10 @@ class _Result extends StatelessWidget {
   Widget build(BuildContext context) {
     final HomeStore homeStore = HomeStore();
     return GestureDetector(
-      onTap: () => Navigator.push(context,
-          MaterialPageRoute(builder: (context) => const PropertyDesc())),
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const PropertyDesc()));
+      },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
@@ -70,7 +78,6 @@ class _Result extends StatelessWidget {
             Container(
               width: 380,
               decoration: BoxDecoration(
-                // color: Colors.amber,
                 boxShadow: [
                   BoxShadow(
                       offset: const Offset(4, 4),
@@ -89,12 +96,13 @@ class _Result extends StatelessWidget {
                             topRight: Radius.circular(20)),
                         child: Image.asset(
                           'assets/png/property/nearby_prop.png',
-                          // fit: BoxFit.,
                         )),
                     Padding(
                       padding: const EdgeInsets.only(right: 20, top: 15),
                       child: GestureDetector(
-                        onTap: () => homeStore.setFilled(!homeStore.bookmarked),
+                        onTap: () {
+                          homeStore.setFilled(!homeStore.bookmarked);
+                        },
                         child: Container(
                           decoration: const BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(5)),
@@ -106,11 +114,7 @@ class _Result extends StatelessWidget {
                               builder: (context) {
                                 return homeStore.bookmarked
                                     ? const Icon(Icons.bookmark_rounded)
-                                    //  SvgPicture.asset(
-                                    //     'assets/svg/bookmark_filled_icon.svg')
                                     : const Icon(Icons.bookmark_border_rounded);
-                                //  SvgPicture.asset(
-                                //     'assets/svg/bookmark_icon.svg');
                               },
                             ),
                           ),

@@ -30,7 +30,16 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const AppBarWidget(title: ''),
+        backgroundColor: Colors.white,
+        appBar: AppBarWidget(
+          title: '',
+          leading: GestureDetector(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            child: const Icon(Icons.arrow_back),
+          ),
+        ),
         body: SafeArea(
           child: SingleChildScrollView(
             child: Column(

@@ -14,7 +14,15 @@ class NearbyPropertiesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: const AppBarWidget(title: 'Nearby Properties'),
+      appBar: AppBarWidget(
+        title: 'Nearby Properties',
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(Icons.arrow_back),
+        ),
+      ),
       body: ListView(children: [
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,7 +37,6 @@ class NearbyPropertiesScreen extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             SizedBox(
-              // color: Colors.red,
               height: MediaQuery.of(context).size.height * 0.85,
               child: ListView.builder(
                   shrinkWrap: true,
@@ -52,14 +59,15 @@ class _PropContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     final HomeStore homeStore = HomeStore();
     return GestureDetector(
-      onTap: () => Navigator.push(context,
-          MaterialPageRoute(builder: (context) => const PropertyDesc())),
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const PropertyDesc()));
+      },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Container(
           width: 380,
           decoration: BoxDecoration(
-            // color: Colors.amber,
             boxShadow: [
               BoxShadow(
                   offset: const Offset(4, 4),
@@ -83,7 +91,9 @@ class _PropContainer extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 20, top: 15),
                   child: GestureDetector(
-                    onTap: () => homeStore.setFilled(!homeStore.bookmarked),
+                    onTap: () {
+                      homeStore.setFilled(!homeStore.bookmarked);
+                    },
                     child: Container(
                       decoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(5)),
@@ -95,11 +105,7 @@ class _PropContainer extends StatelessWidget {
                           builder: (context) {
                             return homeStore.bookmarked
                                 ? const Icon(Icons.bookmark_rounded)
-                                //  SvgPicture.asset(
-                                //     'assets/svg/bookmark_filled_icon.svg')
                                 : const Icon(Icons.bookmark_border_rounded);
-                            //  SvgPicture.asset(
-                            //     'assets/svg/bookmark_icon.svg');
                           },
                         ),
                       ),

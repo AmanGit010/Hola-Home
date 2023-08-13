@@ -74,7 +74,9 @@ class _Designation extends StatelessWidget {
           if (homeStore.selected == false) {
             // return DesignationTile(des: 'Mrs.');
             return GestureDetector(
-              onTap: () => homeStore.isSelected(!homeStore.selected),
+              onTap: () {
+                homeStore.isSelected(!homeStore.selected);
+              },
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 44, vertical: 5),
@@ -109,7 +111,9 @@ class _Designation extends StatelessWidget {
           if (homeStore.selected == false) {
             // return DesignationTile(des: 'Mrs.');
             return GestureDetector(
-              onTap: () => homeStore.isSelected(!homeStore.selected),
+              onTap: () {
+                homeStore.isSelected(!homeStore.selected);
+              },
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 44, vertical: 5),
@@ -122,7 +126,9 @@ class _Designation extends StatelessWidget {
             );
           } else {
             return GestureDetector(
-              onTap: () => homeStore.isSelected(!homeStore.selected),
+              onTap: () {
+                homeStore.isSelected(!homeStore.selected);
+              },
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 44, vertical: 5),
@@ -139,7 +145,9 @@ class _Designation extends StatelessWidget {
           if (homeStore.selected == false) {
             // return DesignationTile(des: 'Mrs.');
             return GestureDetector(
-              onTap: () => homeStore.isSelected(!homeStore.selected),
+              onTap: () {
+                homeStore.isSelected(!homeStore.selected);
+              },
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 44, vertical: 5),
@@ -152,7 +160,9 @@ class _Designation extends StatelessWidget {
             );
           } else {
             return GestureDetector(
-              onTap: () => homeStore.isSelected(!homeStore.selected),
+              onTap: () {
+                homeStore.isSelected(!homeStore.selected);
+              },
               child: Container(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 44, vertical: 5),
@@ -218,29 +228,10 @@ class _Details extends StatelessWidget {
                   initialDate: DateTime.now(),
                   firstDate: DateTime(200),
                   lastDate: DateTime(2026));
-              // showCalendarDatePicker2Dialog(
-              //   dialogBackgroundColor: Colors.white,
-              //   context: context,
-              //   dialogSize: const Size(350, 400),
-              //   config: CalendarDatePicker2WithActionButtonsConfig(
-              //       calendarType: CalendarDatePicker2Type.range,
-              //       selectedDayHighlightColor: AppColors.yellow,
-              //       selectedRangeHighlightColor: const Color(0xfff7f7f7),
-              //       selectedDayTextStyle:
-              //           AppTextStyles.poppinsBlack20.copyWith(fontSize: 15),
-              //       disabledDayTextStyle:
-              //           AppTextStyles.poppinsBlack20.copyWith(fontSize: 15),
-              //       okButtonTextStyle:
-              //           AppTextStyles.poppinsBlack10.copyWith(fontSize: 15),
-              //       cancelButtonTextStyle:
-              //           AppTextStyles.poppinsBlack10.copyWith(fontSize: 15)),
-              //   value: [DateTime.now()],
-              // );
             },
             child: Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(13),
-                  // color: AppColors.fillColorTFF,
                   border: Border.all(color: AppColors.grey)),
               child: Padding(
                 padding: const EdgeInsets.all(15),
@@ -262,11 +253,8 @@ class _Details extends StatelessWidget {
           const SizedBox(height: 20),
           TextFormField(
             keyboardType: TextInputType.emailAddress,
-            // controller: _phoneController,
             textInputAction: TextInputAction.done,
             decoration: InputDecoration(
-              // fillColor: AppColors.fillColorTFF,
-              // filled: true,
               prefixIcon: const CountryCodePicker(
                 initialSelection: '+91',
               ),
@@ -281,7 +269,6 @@ class _Details extends StatelessWidget {
                   borderRadius: BorderRadius.circular(13),
                   borderSide: const BorderSide(color: AppColors.grey)),
             ),
-            // validator: _validatePhone,
             validator: (value) {
               if (value == null || value.isEmpty) {
                 Fluttertoast.showToast(msg: 'Enter your Email');
@@ -296,10 +283,12 @@ class _Details extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: GestureDetector(
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const ConfirmAndPayScreen())),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ConfirmAndPayScreen()));
+              },
               child: Container(
                 alignment: Alignment.center,
                 height: 55,

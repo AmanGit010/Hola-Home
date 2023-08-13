@@ -8,9 +8,17 @@ class HelpScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: AppBarWidget(title: 'Help'),
-      body: Padding(
+    return Scaffold(
+      appBar: AppBarWidget(
+        title: 'Help',
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(Icons.arrow_back),
+        ),
+      ),
+      body: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 22),
         child: Column(
           children: [

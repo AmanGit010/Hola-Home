@@ -39,25 +39,6 @@ class _AvailabilityScreenState extends State<AvailabilityScreen> {
                       initialDate: DateTime.now(),
                       firstDate: DateTime(200),
                       lastDate: DateTime(2026));
-
-                  // showCalendarDatePicker2Dialog(
-                  //   dialogBackgroundColor: Colors.white,
-                  //   context: context,
-                  //   dialogSize: const Size(350, 400),
-                  //   config: CalendarDatePicker2WithActionButtonsConfig(
-                  //       calendarType: CalendarDatePicker2Type.range,
-                  //       selectedDayHighlightColor: AppColors.yellow,
-                  //       selectedRangeHighlightColor: const Color(0xfff7f7f7),
-                  //       selectedDayTextStyle:
-                  //           AppTextStyles.poppinsBlack20.copyWith(fontSize: 15),
-                  //       disabledDayTextStyle:
-                  //           AppTextStyles.poppinsBlack20.copyWith(fontSize: 15),
-                  //       okButtonTextStyle:
-                  //           AppTextStyles.poppinsBlack10.copyWith(fontSize: 15),
-                  //       cancelButtonTextStyle: AppTextStyles.poppinsBlack10
-                  //           .copyWith(fontSize: 15)),
-                  //   value: [DateTime.now()],
-                  // );
                 },
                 child: Container(
                   decoration: BoxDecoration(
@@ -85,7 +66,7 @@ class _AvailabilityScreenState extends State<AvailabilityScreen> {
               const Text("Timings", style: AppTextStyles.poppinsBlackBold20),
               const SizedBox(height: 10),
               GestureDetector(
-                // onTap: ,
+                onTap: () {},
                 child: Container(
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(13),

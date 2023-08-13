@@ -7,7 +7,6 @@ import '../../../core/constants/colors.dart';
 import '../../../core/icons/hola_home_icons.dart';
 import '../../home/screens/home_screen.dart';
 import '../../profile/screens/profile_landing_screen.dart';
-import '../../profile/screens/profile_screen.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
