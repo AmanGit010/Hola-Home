@@ -13,6 +13,7 @@ class SearchResult extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBarWidget(
         title: 'Search Result',
         leading: GestureDetector(

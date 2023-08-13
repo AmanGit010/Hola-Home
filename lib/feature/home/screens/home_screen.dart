@@ -340,7 +340,6 @@ class _PopularProp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      // color: Colors.red,
       height: MediaQuery.of(context).size.height * 0.7,
       child: ListView.builder(
           physics: const NeverScrollableScrollPhysics(),

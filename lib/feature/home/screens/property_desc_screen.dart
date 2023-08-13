@@ -14,6 +14,7 @@ class PropertyDesc extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       extendBody: true,
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: const _BottomNavBar(),
