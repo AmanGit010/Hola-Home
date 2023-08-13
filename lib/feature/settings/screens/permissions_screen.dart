@@ -7,9 +7,16 @@ class PermissionsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: AppBarWidget(title: 'Permissions'),
-      body: Column(
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBarWidget(
+          title: 'Permissions',
+          leading: GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: const Icon(Icons.arrow_back))),
+      body: const Column(
         children: [
           SizedBox(height: 20),
           _ActionTile(text: 'Camera', allowed: false),

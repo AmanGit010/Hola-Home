@@ -15,7 +15,9 @@ class ConfirmAndPayScreen extends StatelessWidget {
         title: 'Confirm and pay',
         actions: [
           GestureDetector(
-            onTap: () => Navigator.pop(context),
+            onTap: () {
+              Navigator.pop(context);
+            },
             child: const Padding(
               padding: EdgeInsets.only(right: 20),
               child: Text("Cancel", style: AppTextStyles.poppinsBlack20),
@@ -177,10 +179,12 @@ class ConfirmAndPayScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: GestureDetector(
-                onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PaymentMethodScreen())),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const PaymentMethodScreen()));
+                },
                 child: Container(
                   alignment: Alignment.center,
                   height: 55,

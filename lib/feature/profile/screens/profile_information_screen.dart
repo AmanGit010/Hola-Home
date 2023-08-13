@@ -12,8 +12,15 @@ class ProfileInformationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBarWidget(
         title: 'Profile Information',
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(Icons.arrow_back),
+        ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 20),
@@ -27,17 +34,12 @@ class ProfileInformationScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          const Stack(
-            children: [
-              ProfilePic(
-                image: AssetImage('assets/png/app/pic.png'),
-                icon: Icon(
-                  Icons.camera_alt_outlined,
-                  color: AppColors.yellow,
-                ),
-                radius: 60,
-              ),
-            ],
+          ProfilePic(
+            image: Image.asset('assets/png/app/pic.png'),
+            icon: const Icon(
+              Icons.camera_alt_outlined,
+              color: Colors.white,
+            ),
           ),
           const SizedBox(height: 50),
           Padding(

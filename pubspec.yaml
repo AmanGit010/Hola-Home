@@ -35,6 +35,7 @@ flutter:
   assets:
     - assets/png/
     - assets/png/app/
+    - assets/png/bookings/
     - assets/png/contact_us/
     - assets/png/flags/
     - assets/png/no_result/

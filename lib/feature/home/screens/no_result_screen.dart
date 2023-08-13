@@ -15,7 +15,7 @@ class NoResultScreen extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset('assets/png/no_result.png'),
+          Image.asset('assets/png/no_result/no_result.png'),
           const Text(
             "Oops!!",
             style: AppTextStyles.poppinsBlackBold20,
@@ -39,7 +39,6 @@ class NoResultScreen extends StatelessWidget {
                 alignment: Alignment.center,
                 height: 55,
                 decoration: BoxDecoration(
-                  border: Border.all(color: AppColors.yellow, width: 2),
                   borderRadius: BorderRadius.circular(30),
                   color: AppColors.yellow,
                 ),

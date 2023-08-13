@@ -24,7 +24,9 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
           Padding(
             padding: const EdgeInsets.only(right: 20),
             child: GestureDetector(
-              onTap: () => Navigator.pop(context),
+              onTap: () {
+                Navigator.pop(context);
+              },
               child: const Text("Cancel", style: AppTextStyles.poppinsBlack20),
             ),
           ),
@@ -75,10 +77,13 @@ class _PaymentMethodScreenState extends State<PaymentMethodScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30),
               child: GestureDetector(
-                onTap: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const PaymentSuccessfulScreen())),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const PaymentSuccessfulScreen()));
+                },
                 child: Container(
                   alignment: Alignment.center,
                   height: 55,

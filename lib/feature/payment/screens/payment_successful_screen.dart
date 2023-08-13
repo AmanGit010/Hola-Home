@@ -25,10 +25,12 @@ class PaymentSuccessfulScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: GestureDetector(
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const BookingCompletionScreen())),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const BookingCompletionScreen()));
+              },
               child: Container(
                 height: 55,
                 decoration: BoxDecoration(
@@ -38,7 +40,6 @@ class PaymentSuccessfulScreen extends StatelessWidget {
                         blurRadius: 5,
                         color: Colors.black.withOpacity(0.25))
                   ],
-                  border: Border.all(color: AppColors.yellow, width: 2),
                   borderRadius: BorderRadius.circular(30),
                   color: AppColors.yellow,
                 ),
@@ -56,7 +57,9 @@ class PaymentSuccessfulScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 30),
             child: GestureDetector(
-              onTap: () => Navigator.pop(context),
+              onTap: () {
+                Navigator.pop(context);
+              },
               child: Container(
                 height: 55,
                 decoration: BoxDecoration(

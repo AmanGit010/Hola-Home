@@ -35,8 +35,12 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Image.asset('assets/png/app/home_screen_logo.png'),
               GestureDetector(
-                onTap: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const MapScreen())),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const MapScreen()));
+                },
                 child: const Text(
                   "Map",
                   style: AppTextStyles.poppinsBlack20,
@@ -46,15 +50,19 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      // bottomNavigationBar: const NavBar(),
+      bottomNavigationBar: const NavBar(),
       extendBody: true,
       body: SingleChildScrollView(
         child: Column(
           children: [
             const SizedBox(height: 30),
             GestureDetector(
-              onTap: () => Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const SearchPage())),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SearchPage()));
+              },
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 22),
                 child: Container(
@@ -87,11 +95,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   const Text("Nearby Properties",
                       style: AppTextStyles.poppinsBlackBold20),
                   GestureDetector(
-                    onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const NearbyPropertiesScreen())),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const NearbyPropertiesScreen()));
+                    },
                     child: Text(
                       "See all",
                       style: AppTextStyles.poppinsBlackBold10
@@ -112,11 +122,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   const Text("Popular Properties",
                       style: AppTextStyles.poppinsBlackBold20),
                   GestureDetector(
-                    onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                const PopularPropertiesScreen())),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const PopularPropertiesScreen()));
+                    },
                     child: Text(
                       "See all",
                       style: AppTextStyles.poppinsBlackBold10
@@ -215,14 +227,15 @@ class _NearbyPropContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     final HomeStore homeStore = HomeStore();
     return GestureDetector(
-      onTap: () => Navigator.push(context,
-          MaterialPageRoute(builder: (context) => const PropertyDesc())),
+      onTap: () {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const PropertyDesc()));
+      },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         child: Container(
           width: 300,
           decoration: BoxDecoration(
-            // color: Colors.amber,
             boxShadow: [
               BoxShadow(
                   offset: const Offset(4, 4),
@@ -244,7 +257,9 @@ class _NearbyPropContainer extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 20, top: 15),
                   child: GestureDetector(
-                    onTap: () => homeStore.setFilled(!homeStore.bookmarked),
+                    onTap: () {
+                      homeStore.setFilled(!homeStore.bookmarked);
+                    },
                     child: Container(
                       decoration: const BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(5)),
@@ -325,26 +340,22 @@ class _PopularProp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      // color: Colors.red,
       height: MediaQuery.of(context).size.height * 0.7,
       child: ListView.builder(
           physics: const NeverScrollableScrollPhysics(),
           shrinkWrap: true,
-          // scrollDirection: Axis.vertical,
           itemCount: 4,
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               child: Container(
                 decoration: BoxDecoration(
-                  // color: Colors.amber,
                   boxShadow: [
                     BoxShadow(
                         offset: const Offset(4, 4),
                         blurRadius: 16,
                         color: const Color(0x1212120f).withOpacity(0.06))
                   ],
-                  // color: AppColors.yellow,
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20),
                 ),

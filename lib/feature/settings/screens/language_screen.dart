@@ -11,7 +11,16 @@ class LanguageScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const AppBarWidget(title: 'Languages'),
+      backgroundColor: Colors.white,
+      appBar: AppBarWidget(
+        title: 'Languages',
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(Icons.arrow_back),
+        ),
+      ),
       body: Column(
         children: [
           const SizedBox(height: 30),
@@ -51,7 +60,6 @@ class LanguageScreen extends StatelessWidget {
                         blurRadius: 5,
                         color: Colors.black.withOpacity(0.25))
                   ],
-                  border: Border.all(color: AppColors.yellow, width: 2),
                   borderRadius: BorderRadius.circular(30),
                   color: AppColors.yellow,
                 ),

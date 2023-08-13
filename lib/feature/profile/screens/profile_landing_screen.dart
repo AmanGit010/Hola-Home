@@ -11,6 +11,7 @@ class ProfileLandingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: const AppBarWidget(
         title: 'Profile',
         center: true,
@@ -23,10 +24,12 @@ class ProfileLandingScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 85),
             child: GestureDetector(
-              onTap: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const ProfileScreen())),
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ProfileScreen()));
+              },
               child: Container(
                 height: 55,
                 decoration: BoxDecoration(
@@ -36,7 +39,6 @@ class ProfileLandingScreen extends StatelessWidget {
                         blurRadius: 5,
                         color: Colors.black.withOpacity(0.25))
                   ],
-                  border: Border.all(color: AppColors.yellow, width: 2),
                   borderRadius: BorderRadius.circular(10),
                   color: AppColors.yellow,
                 ),
@@ -65,7 +67,6 @@ class ProfileLandingScreen extends StatelessWidget {
                         blurRadius: 5,
                         color: Colors.black.withOpacity(0.25))
                   ],
-                  border: Border.all(color: AppColors.yellow, width: 2),
                   borderRadius: BorderRadius.circular(10),
                   color: AppColors.yellow,
                 ),
