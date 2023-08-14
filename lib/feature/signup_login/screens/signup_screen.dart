@@ -1,11 +1,13 @@
 // ignore_for_file: avoid_field_initializers_in_const_classes
 
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/styles.dart';
 import '../../qna/qna_screen.dart';
 import '../../widgets/appbar_widget.dart';
+import '../store/signup_login_store.dart';
 import 'login_screen.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -16,19 +18,13 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
-  bool _obscureText = true;
   final _formKey = GlobalKey<FormState>();
   final RegExp _regexEmail = RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]");
   final RegExp _regexPass = RegExp(r'^.{5,}$');
 
-  void _togglePasswordVisibility() {
-    setState(() {
-      _obscureText = !_obscureText;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    final SignupLoginStore signupLoginStore = SignupLoginStore();
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBarWidget(
@@ -99,17 +95,20 @@ class _SignupScreenState extends State<SignupScreen> {
                         ),
                         const SizedBox(height: 25),
                         TextFormField(
-                          obscureText: _obscureText,
+                          obscureText: signupLoginStore.isVisible,
                           textInputAction: TextInputAction.done,
                           decoration: InputDecoration(
-                            suffixIcon: IconButton(
-                                icon: Icon(
-                                  _obscureText
+                            suffixIcon: GestureDetector(
+                              onTap: signupLoginStore.isChanged,
+                              child: Observer(
+                                builder: (_) => Icon(
+                                  signupLoginStore.isVisible
                                       ? Icons.visibility
                                       : Icons.visibility_off_outlined,
                                   color: AppColors.grey,
                                 ),
-                                onPressed: _togglePasswordVisibility),
+                              ),
+                            ),
                             fillColor: AppColors.fillColorTFF,
                             filled: true,
                             labelText: 'Password',
