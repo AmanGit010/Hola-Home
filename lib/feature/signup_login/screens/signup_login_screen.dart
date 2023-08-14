@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/styles.dart';
-import '../../bookings/screens/bookings_screen.dart';
 import '../../home/screens/enable_location_screen.dart';
-import '../../profile/screens/profile_information_screen.dart';
-import '../../profile/screens/profile_landing_screen.dart';
 import 'login_screen.dart';
 import 'signup_screen.dart';
 
@@ -29,7 +26,7 @@ class SignupLoginScreen extends StatelessWidget {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const BookingsScreen()),
+                          builder: (context) => const EnableLocationScreen()),
                     );
                   },
                   child: const Text("Skip and Start Browsing",
