@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: const NavBar(),
+      // bottomNavigationBar: const NavBar(),
       extendBody: true,
       body: SingleChildScrollView(
         child: Column(
