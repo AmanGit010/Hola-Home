@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../../core/constants/colors.dart';
 import '../../../core/constants/styles.dart';
-import 'home_screen.dart';
+import '../../main/screens/main_screen.dart';
 
 class EnableLocationScreen extends StatelessWidget {
   const EnableLocationScreen({Key? key}) : super(key: key);
@@ -33,7 +33,7 @@ class EnableLocationScreen extends StatelessWidget {
                 Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const HomeScreen()));
+                        builder: (context) => const MainScreen()));
               },
               child: Container(
                 alignment: Alignment.center,
